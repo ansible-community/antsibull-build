@@ -26,6 +26,16 @@ ANSIBLE_FORUM_URL = "https://forum.ansible.com"
 
 COLLECTION_EXCLUDE_DIRS = ("docs", "tests")
 
+# First ansible-core version that has its documentation split out into
+# ansible/ansible-documentation.
+ANSIBLE_DOCUMENTATION_MINIMUM = PypiVer("2.15.2")
+ANSIBLE_DOCUMENTATION_RANGES: dict[str, PypiVer] = {
+    "2.13": PypiVer("2.13.11"),
+    "2.14": PypiVer("2.14.8"),
+}
+ANSIBLE_DOCUMENTATION_RAW_URL = "https://github.com/ansible/ansible-documentation/raw"
+ANSIBLE_CORE_RAW_URL = "https://github.com/ansible/ansible/raw"
+
 SANITY_TESTS_DEFAULT: tuple[str, ...] = (
     "ansible-doc",
     "compile",
