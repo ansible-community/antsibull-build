@@ -500,7 +500,7 @@ def prepare_command() -> int:
         f"`Porting Guide <https://docs.ansible.com/ansible/devel/porting_guides.html>`_",
         overwrite_release_summary=False,
     )
-    ansible_changelog.changes.save()
+    ansible_changelog.save()
 
     # Write dependency file
     deps_file.write(

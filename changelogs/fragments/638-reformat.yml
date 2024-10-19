@@ -1,0 +1,2 @@
+minor_changes:
+  - "Add a subcommand ``reformat-build-data`` which reformats the changelog.yaml file (https://github.com/ansible-community/antsibull-build/pull/638)."

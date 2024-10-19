@@ -156,6 +156,9 @@ class ChangelogData:
         ):
             release_date["changes"]["release_summary"] = release_summary
 
+    def save(self):
+        self.changes.save()
+
 
 def read_file(tarball_path: str, matcher: t.Callable[[str], bool]) -> bytes | None:
     with tarfile.open(tarball_path, "r:gz") as tar:
