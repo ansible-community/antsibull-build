@@ -38,7 +38,7 @@ def lint_build_data() -> int:
     # Lint changelog.yaml
     changelog_path = os.path.join(data_dir, "changelog.yaml")
     for path, _, __, message in _lint_changelog_yaml(
-        changelog_path, no_semantic_versioning=True
+        changelog_path, no_semantic_versioning=True, strict=True
     ):
         errors.append(f"{path}: {message}")
 
