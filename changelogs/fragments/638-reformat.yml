@@ -1,2 +1,3 @@
 minor_changes:
   - "Add a subcommand ``reformat-build-data`` which reformats the changelog.yaml file (https://github.com/ansible-community/antsibull-build/pull/638)."
+  - "Adjust the changelog config so that changelog.yaml has a nicer order and nicer layout (https://github.com/ansible-community/antsibull-build/pull/638)."

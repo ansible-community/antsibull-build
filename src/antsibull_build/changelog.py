@@ -107,6 +107,8 @@ class ChangelogData:
         paths = PathsConfig.force_ansible("")
 
         config = ChangelogConfig.default(paths, CollectionDetails(paths), "Ansible")
+        config.changelog_nice_yaml = True
+        config.changelog_sort = "version"
         # TODO: adjust the following lines once Ansible switches to semantic versioning
         config.use_semantic_versioning = False
         config.release_tag_re = r"""(v(?:[\d.ab\-]|rc)+)"""
