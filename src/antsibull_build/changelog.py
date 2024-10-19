@@ -109,7 +109,7 @@ class ChangelogData:
         config = ChangelogConfig.default(paths, CollectionDetails(paths), "Ansible")
         config.changelog_nice_yaml = True
         config.changelog_sort = "version"
-        # TODO: adjust the following lines once Ansible switches to semantic versioning
+        # While Ansible uses semantic versioning, the version numbers must be PyPI compatible
         config.use_semantic_versioning = False
         config.release_tag_re = r"""(v(?:[\d.ab\-]|rc)+)"""
         config.pre_release_tag_re = r"""(?P<pre_release>(?:[ab]|rc)+\d*)$"""
