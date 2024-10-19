@@ -10,8 +10,6 @@ Classes to lint collection-meta.yaml
 
 from __future__ import annotations
 
-import os
-
 from antsibull_core import app_context
 
 from .changelog import ChangelogData
