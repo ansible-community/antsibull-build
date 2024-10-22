@@ -5,7 +5,7 @@
 # SPDX-FileCopyrightText: Ansible Project, 2024
 
 """
-Classes to lint collection-meta.yaml
+Code to lint build data.
 """
 
 from __future__ import annotations
