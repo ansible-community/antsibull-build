@@ -107,7 +107,9 @@ class ChangelogData:
         paths = PathsConfig.force_ansible("")
 
         config = ChangelogConfig.default(paths, CollectionDetails(paths), "Ansible")
-        # TODO: adjust the following lines once Ansible switches to semantic versioning
+        config.changelog_nice_yaml = True
+        config.changelog_sort = "version"
+        # While Ansible uses semantic versioning, the version numbers must be PyPI compatible
         config.use_semantic_versioning = False
         config.release_tag_re = r"""(v(?:[\d.ab\-]|rc)+)"""
         config.pre_release_tag_re = r"""(?P<pre_release>(?:[ab]|rc)+\d*)$"""
@@ -155,6 +157,9 @@ class ChangelogData:
             or overwrite_release_summary
         ):
             release_date["changes"]["release_summary"] = release_summary
+
+    def save(self):
+        self.changes.save()
 
 
 def read_file(tarball_path: str, matcher: t.Callable[[str], bool]) -> bytes | None:

@@ -55,6 +55,7 @@ from ..build_ansible_commands import (  # noqa: E402
 )
 from ..build_changelog import build_changelog  # noqa: E402
 from ..build_data_lint import lint_build_data  # noqa: E402
+from ..build_data_reformat import reformat_build_data  # noqa: E402
 from ..constants import MINIMUM_ANSIBLE_VERSION, SANITY_TESTS_DEFAULT  # noqa: E402
 from ..dep_closure import validate_dependencies_command  # noqa: E402
 from ..from_source import verify_upstream_command  # noqa: E402
@@ -86,6 +87,7 @@ ARGS_MAP = {
     "announcements": announcements_command,
     "send-announcements": send_announcements_command,
     "lint-build-data": lint_build_data,
+    "reformat-build-data": reformat_build_data,
 }
 DISABLE_VERIFY_UPSTREAMS_IGNORES_SENTINEL = "NONE"
 DEFAULT_ANNOUNCEMENTS_DIR = Path("build/announce")
@@ -106,6 +108,7 @@ def _normalize_build_options(args: argparse.Namespace) -> None:
         "verify-upstreams",
         "sanity-tests",
         "send-announcements",
+        "reformat-build-data",
     ):
         return
 
@@ -805,6 +808,16 @@ def parse_args(program_name: str, args: list[str]) -> argparse.Namespace:
         help="File containing a list of collections to include.  This is"
         " considered to be relative to --data-dir.  The default is"
         f" {DEFAULT_PIECES_FILE}",
+    )
+
+    reformat_build_data_parser = subparsers.add_parser(
+        "reformat-build-data",
+        description="Reformat some of the build data, like the changelog.yaml."
+        " Should be done after manual edits to avoid surprising reformattings"
+        " later on.",
+    )
+    reformat_build_data_parser.add_argument(
+        "--data-dir", default=".", help="Directory to read .build and .deps files from"
     )
 
     # This must come after all parser setup
