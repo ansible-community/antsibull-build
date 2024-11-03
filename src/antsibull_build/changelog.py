@@ -6,6 +6,8 @@
 # SPDX-FileCopyrightText: Ansible Project, 2020
 """Changelog handling and processing code."""
 
+# pylint: disable=too-many-lines
+
 from __future__ import annotations
 
 import asyncio
@@ -40,6 +42,7 @@ from antsibull_core.logging import log
 from antsibull_core.schemas.collection_meta import (
     CollectionsMetadata,
     RemovalInformation,
+    RemovalUpdate,
     RemovedRemovalInformation,
 )
 from antsibull_docs_parser.parser import Context as _AnsibleMarkupContext
@@ -585,12 +588,10 @@ def _markup_to_rst(markup: str) -> str:
 def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
     collection: str,
     removal: RemovalInformation,
+    announce_version: PypiVer,
     ansible_version: PypiVer,
 ) -> tuple[ChangelogFragment, str] | None:
-    if (
-        removal.announce_version is None
-        or removal.announce_version.major != ansible_version.major
-    ):
+    if announce_version.major != ansible_version.major:
         return None
 
     sentences = []
@@ -694,15 +695,16 @@ def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
         },
         path="<internal>",
         fragment_format=TextFormat.RESTRUCTURED_TEXT,
-    ), str(removal.announce_version)
+    ), str(announce_version)
 
 
 def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
     collection: str,
-    removal: RemovedRemovalInformation,
+    removal: RemovedRemovalInformation | RemovalInformation,
+    removal_version: PypiVer,
     ansible_version: PypiVer,
 ) -> tuple[ChangelogFragment, str] | None:
-    if ansible_version.major != removal.version.major:
+    if ansible_version.major != removal_version.major:
         return None
 
     sentences = []
@@ -718,7 +720,7 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
     elif removal.reason == "considered-unmaintained":
         sentences.append(
             f"The ``{collection}`` collection was considered unmaintained"
-            f" and has been removed from Ansible {removal.version.major}{link}."
+            f" and has been removed from Ansible {removal_version.major}{link}."
         )
 
     elif removal.reason == "renamed":
@@ -742,7 +744,7 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
 
     elif removal.reason == "guidelines-violation":
         sentences.append(
-            f"The {collection} collection has been removed from Ansible {removal.version.major}"
+            f"The {collection} collection has been removed from Ansible {removal_version.major}"
             " due to violations of the Ansible inclusion requirements."
         )
         if removal.reason_text:
@@ -757,7 +759,7 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
 
     elif removal.reason == "other":
         sentences.append(
-            f"The {collection} collection has been removed from Ansible {removal.version.major}."
+            f"The {collection} collection has been removed from Ansible {removal_version.major}."
         )
         if removal.reason_text:
             sentences.append(_markup_to_rst(removal.reason_text))
@@ -788,7 +790,62 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
         },
         path="<internal>",
         fragment_format=TextFormat.RESTRUCTURED_TEXT,
-    ), str(removal.version)
+    ), str(removal_version)
+
+
+def _get_update_entry(
+    collection: str,
+    removal: RemovalInformation,
+    update: RemovalUpdate,
+    ansible_version: PypiVer,
+) -> tuple[ChangelogFragment, str] | None:
+    if update.cancelled_version:
+        return ChangelogFragment(
+            content={
+                "major_changes": [
+                    f"The removal of {collection} was cancelled. The collection"
+                    f" will not be removed from Ansible {removal.major_version}.",
+                ]
+            },
+            path="<internal>",
+            fragment_format=TextFormat.RESTRUCTURED_TEXT,
+        ), str(update.cancelled_version)
+    if update.readded_version:
+        return ChangelogFragment(
+            content={
+                "major_changes": [
+                    f"The previously removed collection {collection} was"
+                    f" re-added to Ansible {ansible_version.major}.",
+                ]
+            },
+            path="<internal>",
+            fragment_format=TextFormat.RESTRUCTURED_TEXT,
+        ), str(update.readded_version)
+    if update.deprecated_version:
+        return _get_removal_entry(
+            collection, removal, update.deprecated_version, ansible_version
+        )
+    if update.redeprecated_version:
+        # TODO: adjust message when re-deprecating?
+        return _get_removal_entry(
+            collection, removal, update.redeprecated_version, ansible_version
+        )
+    if update.removed_version:
+        return _get_removed_entry(
+            collection,
+            removal,
+            update.removed_version,
+            ansible_version,
+        )
+    return None
+
+
+def _extract_fragment_text(fragment: ChangelogFragment) -> str:
+    if len(fragment.content) == 1:
+        key, value = list(fragment.content.items())[0]
+        if len(value) == 1:
+            return f"{key}: {value[0]}"
+    return repr(fragment.content)
 
 
 def _populate_ansible_changelog(
@@ -799,21 +856,26 @@ def _populate_ansible_changelog(
     flog = mlog.fields(func="_populate_ansible_changelog")
     for collection, metadata in collection_metadata.collections.items():
         if metadata.removal:
-            fragment_version = _get_removal_entry(
-                collection, metadata.removal, ansible_version
-            )
-            if fragment_version:
-                fragment, version = fragment_version
-                if version in ansible_changelog.changes.releases:
-                    ansible_changelog.changes.add_fragment(fragment, version)
-                else:
-                    flog.warning(
-                        f"Found changelog entry for {version}, which does not yet exist"
-                    )
+            for update in metadata.removal.get_updates_including_indirect():
+                fragment_version = _get_update_entry(
+                    collection, metadata.removal, update, ansible_version
+                )
+                if fragment_version:
+                    fragment, version = fragment_version
+                    if version in ansible_changelog.changes.releases:
+                        ansible_changelog.changes.add_fragment(fragment, version)
+                    else:
+                        flog.warning(
+                            f"Found changelog entry for {version}, which does not yet exist: {{}}",
+                            _extract_fragment_text(fragment),
+                        )
 
     for collection, removed_metadata in collection_metadata.removed_collections.items():
         fragment_version = _get_removed_entry(
-            collection, removed_metadata.removal, ansible_version
+            collection,
+            removed_metadata.removal,
+            removed_metadata.removal.version,
+            ansible_version,
         )
         if fragment_version:
             fragment, version = fragment_version
@@ -821,7 +883,8 @@ def _populate_ansible_changelog(
                 ansible_changelog.changes.add_fragment(fragment, version)
             else:
                 flog.warning(
-                    f"Found changelog entry for {version}, which does not yet exist"
+                    f"Found changelog entry for {version}, which does not yet exist: {{}}",
+                    _extract_fragment_text(fragment),
                 )
 
 
