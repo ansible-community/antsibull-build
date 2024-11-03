@@ -827,7 +827,7 @@ def _populate_ansible_changelog(
 
 def _cleanup_collection_version(
     collection_name: str,
-    collection_data: dict[str, RemoveCollectionVersionSchema],
+    collection_data: dict[SemVer, RemoveCollectionVersionSchema],
     changelog: ChangelogData,
 ) -> None:
     flog = mlog.fields(func="_cleanup_collection_version")
