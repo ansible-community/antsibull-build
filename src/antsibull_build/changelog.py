@@ -17,9 +17,11 @@ import tarfile
 import tempfile
 import typing as t
 from collections import defaultdict
+from collections.abc import Callable
 
 import aiohttp
 import asyncio_pool  # type: ignore[import]
+import pydantic as p
 from antsibull_changelog.changes import ChangesData, add_release
 from antsibull_changelog.config import (
     ChangelogConfig,
@@ -51,6 +53,37 @@ from semantic_version import Version as SemVer
 mlog = log.fields(mod=__name__)
 
 
+class RemoveCollectionVersionSchema(p.BaseModel):
+    changes: dict[str, list[str]]
+
+
+RemoveCollectionVersionsSchema = p.RootModel[dict[str, RemoveCollectionVersionSchema]]
+
+RemoveCollectionChangelogEntries = p.RootModel[
+    dict[str, RemoveCollectionVersionsSchema]
+]
+
+
+def _extract_extra_data(
+    data: dict,
+    store: Callable[[dict[str, dict[SemVer, RemoveCollectionVersionSchema]]], None],
+) -> None:
+    try:
+        rcce_obj = RemoveCollectionChangelogEntries.model_validate(
+            data.get("remove_collection_changelog_entries") or {}
+        )
+        rcce = {
+            collection_name: {
+                SemVer(version): data for version, data in versions.root.items()
+            }
+            for collection_name, versions in rcce_obj.root.items()
+        }
+    except (p.ValidationError, ValueError):
+        # ignore error; linting should complain, not us
+        rcce = {}
+    store(rcce)
+
+
 class ChangelogData:
     """
     Data for a single changelog (for a collection, for ansible-core, for Ansible)
@@ -61,6 +94,10 @@ class ChangelogData:
     changes: ChangesData
     generator: ChangelogGenerator
     generator_flatmap: bool
+
+    remove_collection_changelog_entries: (
+        dict[str, dict[SemVer, RemoveCollectionVersionSchema]] | None
+    )
 
     def __init__(
         self,
@@ -74,6 +111,7 @@ class ChangelogData:
         self.changes = changes
         self.generator_flatmap = flatmap
         self.generator = ChangelogGenerator(self.config, self.changes, flatmap=flatmap)
+        self.remove_collection_changelog_entries = None
 
     @classmethod
     def collection(
@@ -114,13 +152,28 @@ class ChangelogData:
         config.release_tag_re = r"""(v(?:[\d.ab\-]|rc)+)"""
         config.pre_release_tag_re = r"""(?P<pre_release>(?:[ab]|rc)+\d*)$"""
 
+        remove_collection_changelog_entries = {}
+
+        def store_extra_data(
+            rcce: dict[str, dict[SemVer, RemoveCollectionVersionSchema]]
+        ) -> None:
+            remove_collection_changelog_entries.update(rcce)
+
         changelog_path = ""
         if directory is not None:
             changelog_path = os.path.join(directory, "changelog.yaml")
-        changes = ChangesData(config, changelog_path)
+        changes = ChangesData(
+            config,
+            changelog_path,
+            extra_data_extractor=lambda data: _extract_extra_data(
+                data, store_extra_data
+            ),
+        )
         if output_directory is not None:
             changes.path = os.path.join(output_directory, "changelog.yaml")
-        return cls(paths, config, changes, flatmap=True)
+        result = cls(paths, config, changes, flatmap=True)
+        result.remove_collection_changelog_entries = remove_collection_changelog_entries
+        return result
 
     @classmethod
     def concatenate(cls, changelogs: list[ChangelogData]) -> ChangelogData:
@@ -159,7 +212,16 @@ class ChangelogData:
             release_date["changes"]["release_summary"] = release_summary
 
     def save(self):
-        self.changes.save()
+        extra_data = {}
+        if self.remove_collection_changelog_entries is not None:
+            extra_data["remove_collection_changelog_entries"] = {
+                collection_name: {
+                    str(version): changes.model_dump()
+                    for version, changes in versions.items()
+                }
+                for collection_name, versions in self.remove_collection_changelog_entries.items()
+            }
+        self.changes.save(extra_data=extra_data or None)
 
 
 def read_file(tarball_path: str, matcher: t.Callable[[str], bool]) -> bytes | None:
@@ -763,6 +825,63 @@ def _populate_ansible_changelog(
                 )
 
 
+def _cleanup_collection_version(
+    collection_name: str,
+    collection_data: dict[SemVer, RemoveCollectionVersionSchema],
+    changelog: ChangelogData,
+) -> None:
+    flog = mlog.fields(func="_cleanup_collection_version")
+    for version, data in collection_data.items():
+        release = changelog.changes.releases.get(str(version))
+        changes = (release or {}).get("changes")
+        if not changes:
+            flog.warning(
+                f"Trying to remove changelog entries from {collection_name} {version},"
+                " but found no release"
+            )
+            continue
+        for category, entries in data.changes.items():
+            if category not in changes:
+                flog.warning(
+                    f"Trying to remove {category!r} changelog entries from"
+                    f" {collection_name} {version}, but found no entries"
+                )
+                continue
+            for entry in entries:
+                try:
+                    changes[category].remove(entry)
+                except ValueError:
+                    flog.warning(
+                        f"Cannot find {category!r} changelog entry for"
+                        f" {collection_name} {version}: {entry!r}"
+                    )
+
+
+def _cleanup_collection_changelogs(
+    ansible_changelog: ChangelogData,
+    collection_collectors: list[CollectionChangelogCollector],
+) -> None:
+    flog = mlog.fields(func="_populate_ansible_changelog")
+    rcce = ansible_changelog.remove_collection_changelog_entries
+    if not rcce:
+        return
+
+    for collection_collector in collection_collectors:
+        collection_data = rcce.get(collection_collector.collection)
+        if not collection_data:
+            continue
+        changelog = collection_collector.changelog
+        if not changelog:
+            flog.warning(
+                f"Trying to remove changelog entries from {collection_collector.collection},"
+                " but found no changelog"
+            )
+            continue
+        _cleanup_collection_version(
+            collection_collector.collection, collection_data, changelog
+        )
+
+
 def get_changelog(
     ansible_version: PypiVer,
     deps_dir: str | None,
@@ -820,6 +939,8 @@ def get_changelog(
     asyncio.run(
         collect_changelogs(collectors, core_collector, collection_cache, galaxy_context)
     )
+
+    _cleanup_collection_changelogs(ansible_changelog, collectors)
 
     changelog = []
 

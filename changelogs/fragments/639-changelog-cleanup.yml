@@ -1,0 +1,2 @@
+minor_changes:
+  - "Allow to remove collection changelog entries from the Ansible changelog (https://github.com/ansible-community/antsibull-build/pull/639)."
