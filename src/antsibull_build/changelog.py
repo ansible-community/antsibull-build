@@ -97,7 +97,7 @@ class ChangelogData:
 
     remove_collection_changelog_entries: (
         dict[str, dict[SemVer, RemoveCollectionVersionSchema]] | None
-    ) = None
+    )
 
     def __init__(
         self,
