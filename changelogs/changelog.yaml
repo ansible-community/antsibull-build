@@ -988,3 +988,13 @@ releases:
       - 639-changelog-cleanup.yml
       - python-3.13.yml
     release_date: '2024-11-05'
+  0.68.1:
+    changes:
+      bugfixes:
+        - Fix ``new-ansible`` subcommand so it will not wipe the newly added extra
+          data from ``changelog.yaml`` files (https://github.com/ansible-community/antsibull-build/pull/641).
+      release_summary: Bugfix release.
+    fragments:
+      - 0.68.1.yml
+      - 641-changelog-fix.yml
+    release_date: '2024-11-05'

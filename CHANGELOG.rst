@@ -4,6 +4,19 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.68.1
+=======
+
+Release Summary
+---------------
+
+Bugfix release.
+
+Bugfixes
+--------
+
+- Fix ``new-ansible`` subcommand so it will not wipe the newly added extra data from ``changelog.yaml`` files (https://github.com/ansible-community/antsibull-build/pull/641).
+
 v0.68.0
 =======
 
