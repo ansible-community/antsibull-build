@@ -67,6 +67,6 @@ def new_ansible_command() -> int:
     )
 
     changelog = ChangelogData.ansible(app_ctx.extra["dest_data_dir"])
-    changelog.changes.save()
+    changelog.save()
 
     return 0
