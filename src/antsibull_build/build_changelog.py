@@ -177,9 +177,9 @@ def render_md_table(headings: list[str], cells: list[list[str]]) -> str:
 
 def format_link(title: str, url: str, text_format: TextFormat) -> str:
     if text_format == TextFormat.RESTRUCTURED_TEXT:
-        return f"`{title} <{url}>`_"
+        return f"`{title} <{url}>`__"
     if text_format == TextFormat.MARKDOWN:
-        return f"`[{title}]({url})"
+        return f"[{title}]({url})"
     raise ValueError(f"Unknown format {format}")
 
 
