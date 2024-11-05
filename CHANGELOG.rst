@@ -4,6 +4,31 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.68.0
+=======
+
+Release Summary
+---------------
+
+Feature release.
+
+Minor Changes
+-------------
+
+- Add a subcommand ``reformat-build-data`` which reformats the changelog.yaml file (https://github.com/ansible-community/antsibull-build/pull/638).
+- Add changelog.yaml linting to ``lint-build-data`` (https://github.com/ansible-community/antsibull-build/pull/638).
+- Adjust the changelog config so that changelog.yaml has a nicer order and nicer layout (https://github.com/ansible-community/antsibull-build/pull/638).
+- Adjust to upcoming changes in antsibull-changelog by removing superfluous parameters (https://github.com/ansible-community/antsibull-build/pull/635).
+- Allow to remove collection changelog entries from the Ansible changelog (https://github.com/ansible-community/antsibull-build/pull/639).
+- Declare support for Python 3.13 (https://github.com/ansible-community/antsibull-build/pull/637).
+- Now depends on antsibull-changelog >= 0.31.0 (https://github.com/ansible-community/antsibull-build/pull/638).
+- Use Proxy configuration settings from the environment. Check out the `aiohttp documentation on Proxy support <https://docs.aiohttp.org/en/stable/client_advanced.html#proxy-support>`__ for information on which environment variables are supported (https://github.com/ansible-community/antsibull-build/pull/631).
+
+Bugfixes
+--------
+
+- Adjust the rebuild script included in Ansible releases to install antsibull-build instead of antsibull (https://github.com/ansible-community/antsibull-build/pull/636).
+
 v0.67.0
 =======
 
