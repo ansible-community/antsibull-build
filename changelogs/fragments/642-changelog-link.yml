@@ -1,0 +1,2 @@
+bugfixes:
+  - "Fix link to changelogs for collections without ``changelog.yaml`` (https://github.com/ansible-community/antsibull-build/pull/642)."
