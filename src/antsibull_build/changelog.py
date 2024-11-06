@@ -585,6 +585,12 @@ def _markup_to_rst(markup: str) -> str:
     )
 
 
+def _get_link(removal: RemovedRemovalInformation | RemovalInformation) -> str:
+    if not removal.discussion:
+        return ""
+    return f" (`{removal.discussion} <{removal.discussion}>`__)"
+
+
 def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
     collection: str,
     removal: RemovalInformation,
@@ -595,9 +601,7 @@ def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
         return None
 
     sentences = []
-    link = ""
-    if removal.discussion:
-        link = f" (`{removal.discussion} <{removal.discussion}>`__)"
+    link = _get_link(removal)
 
     if removal.reason == "deprecated":
         sentences.append(f"The ``{collection}`` collection has been deprecated.")
@@ -708,9 +712,7 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
         return None
 
     sentences = []
-    link = ""
-    if removal.discussion:
-        link = f" (`{removal.discussion} <{removal.discussion}>`__)"
+    link = _get_link(removal)
 
     if removal.reason == "deprecated":
         sentences.append(
@@ -800,22 +802,24 @@ def _get_update_entry(
     ansible_version: PypiVer,
 ) -> tuple[ChangelogFragment, str] | None:
     if update.cancelled_version:
+        link = _get_link(removal)
         return ChangelogFragment(
             content={
                 "major_changes": [
-                    f"The removal of {collection} was cancelled. The collection"
-                    f" will not be removed from Ansible {removal.major_version}.",
+                    f"The removal of {collection} was cancelled. The collection will"
+                    f" not be removed from Ansible {removal.major_version}{link}.",
                 ]
             },
             path="<internal>",
             fragment_format=TextFormat.RESTRUCTURED_TEXT,
         ), str(update.cancelled_version)
     if update.readded_version:
+        link = _get_link(removal)
         return ChangelogFragment(
             content={
                 "major_changes": [
                     f"The previously removed collection {collection} was"
-                    f" re-added to Ansible {ansible_version.major}.",
+                    f" re-added to Ansible {ansible_version.major}{link}.",
                 ]
             },
             path="<internal>",
