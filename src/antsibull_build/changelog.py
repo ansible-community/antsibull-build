@@ -884,9 +884,33 @@ def _populate_ansible_changelog(
     ansible_version: PypiVer,
 ) -> None:
     flog = mlog.fields(func="_populate_ansible_changelog")
+
+    # Figure out whether GA (x.0.0 release) of this Ansible major version is already out
+    collapse_first_version = (
+        ansible_version.minor > 0
+        or ansible_version.micro > 0
+        or not ansible_version.pre
+    )
+    ga_release = PypiVer(f"{ansible_version.major}.0.0")
+
     for collection, metadata in collection_metadata.collections.items():
         if metadata.removal:
-            for update in metadata.removal.get_updates_including_indirect():
+            updates = metadata.removal.get_updates_including_indirect()
+
+            # If (1) the first two updates are removal and re-adding the collection,
+            # and (2) both happened before GA, and (3) we already reached GA, then
+            # both messages will appear under the GA release. This is somewhat
+            # confusing, so we remove them both.
+            if (
+                collapse_first_version
+                and len(updates) >= 2
+                and updates[0].removed_version
+                and updates[1].readded_version
+                and updates[1].readded_version < ga_release
+            ):
+                updates = updates[2:]
+
+            for update in updates:
                 fragment_version = _get_update_entry(
                     collection, metadata.removal, update, ansible_version
                 )
