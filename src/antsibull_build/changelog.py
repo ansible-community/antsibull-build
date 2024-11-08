@@ -585,25 +585,49 @@ def _markup_to_rst(markup: str) -> str:
     )
 
 
-def _get_link(removal: RemovedRemovalInformation | RemovalInformation) -> str:
-    if not removal.discussion:
-        return ""
-    return f" (`{removal.discussion} <{removal.discussion}>`__)"
+def _get_link(
+    removal: RemovedRemovalInformation | RemovalInformation,
+    /,
+    override: str | None = None,
+) -> str:
+    url = override or removal.discussion
+    return f" (`{url} <{url}>`__)" if url else ""
+
+
+def _create_fragment(
+    section: str, sentences: list[str | None] | list[str]
+) -> ChangelogFragment:
+    return ChangelogFragment(
+        content={
+            section: [
+                "\n".join(sentence for sentence in sentences if sentence),
+            ],
+        },
+        path="<internal>",
+        fragment_format=TextFormat.RESTRUCTURED_TEXT,
+    )
 
 
 def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
     collection: str,
     removal: RemovalInformation,
+    /,
     announce_version: PypiVer,
     ansible_version: PypiVer,
+    discussion_override: str | None = None,
+    reason_override: str | None = None,
+    reason_text_override: str | None = None,
 ) -> tuple[ChangelogFragment, str] | None:
     if announce_version.major != ansible_version.major:
         return None
 
     sentences = []
-    link = _get_link(removal)
+    link = _get_link(removal, override=discussion_override)
 
-    if removal.reason == "deprecated":
+    reason = reason_override or removal.reason
+    reason_text = reason_text_override or removal.reason_text
+
+    if reason == "deprecated":
         sentences.append(f"The ``{collection}`` collection has been deprecated.")
         sentences.append(
             f"It will be removed from Ansible {removal.major_version} if no one"
@@ -616,7 +640,7 @@ def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
             f">`__ for more details{link}."
         )
 
-    elif removal.reason == "considered-unmaintained":
+    elif reason == "considered-unmaintained":
         sentences.append(
             f"The ``{collection}`` collection is considered unmaintained"
             f" and will be removed from Ansible {removal.major_version}"
@@ -629,7 +653,7 @@ def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
             f">`__ for more details, including for how this can be cancelled{link}."
         )
 
-    elif removal.reason == "renamed":
+    elif reason == "renamed":
         sentences.append(
             f"The collection ``{collection}`` was renamed to ``{removal.new_name}``."
         )
@@ -657,13 +681,13 @@ def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
             f"Please update your FQCNs from ``{collection}`` to ``{removal.new_name}``{link}."
         )
 
-    elif removal.reason == "guidelines-violation":
+    elif reason == "guidelines-violation":
         sentences.append(
             f"The {collection} collection will be removed from Ansible {removal.major_version}"
             " due to violations of the Ansible inclusion requirements."
         )
-        if removal.reason_text:
-            sentences.append(_markup_to_rst(removal.reason_text))
+        if reason_text:
+            sentences.append(_markup_to_rst(reason_text))
         sentences.append(
             "See `Collections Removal Process for collections"
             " not satisfying the collection requirements"
@@ -672,12 +696,12 @@ def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
             f">`__ for more details, including for how this can be cancelled{link}."
         )
 
-    elif removal.reason == "other":
+    elif reason == "other":
         sentences.append(
             f"The {collection} collection will be removed from Ansible {removal.major_version}."
         )
-        if removal.reason_text:
-            sentences.append(_markup_to_rst(removal.reason_text))
+        if reason_text:
+            sentences.append(_markup_to_rst(reason_text))
         if removal.discussion:
             sentences.append(
                 f"See `the removal discussion for details <{removal.discussion}>`__."
@@ -691,41 +715,40 @@ def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
 
     if not sentences:
         return None
-    return ChangelogFragment(
-        content={
-            "deprecated_features": [
-                "\n".join(sentences),
-            ],
-        },
-        path="<internal>",
-        fragment_format=TextFormat.RESTRUCTURED_TEXT,
-    ), str(announce_version)
+    return _create_fragment("deprecated_features", sentences), str(announce_version)
 
 
 def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
     collection: str,
     removal: RemovedRemovalInformation | RemovalInformation,
+    /,
     removal_version: PypiVer,
     ansible_version: PypiVer,
+    discussion_override: str | None = None,
+    reason_override: str | None = None,
+    reason_text_override: str | None = None,
 ) -> tuple[ChangelogFragment, str] | None:
     if ansible_version.major != removal_version.major:
         return None
 
     sentences = []
-    link = _get_link(removal)
+    link = _get_link(removal, override=discussion_override)
 
-    if removal.reason == "deprecated":
+    reason = reason_override or removal.reason
+    reason_text = reason_text_override or removal.reason_text
+
+    if reason == "deprecated":
         sentences.append(
             f"The deprecated ``{collection}`` collection has been removed{link}."
         )
 
-    elif removal.reason == "considered-unmaintained":
+    elif reason == "considered-unmaintained":
         sentences.append(
             f"The ``{collection}`` collection was considered unmaintained"
             f" and has been removed from Ansible {removal_version.major}{link}."
         )
 
-    elif removal.reason == "renamed":
+    elif reason == "renamed":
         sentences.append(
             f"The collection ``{collection}`` has been completely removed from Ansible."
         )
@@ -744,13 +767,13 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
             f"Please update your FQCNs from ``{collection}`` to ``{removal.new_name}``{link}."
         )
 
-    elif removal.reason == "guidelines-violation":
+    elif reason == "guidelines-violation":
         sentences.append(
             f"The {collection} collection has been removed from Ansible {removal_version.major}"
             " due to violations of the Ansible inclusion requirements."
         )
-        if removal.reason_text:
-            sentences.append(_markup_to_rst(removal.reason_text))
+        if reason_text:
+            sentences.append(_markup_to_rst(reason_text))
         sentences.append(
             "See `Collections Removal Process for collections"
             " not satisfying the collection requirements"
@@ -759,12 +782,12 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
             f">`__ for more details{link}."
         )
 
-    elif removal.reason == "other":
+    elif reason == "other":
         sentences.append(
             f"The {collection} collection has been removed from Ansible {removal_version.major}."
         )
-        if removal.reason_text:
-            sentences.append(_markup_to_rst(removal.reason_text))
+        if reason_text:
+            sentences.append(_markup_to_rst(reason_text))
         if removal.discussion:
             sentences.append(
                 f"See `the removal discussion <{removal.discussion}>`__ for details."
@@ -776,7 +799,7 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
                 "community_steering_committee.html#creating-community-topic>`__."
             )
 
-    if sentences and removal.reason not in ("renamed", "deprecated"):
+    if sentences and reason not in ("renamed", "deprecated"):
         sentences.append(
             "Users can still install this collection with "
             f"``ansible-galaxy collection install {collection}``."
@@ -784,15 +807,7 @@ def _get_removed_entry(  # noqa: C901, pylint:disable=too-many-branches
 
     if not sentences:
         return None
-    return ChangelogFragment(
-        content={
-            "removed_features": [
-                "\n".join(sentences),
-            ],
-        },
-        path="<internal>",
-        fragment_format=TextFormat.RESTRUCTURED_TEXT,
-    ), str(removal_version)
+    return _create_fragment("removed_features", sentences), str(removal_version)
 
 
 def _get_update_entry(
@@ -803,43 +818,54 @@ def _get_update_entry(
 ) -> tuple[ChangelogFragment, str] | None:
     if update.cancelled_version:
         link = _get_link(removal)
-        return ChangelogFragment(
-            content={
-                "major_changes": [
-                    f"The removal of {collection} was cancelled. The collection will"
-                    f" not be removed from Ansible {removal.major_version}{link}.",
-                ]
-            },
-            path="<internal>",
-            fragment_format=TextFormat.RESTRUCTURED_TEXT,
+        return _create_fragment(
+            "major_changes",
+            [
+                f"The removal of {collection} was cancelled. The collection will"
+                f" not be removed from Ansible {removal.major_version}{link}.",
+                update.reason_text,
+            ],
         ), str(update.cancelled_version)
     if update.readded_version:
         link = _get_link(removal)
-        return ChangelogFragment(
-            content={
-                "major_changes": [
-                    f"The previously removed collection {collection} was"
-                    f" re-added to Ansible {ansible_version.major}{link}.",
-                ]
-            },
-            path="<internal>",
-            fragment_format=TextFormat.RESTRUCTURED_TEXT,
+        return _create_fragment(
+            "major_changes",
+            [
+                f"The previously removed collection {collection} was"
+                f" re-added to Ansible {ansible_version.major}{link}.",
+                update.reason_text,
+            ],
         ), str(update.readded_version)
     if update.deprecated_version:
         return _get_removal_entry(
-            collection, removal, update.deprecated_version, ansible_version
+            collection,
+            removal,
+            announce_version=update.deprecated_version,
+            ansible_version=ansible_version,
+            discussion_override=update.discussion,
+            reason_override=update.reason,
+            reason_text_override=update.reason_text,
         )
     if update.redeprecated_version:
         # TODO: adjust message when re-deprecating?
         return _get_removal_entry(
-            collection, removal, update.redeprecated_version, ansible_version
+            collection,
+            removal,
+            announce_version=update.redeprecated_version,
+            ansible_version=ansible_version,
+            discussion_override=update.discussion,
+            reason_override=update.reason,
+            reason_text_override=update.reason_text,
         )
     if update.removed_version:
         return _get_removed_entry(
             collection,
             removal,
-            update.removed_version,
-            ansible_version,
+            removal_version=update.removed_version,
+            ansible_version=ansible_version,
+            discussion_override=update.discussion,
+            reason_override=update.reason,
+            reason_text_override=update.reason_text,
         )
     return None
 
