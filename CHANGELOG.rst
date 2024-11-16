@@ -4,6 +4,25 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.69.0
+=======
+
+Release Summary
+---------------
+
+Feature and bugfix release.
+
+Minor Changes
+-------------
+
+- Allow to update collection deprecations and removals (https://github.com/ansible-community/antsibull-build/pull/640).
+- antsibull-build now depends on antsibull-core >= 3.4.0 (https://github.com/ansible-community/antsibull-build/pull/640).
+
+Bugfixes
+--------
+
+- Fix link to changelogs for collections without ``changelog.yaml`` (https://github.com/ansible-community/antsibull-build/pull/642).
+
 v0.68.1
 =======
 

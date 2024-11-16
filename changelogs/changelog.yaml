@@ -998,3 +998,16 @@ releases:
       - 0.68.1.yml
       - 641-changelog-fix.yml
     release_date: '2024-11-05'
+  0.69.0:
+    changes:
+      bugfixes:
+        - Fix link to changelogs for collections without ``changelog.yaml`` (https://github.com/ansible-community/antsibull-build/pull/642).
+      minor_changes:
+        - Allow to update collection deprecations and removals (https://github.com/ansible-community/antsibull-build/pull/640).
+        - antsibull-build now depends on antsibull-core >= 3.4.0 (https://github.com/ansible-community/antsibull-build/pull/640).
+      release_summary: Feature and bugfix release.
+    fragments:
+      - 0.69.0.yml
+      - 640-cancel-deprecation.yml
+      - 642-changelog-link.yml
+    release_date: '2024-11-16'
