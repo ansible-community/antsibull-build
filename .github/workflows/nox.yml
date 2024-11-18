@@ -104,7 +104,7 @@ jobs:
           nox -v -e coverage --reuse-existing-virtualenvs --no-install
       - name: Upload coverage
         if: ${{ matrix.codecov }}
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           working-directory: antsibull-build
           name: "${{ matrix.session }}"
