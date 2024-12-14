@@ -63,6 +63,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: antsibull-build
+          persist-credentials: false
 
       - name: Check out dependent project antsibull-changelog
         uses: actions/checkout@v4
@@ -70,6 +71,7 @@ jobs:
           repository: ansible-community/antsibull-changelog
           path: antsibull-changelog
           ref: ${{ matrix.antsibull_changelog_ref }}
+          persist-credentials: false
 
       - name: Check out dependent project antsibull-core
         uses: actions/checkout@v4
@@ -77,6 +79,7 @@ jobs:
           repository: ansible-community/antsibull-core
           path: antsibull-core
           ref: ${{ matrix.antsibull_core_ref }}
+          persist-credentials: false
 
       - name: Check out dependent project antsibull-docs-parser
         uses: actions/checkout@v4
@@ -84,6 +87,7 @@ jobs:
           repository: ansible-community/antsibull-docs-parser
           path: antsibull-docs-parser
           ref: ${{ matrix.antsibull_docs_parser_ref }}
+          persist-credentials: false
 
       - name: Check out dependent project antsibull-docutils
         uses: actions/checkout@v4
@@ -91,6 +95,7 @@ jobs:
           repository: ansible-community/antsibull-docutils
           path: antsibull-docutils
           ref: ${{ matrix.antsibull_docutils_ref }}
+          persist-credentials: false
 
       - name: Check out dependent project antsibull-fileutils
         uses: actions/checkout@v4
@@ -98,6 +103,7 @@ jobs:
           repository: ansible-community/antsibull-fileutils
           path: antsibull-fileutils
           ref: ${{ matrix.antsibull_fileutils_ref }}
+          persist-credentials: false
 
       - name: Set up Python ${{ matrix.python }}
         uses: actions/setup-python@v5
