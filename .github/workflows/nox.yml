@@ -59,31 +59,37 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: antsibull-build
+          persist-credentials: false
       - name: Check out dependent project antsibull-core
         uses: actions/checkout@v4
         with:
           repository: ansible-community/antsibull-core
           path: antsibull-core
+          persist-credentials: false
       - name: Check out dependent project antsibull-changelog
         uses: actions/checkout@v4
         with:
           repository: ansible-community/antsibull-changelog
           path: antsibull-changelog
+          persist-credentials: false
       - name: Check out dependent project antsibull-docs-parser
         uses: actions/checkout@v4
         with:
           repository: ansible-community/antsibull-docs-parser
           path: antsibull-docs-parser
+          persist-credentials: false
       - name: Check out dependent project antsibull-docutils
         uses: actions/checkout@v4
         with:
           repository: ansible-community/antsibull-docutils
           path: antsibull-docutils
+          persist-credentials: false
       - name: Check out dependent project antsibull-fileutils
         uses: actions/checkout@v4
         with:
           repository: ansible-community/antsibull-fileutils
           path: antsibull-fileutils
+          persist-credentials: false
       - name: Install extra packages
         if: "matrix.packages != ''"
         run: |
