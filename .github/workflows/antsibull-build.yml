@@ -33,24 +33,16 @@ jobs:
             antsibull_docs_parser_ref: 1.1.0
             antsibull_docutils_ref: 1.0.0
             antsibull_fileutils_ref: main
-          - name: Ansible 9
-            options: '-e antsibull_ansible_version=9.99.0'
-            python: '3.11'
-            antsibull_changelog_ref: main
-            antsibull_core_ref: main
-            antsibull_docs_parser_ref: main
-            antsibull_docutils_ref: main
-            antsibull_fileutils_ref: main
-          - name: Ansible 10
-            options: '-e antsibull_ansible_version=10.99.0'
-            python: '3.12'
-            antsibull_changelog_ref: main
-            antsibull_core_ref: main
-            antsibull_docs_parser_ref: main
-            antsibull_docutils_ref: main
-            antsibull_fileutils_ref: main
           - name: Ansible 11
             options: '-e antsibull_ansible_version=11.99.0'
+            python: '3.13'
+            antsibull_changelog_ref: main
+            antsibull_core_ref: main
+            antsibull_docs_parser_ref: main
+            antsibull_docutils_ref: main
+            antsibull_fileutils_ref: main
+          - name: Ansible 12
+            options: '-e antsibull_ansible_version=12.99.0'
             python: '3.13'
             antsibull_changelog_ref: main
             antsibull_core_ref: main
