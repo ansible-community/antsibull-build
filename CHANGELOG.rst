@@ -4,6 +4,20 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.70.0
+=======
+
+Release Summary
+---------------
+
+Feature release.
+
+Minor Changes
+-------------
+
+- Use tagged ansible-core / ansible-documentation releases to retrieve core porting guide (https://github.com/ansible-community/antsibull/pull/646).
+- When announcing collection removals and upcoming removals in the changelog, add a note that users can still manually install removed collections (https://github.com/ansible-community/antsibull-build/pull/647).
+
 v0.69.0
 =======
 

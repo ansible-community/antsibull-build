@@ -1011,3 +1011,16 @@ releases:
       - 640-cancel-deprecation.yml
       - 642-changelog-link.yml
     release_date: '2024-11-16'
+  0.70.0:
+    changes:
+      minor_changes:
+        - Use tagged ansible-core / ansible-documentation releases to retrieve core
+          porting guide (https://github.com/ansible-community/antsibull/pull/646).
+        - When announcing collection removals and upcoming removals in the changelog,
+          add a note that users can still manually install removed collections (https://github.com/ansible-community/antsibull-build/pull/647).
+      release_summary: Feature release.
+    fragments:
+      - 0.70.0.yml
+      - 544-porting_guide_tagged.yaml
+      - 647-removal-hint.yml
+    release_date: '2025-01-21'

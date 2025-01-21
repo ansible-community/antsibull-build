@@ -1,3 +1,0 @@
-minor_changes:
-  - "When announcing collection removals and upcoming removals in the changelog, add a note that users can still manually install removed collections
-     (https://github.com/ansible-community/antsibull-build/pull/647)."
