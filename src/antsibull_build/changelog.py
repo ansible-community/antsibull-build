@@ -717,6 +717,12 @@ def _get_removal_entry(  # noqa: C901, pylint:disable=too-many-branches
                 "community_steering_committee.html#creating-community-topic>`__."
             )
 
+    if sentences and reason not in ("renamed", "deprecated"):
+        sentences.append(
+            "After removal, users can still install this collection with "
+            f"``ansible-galaxy collection install {collection}``."
+        )
+
     if not sentences:
         return None
     return _create_fragment("deprecated_features", sentences), str(announce_version)

@@ -492,6 +492,12 @@ def append_removed_collections(
                 f"(previously included version: {collection_version})",
                 text_format=TextFormat.RESTRUCTURED_TEXT,
             )
+        section.ensure_paragraph_break()
+        section.add_text(
+            "You can still install a removed collection manually with"
+            " ``ansible-galaxy collection install <name-of-collection>``.",
+            text_format=TextFormat.RESTRUCTURED_TEXT,
+        )
         section.close()
 
 
@@ -702,6 +708,12 @@ def append_porting_guide(
                 f"(previously included version: {collection_version})",
                 text_format=TextFormat.RESTRUCTURED_TEXT,
             )
+        section.ensure_paragraph_break()
+        section.add_text(
+            "You can still install a removed collection manually with"
+            " ``ansible-galaxy collection install <name-of-collection>``.",
+            text_format=TextFormat.RESTRUCTURED_TEXT,
+        )
         section.close()
 
     for section_name in ["removed_features", "deprecated_features"]:
