@@ -6,7 +6,6 @@
     "core_major_version": "2.14",
     "build_data_path": "https://github.com/ansible-community/ansible-build-data/blob/7.0.0b1/7",
     "release_tarball": {
-      "comment_text": "",
       "digests": {
         "blake2b_256": "0bb3198b439cd7360c74bd91767e995e588ab0c4a65c17cd7bba340c3b0995b1",
         "md5": "96c7dba562d369a766a71171705bd4ec",
@@ -24,7 +23,6 @@
       "yanked_reason": null
     },
     "release_wheel": {
-      "comment_text": "",
       "digests": {
         "blake2b_256": "bc85ade95555a7602c3a8d813d718ece7e91d61599f31d72ceda9c12b19a43a8",
         "md5": "2be31cd9b9712437198766838ed14f36",
