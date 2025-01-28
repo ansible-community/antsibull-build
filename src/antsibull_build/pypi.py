@@ -86,7 +86,6 @@ class ReleaseInfo(p.BaseModel):
 
 
 class UrlInfo(p.BaseModel):
-    comment_text: str
     digests: dict[str, str]
     filename: str
     md5_digest: str
@@ -113,9 +112,7 @@ class UrlInfo(p.BaseModel):
         return await verify_hash(file, self.sha256sum, chunksize=lib_ctx.chunksize)
 
 
-# TODO pydantic v2+:
-# + Release.model_rebuild
-getattr(Release, "model_rebuild", getattr(Release, "update_forward_refs"))()
+Release.model_rebuild()
 
 
 class PyPIClient:

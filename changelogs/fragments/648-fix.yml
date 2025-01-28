@@ -1,0 +1,4 @@
+bugfixes:
+  - "Fix PyPI URL info data structure (https://github.com/ansible-community/antsibull-build/pull/648)."
+minor_changes:
+  - "Remove more backwards compatibility code for pydantic 1.x (https://github.com/ansible-community/antsibull-build/pull/648)."
