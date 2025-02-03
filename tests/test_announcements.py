@@ -20,8 +20,8 @@ ANNOUNCEMENT_TESTS = [
     ("7.4.0", "announce-7.4.0"),
 ]
 
-COLOR_BOLD = "\x1B[0;97m\x1B[1m"
-COLOR_NORMAL = "\x1B[0m"
+COLOR_BOLD = "\x1b[0;97m\x1b[1m"
+COLOR_NORMAL = "\x1b[0m"
 
 
 @pytest.mark.parametrize("version, directory", ANNOUNCEMENT_TESTS)

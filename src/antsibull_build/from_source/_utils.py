@@ -31,7 +31,7 @@ def filter_tag_data(
 
 
 def tag_data_as_version_mapping(
-    collections: dict[CollectionName, CollectionTagData]
+    collections: dict[CollectionName, CollectionTagData],
 ) -> dict[CollectionName, SemVer]:
     """
     Convert a collection: CollectionTagData mapping to a collection: version mapping

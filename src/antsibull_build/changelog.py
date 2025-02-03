@@ -160,7 +160,7 @@ class ChangelogData:
         remove_collection_changelog_entries = {}
 
         def store_extra_data(
-            rcce: dict[str, dict[SemVer, RemoveCollectionVersionSchema]]
+            rcce: dict[str, dict[SemVer, RemoveCollectionVersionSchema]],
         ) -> None:
             remove_collection_changelog_entries.update(rcce)
 
