@@ -73,8 +73,9 @@ Get Involved
 *  Read `Community Information <https://docs.ansible.com/ansible/latest/community>`_ for ways to contribute to 
    and interact with the project, including forum information and how
    to submit bug reports and code to Ansible or Ansible collections.
-*  Join a `Working Group <https://github.com/ansible/community/wiki>`_, an organized community
-   devoted to a specific technology domain or platform.
+*  Join `Forum Groups <https://forum.ansible.com/g>`_ you are interested in,
+   which are groups of users that are involved in specific topics, like a
+   technology domain or platform.
 *  Talk to us before making larger changes
    to avoid duplicate efforts. This not only helps everyone
    know what is going on, but it also helps save time and effort if we decide
