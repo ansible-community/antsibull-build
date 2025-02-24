@@ -4,6 +4,25 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.71.0
+=======
+
+Release Summary
+---------------
+
+Feature release.
+
+Minor Changes
+-------------
+
+- Fix outdated link in Ansible community package's README (https://github.com/ansible-community/antsibull-build/pull/649).
+- Remove more backwards compatibility code for pydantic 1.x (https://github.com/ansible-community/antsibull-build/pull/648).
+
+Bugfixes
+--------
+
+- Fix PyPI URL info data structure (https://github.com/ansible-community/antsibull-build/pull/648).
+
 v0.70.0
 =======
 

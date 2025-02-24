@@ -1024,3 +1024,16 @@ releases:
       - 544-porting_guide_tagged.yaml
       - 647-removal-hint.yml
     release_date: '2025-01-21'
+  0.71.0:
+    changes:
+      bugfixes:
+        - Fix PyPI URL info data structure (https://github.com/ansible-community/antsibull-build/pull/648).
+      minor_changes:
+        - Fix outdated link in Ansible community package's README (https://github.com/ansible-community/antsibull-build/pull/649).
+        - Remove more backwards compatibility code for pydantic 1.x (https://github.com/ansible-community/antsibull-build/pull/648).
+      release_summary: Feature release.
+    fragments:
+      - 0.71.0.yml
+      - 648-fix.yml
+      - 649-link.yml
+    release_date: '2025-02-24'

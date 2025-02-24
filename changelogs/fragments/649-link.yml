@@ -1,2 +1,0 @@
-minor_changes:
-  - "Fix outdated link in Ansible community package's README (https://github.com/ansible-community/antsibull-build/pull/649)."
