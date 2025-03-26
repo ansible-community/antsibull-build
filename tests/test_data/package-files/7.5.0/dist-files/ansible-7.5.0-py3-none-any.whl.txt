@@ -1,8 +1,8 @@
-ansible-7.5.0.dist-info/COPYING
 ansible-7.5.0.dist-info/METADATA
 ansible-7.5.0.dist-info/RECORD
 ansible-7.5.0.dist-info/WHEEL
 ansible-7.5.0.dist-info/entry_points.txt
+ansible-7.5.0.dist-info/licenses/COPYING
 ansible-7.5.0.dist-info/top_level.txt
 ansible_collections/amazon/aws/CHANGELOG.rst
 ansible_collections/amazon/aws/CONTRIBUTING.md
