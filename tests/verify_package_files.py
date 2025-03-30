@@ -36,8 +36,6 @@ DEFAULT_CACHE_DIR = HERE / ".cache"
 DEFAULT_PACKAGE_DIR = HERE / "test_data" / "package-files"
 
 PYPI_PATH = "https://files.pythonhosted.org/packages"
-WHEEL_PATH = f"{PYPI_PATH}/py3/a/ansible/ansible-{{version}}-py3-none-any.whl"
-SDIST_PATH = f"{PYPI_PATH}/source/a/ansible/ansible-{{version}}.tar.gz"
 
 ANTSIBULL_BUILD = os.environ.get("ANTSIBULL_BUILD", "antsibull-build")
 PLACEHOLDER_ANTSIBULL_VERSION = "(ANTSIBULL_VERSION)"
