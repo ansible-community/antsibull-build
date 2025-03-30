@@ -18,7 +18,7 @@ import zipfile
 from collections.abc import Iterator, MutableMapping, Sequence
 from pathlib import Path
 from subprocess import run
-from typing import Any, Union
+from typing import IO, Any, Union
 
 import aiofiles
 import aiohttp
@@ -41,6 +41,22 @@ SDIST_PATH = f"{PYPI_PATH}/source/a/ansible/ansible-{{version}}.tar.gz"
 
 ANTSIBULL_BUILD = os.environ.get("ANTSIBULL_BUILD", "antsibull-build")
 PLACEHOLDER_ANTSIBULL_VERSION = "(ANTSIBULL_VERSION)"
+
+NO_COLOR = bool(os.environ.get("NO_COLOR"))
+FORCE_COLOR = bool(os.environ.get("FORCE_COLOR"))
+BOLD = "\033[1m"  # ]
+RED = "\033[31m"  # ]
+GREEN = "\033[32m"  # ]
+CLEAR = "\033[0m"  # ]
+
+
+def colorlog(
+    __msg: str, /, *, fg: str, bold: bool = False, file: IO[str] = sys.stdout
+) -> None:
+    color = not NO_COLOR and (file.isatty() or FORCE_COLOR)
+    codes = fg
+    codes += BOLD if bold else ""
+    print(f"{codes if color else ''}{__msg}{CLEAR if color else ''}", file=file)
 
 
 @dataclasses.dataclass
@@ -248,13 +264,29 @@ def check_command(
             write_file_list(version, extract_dir, build_dir)
         else:
             diff_args.extend(("-x", "dist-files"))
-        run(["diff", *diff_args, package_dir, extract_dir], check=True)
+        proc = run(["diff", *diff_args, package_dir, extract_dir], check=False)
+        if rc := proc.returncode:
+            colorlog("Failed to verify package files.", bold=True, fg=RED)
+            colorlog(
+                "TIP: Run nox -e check_package_files -- regen to regenerate test fixtures.",
+                fg=GREEN,
+            )
+            sys.exit(rc)
 
         # Make sure files can be regenerated
         generate_package_files(
             version, cached_dist, extract_dir, data_dir, force_generate_setup_cfg
         )
-        run(["diff", *diff_args, package_dir, extract_dir], check=True)
+        run(["diff", *diff_args, package_dir, extract_dir], check=False)
+        if rc := proc.returncode:
+            colorlog(
+                "Failed to verify package files."
+                " Files changed after running generate-package-files a second time"
+                " on the same directory.",
+                bold=True,
+                fg=RED,
+            )
+            sys.exit(rc)
 
 
 def regen_command(

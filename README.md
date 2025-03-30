@@ -80,6 +80,7 @@ To run specific tests:
    This is expensive, so it's not run by default.
 7. `nox -e check_package_files` to run the generate-package-files integration tests.
    This is somewhat expensive and thus not run by default.
+   Run `nox -e check_package_files -- regen` to regenerate the test fixtures.
 8. `nox -e coverage` to display combined coverage results after running `nox -e
    test coverage_release check_package_files`;
 
