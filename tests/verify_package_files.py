@@ -89,7 +89,7 @@ class AnsibleSdist:
                     continue
                 member.path = member.name[len(self.nv) + 1 :]
                 members.append(member)
-            file.extractall(extract_dir, members)
+            file.extractall(extract_dir, members, filter="data")
 
     def list_files(self) -> list[str]:
         with tarfile.TarFile.open(self.dest) as file:
