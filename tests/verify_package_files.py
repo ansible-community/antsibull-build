@@ -248,7 +248,7 @@ def check_command(
     package_dir: Path,
     cache_dir: Path,
     data_dir: Path,
-    build_check: Path,
+    build_check: bool,
     build_dir: Path | None,
     force_generate_setup_cfg: bool,
 ) -> None:
@@ -295,7 +295,7 @@ def regen_command(
     package_dir: Path,
     cache_dir: Path,
     data_dir: Path,
-    build_check: Path,
+    build_check: bool,
     clean: bool,
     build_dir: Path | None,
     force_generate_setup_cfg: bool,
