@@ -1,0 +1,6 @@
+---
+removed_features:
+  - python_metadata - remove deprecated ``License::`` classifiers from package
+    metadata to avoid setuptools ``DeprecationWarning``
+   (https://github.com/ansible-community/antsibull-build/issues/651,
+   https://github.com/ansible-community/antsibull-build/pull/658).

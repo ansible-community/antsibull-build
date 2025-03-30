@@ -103,7 +103,6 @@ DEFAULT_METADATA: dict[str, INI_TYPES] = {
             "Intended Audience :: Developers",
             "Intended Audience :: Information Technology",
             "Intended Audience :: System Administrators",
-            "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
             "Natural Language :: English",
             "Operating System :: POSIX",
         ]
