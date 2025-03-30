@@ -205,7 +205,7 @@ def codeqa(session: nox.Session):
 def typing(session: nox.Session):
     others = other_antsibull()
     install(session, ".[typing]", *others)
-    session.run("mypy", "src/antsibull_build")
+    session.run("mypy", "src/antsibull_build", "tests")
 
 
 @nox.session

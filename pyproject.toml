@@ -107,6 +107,7 @@ typing = [
     "types-docutils",
     "types-PyYAML",
     "types-setuptools",
+    "pytest",
 ]
 dev = [
     # Used by nox sessions
@@ -147,6 +148,10 @@ source = [
 
 [tool.mypy]
 mypy_path = "stubs/"
+exclude = '''(?x)(
+    ^tests/test_data/package-files/.+
+)
+'''
 
 [[tool.mypy.overrides]]
 module = "semantic_version"
