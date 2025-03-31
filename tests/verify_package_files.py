@@ -13,7 +13,6 @@ import os
 import shutil
 import sys
 import tarfile
-import tempfile
 import zipfile
 from collections.abc import Iterator, MutableMapping, Sequence
 from pathlib import Path
