@@ -86,6 +86,10 @@ NEW_URLS = IniDict(
     }
 )
 
+LICENSE_CLASSIFIER = (
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"
+)
+
 DEFAULT_METADATA: dict[str, INI_TYPES] = {
     "name": "ansible",
     "description": "Radically simple IT automation",
@@ -103,7 +107,6 @@ DEFAULT_METADATA: dict[str, INI_TYPES] = {
             "Intended Audience :: Developers",
             "Intended Audience :: Information Technology",
             "Intended Audience :: System Administrators",
-            "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
             "Natural Language :: English",
             "Operating System :: POSIX",
         ]
@@ -280,6 +283,11 @@ class BuildMetaMaker:
         self["metadata"].setdefault("classifiers", IniList()).extend(
             self.core_python_classifiers
         )
+        if (
+            self.ansible_version
+            < MINIMUM_ANSIBLE_VERSIONS["REMOVED_LICENSE_CLASSIFIERS"]
+        ):
+            self["metadata"]["classifiers"].append(LICENSE_CLASSIFIER)
         self["metadata"].setdefault(
             "project_urls",
             (
