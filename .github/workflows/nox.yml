@@ -32,19 +32,19 @@ jobs:
             codecov: true
             packages: ""
 
-          - session: "check_package_files(8.1.0)"
+          - session: "check_package_files-3.12(8.1.0)"
             python-versions: "3.12"
-            force-python: "3.13"
+            force-python: "3.12"
             codecov: true
             packages: ""
 
-          - session: "check_package_files(7.5.0)"
+          - session: "check_package_files-3.11(7.5.0)"
             python-versions: "3.11"
-            force-python: "3.13"
+            force-python: "3.11"
             codecov: true
             packages: ""
 
-          - session: "check_package_files(8.1.0_setup_cfg)"
+          - session: "check_package_files-3.13(8.1.0_setup_cfg)"
             python-versions: "3.13"
             force-python: "3.13"
             codecov: true
