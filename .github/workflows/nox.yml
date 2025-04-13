@@ -22,35 +22,37 @@ env:
 jobs:
   nox:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: antsibull-build
     strategy:
       fail-fast: false
       matrix:
         include:
           - session: test
             python-versions: "3.9, 3.10, 3.11, 3.12, 3.13"
+            force-python: ""
             codecov: true
             packages: ""
 
-          - session: "check_package_files(8.1.0)"
+          - session: "check_package_files-3.12(8.1.0)"
             python-versions: "3.12"
+            force-python: "3.12"
             codecov: true
             packages: ""
 
-          - session: "check_package_files(7.5.0)"
+          - session: "check_package_files-3.11(7.5.0)"
             python-versions: "3.11"
+            force-python: "3.11"
             codecov: true
             packages: ""
 
-          - session: "check_package_files(8.1.0_setup_cfg)"
+          - session: "check_package_files-3.13(8.1.0_setup_cfg)"
             python-versions: "3.13"
+            force-python: "3.13"
             codecov: true
             packages: ""
 
           - session: lint
             python-versions: "3.13"
+            force-python: "3.13"
             codecov: false
             packages: ""
     name: "Run nox ${{ matrix.session }} session"
@@ -98,21 +100,12 @@ jobs:
         uses: wntrblm/nox@2025.02.09
         with:
           python-versions: "${{ matrix.python-versions }}"
-      - name: Set up nox environments
-        run: |
-          nox -v -e "${{ matrix.session }}" ${{ matrix.codecov && 'coverage' || '' }} --install-only
-      - name: "Run nox -e ${{ matrix.session }}"
-        run: |
-          nox -v -e "${{ matrix.session }}" --reuse-existing-virtualenvs --no-install
-      - name: Report coverage
-        if: ${{ matrix.codecov }}
-        run: |
-          nox -v -e coverage --reuse-existing-virtualenvs --no-install
-      - name: Upload coverage
-        if: ${{ matrix.codecov }}
-        uses: codecov/codecov-action@v5
+      - name: Run nox
+        uses: ansible-community/github-action-run-nox@v1
         with:
+          sessions: ${{ matrix.session }}
+          force-pythons: ${{ matrix.force-python }}
           working-directory: antsibull-build
-          name: "${{ matrix.session }}"
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          codecov: ${{ matrix.codecov }}
+          codecov-session: coverage
+          codecov-token: ${{ secrets.CODECOV_TOKEN }}
