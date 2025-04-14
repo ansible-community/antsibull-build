@@ -1037,3 +1037,18 @@ releases:
       - 648-fix.yml
       - 649-link.yml
     release_date: '2025-02-24'
+  0.72.0:
+    changes:
+      minor_changes:
+        - internal - switch from ``pkgutil`` to ``importlib.resources`` for loading
+          package data files (https://github.com/ansible-community/antsibull-build/pull/655).
+      release_summary: Feature release preparing the first Ansible 12 beta.
+      removed_features:
+        - python_metadata - remove deprecated ``License::`` classifiers from Ansible
+          12+ package metadata to avoid setuptools ``DeprecationWarning`` (https://github.com/ansible-community/antsibull-build/issues/651,
+          https://github.com/ansible-community/antsibull-build/pull/658).
+    fragments:
+      - 0.72.0.yml
+      - 655-importlib.yaml
+      - 658-bye-bye-license-classifier.yaml
+    release_date: '2025-04-14'

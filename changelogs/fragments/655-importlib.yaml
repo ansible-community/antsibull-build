@@ -1,5 +1,0 @@
----
-minor_changes:
-  - internal - switch from ``pkgutil`` to ``importlib.resources`` for loading
-    package data files
-    (https://github.com/ansible-community/antsibull-build/pull/655).

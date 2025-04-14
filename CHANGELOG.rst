@@ -4,6 +4,24 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.72.0
+=======
+
+Release Summary
+---------------
+
+Feature release preparing the first Ansible 12 beta.
+
+Minor Changes
+-------------
+
+- internal - switch from ``pkgutil`` to ``importlib.resources`` for loading package data files (https://github.com/ansible-community/antsibull-build/pull/655).
+
+Removed Features (previously deprecated)
+----------------------------------------
+
+- python_metadata - remove deprecated ``License::`` classifiers from Ansible 12+ package metadata to avoid setuptools ``DeprecationWarning`` (https://github.com/ansible-community/antsibull-build/issues/651, https://github.com/ansible-community/antsibull-build/pull/658).
+
 v0.71.0
 =======
 
