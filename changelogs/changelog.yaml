@@ -1052,3 +1052,13 @@ releases:
       - 655-importlib.yaml
       - 658-bye-bye-license-classifier.yaml
     release_date: '2025-04-14'
+  0.72.1:
+    changes:
+      minor_changes:
+        - Use devel porting guide for 2.19.0a1 so https://github.com/ansible/ansible-documentation/pull/2429
+          gets included (https://github.com/ansible-community/antsibull-build/pull/660).
+      release_summary: Hotfix release for Ansible 12.0.0a1.
+    fragments:
+      - 0.72.1.yml
+      - 660-12.0.0a1-use-devel-changelog.yaml
+    release_date: '2025-04-16'

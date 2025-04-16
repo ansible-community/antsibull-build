@@ -4,6 +4,19 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.72.1
+=======
+
+Release Summary
+---------------
+
+Hotfix release for Ansible 12.0.0a1.
+
+Minor Changes
+-------------
+
+- Use devel porting guide for 2.19.0a1 so https://github.com/ansible/ansible-documentation/pull/2429 gets included (https://github.com/ansible-community/antsibull-build/pull/660).
+
 v0.72.0
 =======
 
