@@ -4,6 +4,14 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.72.2
+=======
+
+Release Summary
+---------------
+
+Another hotfix for Ansible 12.0.0a1.
+
 v0.72.1
 =======
 

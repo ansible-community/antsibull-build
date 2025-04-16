@@ -1062,3 +1062,9 @@ releases:
       - 0.72.1.yml
       - 660-12.0.0a1-use-devel-changelog.yaml
     release_date: '2025-04-16'
+  0.72.2:
+    changes:
+      release_summary: Another hotfix for Ansible 12.0.0a1.
+    fragments:
+      - 0.72.2.yml
+    release_date: '2025-04-16'
