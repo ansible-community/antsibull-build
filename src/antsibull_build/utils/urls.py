@@ -21,7 +21,7 @@ from ..constants import (
 
 def get_documentation_repo_raw_url(version: PypiVer) -> str:
     """
-    Return the raw url for retrieving ansible documentation files
+    Return the raw url for retrieving ansible documentation files.
     See https://github.com/ansible-community/community-topics/issues/240.
     """
     major_minor = f"{version.major}.{version.minor}"

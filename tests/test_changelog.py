@@ -35,6 +35,14 @@ from antsibull_build.changelog import get_core_porting_guide_url
             PypiVer("2.16.0a1"),
             "https://github.com/ansible/ansible-documentation/raw/v2.16.0a1/docs/docsite/rst/porting_guides/porting_guide_core_2.16.rst",
         ),
+        pytest.param(
+            PypiVer("2.19.0b1"),
+            "https://github.com/ansible/ansible-documentation/raw/devel/docs/docsite/rst/porting_guides/porting_guide_core_2.19.rst",
+        ),
+        pytest.param(
+            PypiVer("2.19.0b2"),
+            "https://github.com/ansible/ansible-documentation/raw/v2.19.0b2/docs/docsite/rst/porting_guides/porting_guide_core_2.19.rst",
+        ),
     ],
 )
 def test_get_core_porting_guide_url(version: PypiVer, expected: str):
