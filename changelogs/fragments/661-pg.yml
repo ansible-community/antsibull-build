@@ -1,2 +1,0 @@
-bugfixes:
-  - "Fix URL for ansible-core 2.19.0b1's porting guide (https://github.com/ansible-community/antsibull-build/pull/661)."

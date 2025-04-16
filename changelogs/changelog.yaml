@@ -1068,3 +1068,12 @@ releases:
     fragments:
       - 0.72.2.yml
     release_date: '2025-04-16'
+  0.72.3:
+    changes:
+      bugfixes:
+        - Fix URL for ansible-core 2.19.0b1's porting guide (https://github.com/ansible-community/antsibull-build/pull/661).
+      release_summary: Third hotfix for today.
+    fragments:
+      - 0.72.3.yml
+      - 661-pg.yml
+    release_date: '2025-04-16'

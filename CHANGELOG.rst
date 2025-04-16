@@ -4,6 +4,19 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.72.3
+=======
+
+Release Summary
+---------------
+
+Third hotfix for today.
+
+Bugfixes
+--------
+
+- Fix URL for ansible-core 2.19.0b1's porting guide (https://github.com/ansible-community/antsibull-build/pull/661).
+
 v0.72.2
 =======
 
