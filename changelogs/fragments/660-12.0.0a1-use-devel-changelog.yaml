@@ -1,0 +1,5 @@
+---
+minor_changes:
+  - Use devel porting guide for 2.19.0a1 so
+    https://github.com/ansible/ansible-documentation/pull/2429 gets included
+    (https://github.com/ansible-community/antsibull-build/pull/660).
