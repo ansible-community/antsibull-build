@@ -33,6 +33,8 @@ ANSIBLE_DOCUMENTATION_MINIMUM = PypiVer("2.15.2")
 ANSIBLE_DOCUMENTATION_RANGES: dict[str, PypiVer] = {
     "2.13": PypiVer("2.13.11"),
     "2.14": PypiVer("2.14.8"),
+}
+ANSIBLE_DOCUMENTATION_TAG_RANGES: dict[str, PypiVer] = {
     # Temporarily use devel porting guide for 2.19.0b1
     # so https://github.com/ansible/ansible-documentation/pull/2429
     # gets included.

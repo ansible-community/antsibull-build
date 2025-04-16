@@ -55,6 +55,11 @@ from semantic_version import Version as SemVer
 
 from antsibull_build.utils.urls import get_documentation_repo_raw_url
 
+from .constants import (
+    ANSIBLE_DOCUMENTATION_MINIMUM,
+    ANSIBLE_DOCUMENTATION_TAG_RANGES,
+)
+
 mlog = log.fields(mod=__name__)
 
 
@@ -251,10 +256,14 @@ def read_changelog_file(tarball_path: str, is_ansible_core=False) -> bytes | Non
 
 def get_core_porting_guide_url(version: PypiVer):
     major_minor = f"{version.major}.{version.minor}"
+    minimum_version = ANSIBLE_DOCUMENTATION_TAG_RANGES.get(
+        major_minor, ANSIBLE_DOCUMENTATION_MINIMUM
+    )
+    use_tag = version >= minimum_version
+    branch = f"v{version}" if use_tag else "devel"
     return (
         get_documentation_repo_raw_url(version)
-        + f"/v{version}"
-        + "/docs/docsite/rst/porting_guides"
+        + f"/{branch}/docs/docsite/rst/porting_guides"
         + f"/porting_guide_core_{major_minor}.rst"
     )
 
