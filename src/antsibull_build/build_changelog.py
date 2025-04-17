@@ -781,6 +781,8 @@ class ReleaseNotes:
             if not found_empty:
                 flog.warning("Cannot find TOC of ansible-core porting guide!")
             if append_lines:
+                if append_lines[0]:
+                    append_lines.insert(0, "")
                 renderer.add_text(
                     "\n".join(append_lines), text_format=TextFormat.RESTRUCTURED_TEXT
                 )
