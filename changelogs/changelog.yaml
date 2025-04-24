@@ -1077,3 +1077,14 @@ releases:
       - 0.72.3.yml
       - 661-pg.yml
     release_date: '2025-04-16'
+  0.72.4:
+    changes:
+      bugfixes:
+        - Ensure that there is a newline between the preamble and ansible-core's porting
+          guide content in the Ansible porting guide (https://github.com/ansible-community/antsibull-build/issues/662,
+          https://github.com/ansible-community/antsibull-build/pull/663).
+      release_summary: Bugfix release.
+    fragments:
+      - 0.72.4.yml
+      - 663-pg.yml
+    release_date: '2025-04-24'

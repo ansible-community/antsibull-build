@@ -4,6 +4,19 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.72.4
+=======
+
+Release Summary
+---------------
+
+Bugfix release.
+
+Bugfixes
+--------
+
+- Ensure that there is a newline between the preamble and ansible-core's porting guide content in the Ansible porting guide (https://github.com/ansible-community/antsibull-build/issues/662, https://github.com/ansible-community/antsibull-build/pull/663).
+
 v0.72.3
 =======
 
