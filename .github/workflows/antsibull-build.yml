@@ -28,7 +28,7 @@ jobs:
           - name: Ansible 8
             options: '-e antsibull_ansible_version=8.99.0'
             python: '3.9'
-            antsibull_changelog_ref: 0.31.0
+            antsibull_changelog_ref: 0.34.0
             antsibull_core_ref: main
             antsibull_docs_parser_ref: 1.1.0
             antsibull_docutils_ref: 1.0.0

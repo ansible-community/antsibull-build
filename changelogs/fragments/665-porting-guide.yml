@@ -1,0 +1,4 @@
+bugfixes:
+  - "Fix Ansible 12 porting guide by using consistent subsubsection heading underlines (https://github.com/ansible-community/antsibull-build/pull/665)."
+minor_changes:
+  - "Antsibull-build now depends on antsibull-changelog >= 0.34.0 (https://github.com/ansible-community/antsibull-build/pull/665)."
