@@ -4,6 +4,24 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.72.5
+=======
+
+Release Summary
+---------------
+
+Bugfix release for Ansible 12.
+
+Minor Changes
+-------------
+
+- Antsibull-build now depends on antsibull-changelog >= 0.34.0 (https://github.com/ansible-community/antsibull-build/pull/665).
+
+Bugfixes
+--------
+
+- Fix Ansible 12 porting guide by using consistent subsubsection heading underlines (https://github.com/ansible-community/antsibull-build/pull/665).
+
 v0.72.4
 =======
 

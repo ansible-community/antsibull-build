@@ -1088,3 +1088,15 @@ releases:
       - 0.72.4.yml
       - 663-pg.yml
     release_date: '2025-04-24'
+  0.72.5:
+    changes:
+      bugfixes:
+        - Fix Ansible 12 porting guide by using consistent subsubsection heading underlines
+          (https://github.com/ansible-community/antsibull-build/pull/665).
+      minor_changes:
+        - Antsibull-build now depends on antsibull-changelog >= 0.34.0 (https://github.com/ansible-community/antsibull-build/pull/665).
+      release_summary: Bugfix release for Ansible 12.
+    fragments:
+      - 0.72.5.yml
+      - 665-porting-guide.yml
+    release_date: '2025-05-07'
