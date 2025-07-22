@@ -23,7 +23,7 @@ from subprocess import CompletedProcess
 from typing import TYPE_CHECKING, Any, TypedDict
 
 from antsibull_core import app_context
-from antsibull_core.logging import log
+from antsibull_core.logging import get_module_logger
 from antsibull_core.subprocess_util import log_run
 from antsibull_fileutils.yaml import store_yaml_file
 from packaging.version import Version
@@ -34,7 +34,7 @@ from antsibull_build.types import CollectionName, add_dataclass_yaml_type
 if TYPE_CHECKING:
     from _typeshed import StrPath
 
-mlog = log.fields(mod=__name__)
+mlog = get_module_logger(__name__)
 
 
 class SanityOutput(TypedDict):
