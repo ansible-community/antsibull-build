@@ -24,7 +24,7 @@ from antsibull_core.ansible_core import get_ansible_core
 from antsibull_core.collections import install_together
 from antsibull_core.dependency_files import BuildFile, DependencyFileData, DepsFile
 from antsibull_core.galaxy import CollectionDownloader, GalaxyContext
-from antsibull_core.logging import log
+from antsibull_core.logging import get_module_logger
 from antsibull_core.subprocess_util import async_log_run, log_run
 from antsibull_fileutils.yaml import store_yaml_file, store_yaml_stream
 from jinja2 import Template
@@ -56,7 +56,7 @@ if TYPE_CHECKING:
     from _typeshed import StrPath
 
 
-mlog = log.fields(mod=__name__)
+mlog = get_module_logger(__name__)
 
 TAG_FILE_MESSAGE = """\
 # This is a mapping of collections to their git repositories and the git tag

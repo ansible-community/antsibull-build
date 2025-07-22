@@ -22,8 +22,11 @@ try:
 except ImportError:
     HAS_ARGCOMPLETE = False
 
-import twiggy  # type: ignore[import]
-from antsibull_core.logging import initialize_app_logging, log
+from antsibull_core.logging import (
+    configure_logger,
+    get_module_logger,
+    initialize_app_logging,
+)
 from packaging.version import Version as PypiVer
 
 initialize_app_logging()
@@ -67,7 +70,7 @@ from ..tagging import validate_tags_command, validate_tags_file_command  # noqa:
 # pylint: enable=wrong-import-position
 
 
-mlog = log.fields(mod=__name__)
+mlog = get_module_logger(__name__)
 
 DEFAULT_FILE_BASE = "ansible"
 DEFAULT_PIECES_FILE = f"{DEFAULT_FILE_BASE}.in"
@@ -879,7 +882,7 @@ def run(args: list[str]) -> int:
 
     context_data = app_context.create_contexts(args=parsed_args, cfg=cfg)
     with app_context.app_and_lib_context(context_data) as (app_ctx, dummy_):
-        twiggy.dict_config(app_ctx.logging_cfg.model_dump())
+        configure_logger(app_ctx)
         flog.debug("Set logging config")
 
         flog.fields(command=parsed_args.command).info("Action")
