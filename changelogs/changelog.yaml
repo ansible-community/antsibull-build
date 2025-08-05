@@ -1100,3 +1100,14 @@ releases:
       - 0.72.5.yml
       - 665-porting-guide.yml
     release_date: '2025-05-07'
+  0.73.0:
+    changes:
+      minor_changes:
+        - Add ``ignore_feature_freeze`` option to ``build-release`` role to allow
+          disabling feature freeze (https://github.com/ansible-community/antsibull-build/pull/667,
+          https://forum.ansible.com/t/ansible-12-0-0-release-schedule/44186).
+      release_summary: Feature release for Ansible 12 betas
+    fragments:
+      - 0.73.0.yml
+      - 667-feature-freeze.yml
+    release_date: '2025-08-04'

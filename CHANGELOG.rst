@@ -4,6 +4,19 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.73.0
+=======
+
+Release Summary
+---------------
+
+Feature release for Ansible 12 betas
+
+Minor Changes
+-------------
+
+- Add ``ignore_feature_freeze`` option to ``build-release`` role to allow disabling feature freeze (https://github.com/ansible-community/antsibull-build/pull/667, https://forum.ansible.com/t/ansible-12-0-0-release-schedule/44186).
+
 v0.72.5
 =======
 
