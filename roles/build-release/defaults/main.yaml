@@ -48,6 +48,9 @@ antsibull_build_reset: "{{ antsibull_data_reset }}"
 # Whether to preserve existing .deps files during the prepare step
 antsibull_preserve_deps: false
 
+# Whether to ignore feature freeze
+antsibull_ignore_feature_freeze: false
+
 # Whether or not to start from scratch with a new venv if one exists
 antsibull_venv_cleanup: true
 
