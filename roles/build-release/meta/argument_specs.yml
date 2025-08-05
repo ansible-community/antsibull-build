@@ -154,3 +154,10 @@ argument_specs:
         type: bool
         default: false
         version_added: 0.62.0
+
+      antsibull_ignore_feature_freeze:
+        description:
+          - If set to V(true), will not enable feature freeze for b2 and later betas.
+        type: bool
+        default: false
+        version_added: 0.73.0
