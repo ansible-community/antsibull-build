@@ -43,7 +43,7 @@
   ansible.builtin.set_fact:
     _feature_freeze: "--feature-frozen"
   when: 
-    - not antsibull_ignore_feature_freeze
+    - not (antsibull_ignore_feature_freeze | bool)
     - antsibull_ansible_version is regex("^\d+.\d+.\d+(b[2-9]|rc\d+)$")
 
 - name: Check whether the ansible deps file exists
@@ -66,17 +66,17 @@
   args:
     chdir: "{{ playbook_dir | dirname }}"
   when: >-
-    not antsibull_skip_prepare
+    not (antsibull_skip_prepare | bool)
     or not _antsibull_deps_file_stat.stat.exists
 
 - name: Find ignores file
-  when: antsibull_tags_validate
+  when: antsibull_tags_validate | bool
   register: _ignores_stat
   ansible.builtin.stat:
     dest: "{{ antsibull_tags_ignores_file }}"
 
 - name: Validate tags file
-  when: antsibull_tags_validate
+  when: antsibull_tags_validate | bool
   # ignore_errors creates conspicuous error messages without failing the playbook
   ignore_errors: "{{ not antsibull_tags_enforce_policy }}"
   # This command never changes anything
