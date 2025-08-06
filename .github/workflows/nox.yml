@@ -65,7 +65,8 @@ jobs:
       - name: Check out dependent project antsibull-core
         uses: actions/checkout@v4
         with:
-          repository: ansible-community/antsibull-core
+          repository: felixfontein/antsibull-core
+          ref: logging
           path: antsibull-core
           persist-credentials: false
       - name: Check out dependent project antsibull-changelog
