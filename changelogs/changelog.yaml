@@ -1111,3 +1111,16 @@ releases:
       - 0.73.0.yml
       - 667-feature-freeze.yml
     release_date: '2025-08-04'
+  0.73.1:
+    changes:
+      bugfixes:
+        - build-release role - also enable feature freeze by default for b10 and later
+          beta releases, and not only for b2 to b9 beta releases (https://github.com/ansible-community/antsibull-build/pull/669).
+        - build-release role - fix broken conditionals by ensuring the ``bool`` filter
+          is always used (https://github.com/ansible-community/antsibull-build/pull/668).
+      release_summary: Bugfix release for build-release role and playbook
+    fragments:
+      - 0.73.1.yml
+      - 668-ansible-bool.yml
+      - 669-betas.yml
+    release_date: '2025-08-06'

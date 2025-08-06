@@ -1,5 +1,0 @@
----
-bugfixes:
-  - build-release role - fix broken conditionals by ensuring the ``bool`` filter
-    is always used
-    (https://github.com/ansible-community/antsibull-build/pull/668).

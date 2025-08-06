@@ -1,2 +1,0 @@
-bugfixes:
-  - "build-release role - also enable feature freeze by default for b10 and later beta releases, and not only for b2 to b9 beta releases (https://github.com/ansible-community/antsibull-build/pull/669)."

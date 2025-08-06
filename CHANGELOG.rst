@@ -4,6 +4,20 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.73.1
+=======
+
+Release Summary
+---------------
+
+Bugfix release for build-release role and playbook
+
+Bugfixes
+--------
+
+- build-release role - also enable feature freeze by default for b10 and later beta releases, and not only for b2 to b9 beta releases (https://github.com/ansible-community/antsibull-build/pull/669).
+- build-release role - fix broken conditionals by ensuring the ``bool`` filter is always used (https://github.com/ansible-community/antsibull-build/pull/668).
+
 v0.73.0
 =======
 
