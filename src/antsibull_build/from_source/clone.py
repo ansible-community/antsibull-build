@@ -16,7 +16,7 @@ from typing import TYPE_CHECKING, Any, cast
 
 import aiofiles.os
 import aiofiles.ospath
-from antsibull_core.logging import log
+from antsibull_core.logging import get_module_logger
 from antsibull_core.subprocess_util import async_log_run
 from antsibull_fileutils.yaml import load_yaml_file, store_yaml_file
 
@@ -30,7 +30,7 @@ from .verify import FileError, FileErrorOutput
 if TYPE_CHECKING:
     from _typeshed import StrPath
 
-mlog = log.fields(mod=__name__)
+mlog = get_module_logger(__name__)
 
 
 async def clone_collection(
