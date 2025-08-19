@@ -1,0 +1,2 @@
+minor_changes:
+  - "When preparing a new Ansible beta release, also allow new release candidates of ansible-core (https://github.com/ansible-community/antsibull-build/pull/671)."
