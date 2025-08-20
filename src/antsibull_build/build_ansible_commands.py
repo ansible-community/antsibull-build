@@ -339,6 +339,12 @@ def _is_alpha(version: PypiVer) -> bool:
     return version.is_prerelease and pre is not None and pre[0] == "a"
 
 
+def _is_alpha_or_beta(version: PypiVer) -> bool:
+    """Test whether the provided version is an alpha or beta version."""
+    pre = version.pre
+    return version.is_prerelease and pre is not None and pre[0] in ("a", "b")
+
+
 def _extract_python_requires(
     ansible_core_version: PypiVer, deps: dict[str, str]
 ) -> str:
@@ -381,6 +387,7 @@ def prepare_deps(
         list(ansible_core_release_infos),
         ansible_core_version_obj,
         pre=_is_alpha(ansible_version),
+        allow_rc=_is_alpha_or_beta(ansible_version),
     )
     if new_ansible_core_version:
         ansible_core_version_obj = new_ansible_core_version

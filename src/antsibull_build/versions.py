@@ -209,6 +209,7 @@ def get_latest_ansible_core_version(
     ansible_core_versions: Sequence[str],
     ansible_core_version: PypiVer,
     pre: bool = False,
+    allow_rc: bool = False,
 ) -> PypiVer | None:
     """
     Retrieve the latest ansible-core bugfix release's version for the given ansible-core version.
@@ -224,7 +225,10 @@ def get_latest_ansible_core_version(
         version
         for version in versions
         if ansible_core_version <= version < next_version
-        and (pre or not version.is_prerelease)
+        and (
+            (pre or not version.is_prerelease)
+            or (allow_rc and version.pre and version.pre[0] == "rc")
+        )
     ]
     return max(newer_versions) if newer_versions else None
 
