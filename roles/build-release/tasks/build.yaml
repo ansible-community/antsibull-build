@@ -58,6 +58,7 @@
       {{ _feature_freeze | default('') }}
       {{ '--tags-file' if antsibull_tags_validate else '' }}
       {{ '--preserve-deps' if antsibull_preserve_deps else '' }}
+      {{ '--ignore-version-regressions' if antsibull_ignore_version_regressions else '' }}
   # Minimal failure tolerance to galaxy collection download errors
   retries: 3
   delay: 5

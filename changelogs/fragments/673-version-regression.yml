@@ -1,0 +1,2 @@
+minor_changes:
+  - "Add version regression check. It can be explicitly disabled if needed (https://github.com/ansible-community/antsibull-build/pull/673)."
