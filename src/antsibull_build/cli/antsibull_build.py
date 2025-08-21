@@ -468,7 +468,7 @@ def parse_args(program_name: str, args: list[str]) -> argparse.Namespace:
         "--allow-prereleases",
         action="store_true",
         default=False,
-        help="Allow prereleases of collections to be included in the build" " file",
+        help="Allow prereleases of collections to be included in the build file",
     )
     new_parser.add_argument(
         "--constraints-file",
@@ -499,6 +499,13 @@ def parse_args(program_name: str, args: list[str]) -> argparse.Namespace:
         f" as {DEFAULT_FILE_BASE}-X.Y.Z-tags.yaml."
         " --tags-file takes an optional argument to change the filename.",
     )
+    prepare_parser.add_argument(
+        "--ignore-version-regressions",
+        action="store_true",
+        default=False,
+        help="Allow versions of ansible-core or collections to regress"
+        " with respect to the previous Ansible release",
+    )
 
     build_single_parser = subparsers.add_parser(
         "single",
@@ -510,7 +517,7 @@ def parse_args(program_name: str, args: list[str]) -> argparse.Namespace:
             galaxy_file_parser,
             preserve_deps_parser,
         ],
-        description="Build a single-file Ansible" " [deprecated]",
+        description="Build a single-file Ansible [deprecated]",
     )
     build_single_parser.add_argument(
         "--sdist-dir",
@@ -560,7 +567,7 @@ def parse_args(program_name: str, args: list[str]) -> argparse.Namespace:
             build_step_parser,
             package_file_parser,
         ],
-        description="Rebuild a single-file Ansible from" " a dependency file",
+        description="Rebuild a single-file Ansible from a dependency file",
     )
     rebuild_single_parser.add_argument(
         "--sdist-dir",

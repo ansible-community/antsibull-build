@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import asyncio
 import datetime
-import glob
 import os
 import os.path
 import tarfile
@@ -36,7 +35,7 @@ from antsibull_changelog.rendering.changelog import ChangelogGenerator
 from antsibull_changelog.utils import collect_versions
 from antsibull_core import app_context
 from antsibull_core.ansible_core import get_ansible_core
-from antsibull_core.dependency_files import DependencyFileData, DepsFile
+from antsibull_core.dependency_files import DependencyFileData
 from antsibull_core.galaxy import CollectionDownloader, GalaxyContext
 from antsibull_core.logging import log
 from antsibull_core.schemas.collection_meta import (
@@ -58,6 +57,7 @@ from antsibull_build.utils.urls import get_documentation_repo_raw_url
 from .constants import (
     ANSIBLE_DOCUMENTATION_TAG_RANGES,
 )
+from .versions import load_all_dependency_files
 
 mlog = log.fields(mod=__name__)
 
@@ -1036,18 +1036,22 @@ def get_changelog(
     _populate_ansible_changelog(ansible_changelog, collection_metadata, ansible_version)
 
     if deps_dir is not None:
-        for path in glob.glob(os.path.join(deps_dir, "*.deps"), recursive=False):
-            deps_file = DepsFile(path)
-            deps = deps_file.parse()
-            deps.deps.pop("_python", None)
-            version = PypiVer(deps.ansible_version)
-            if version > ansible_version:
-                flog.info(
-                    f"Ignoring {path}, since {deps.ansible_version}"
-                    f" is newer than {ansible_version}"
-                )
-                continue
-            dependencies[deps.ansible_version] = deps
+
+        def accept_deps_file(
+            path: os.PathLike[str] | str, deps_ansible_version: str
+        ) -> bool:
+            version = PypiVer(deps_ansible_version)
+            if version <= ansible_version:
+                return True
+            flog.info(
+                f"Ignoring {path}, since {deps.ansible_version}"
+                f" is newer than {ansible_version}"
+            )
+            return False
+
+        dependencies.update(
+            load_all_dependency_files(deps_dir, accept_deps_file=accept_deps_file)
+        )
     if deps_data:
         for deps in deps_data:
             dependencies[deps.ansible_version] = deps
