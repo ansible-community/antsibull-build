@@ -444,10 +444,9 @@ def check_for_regressions(
         PypiVer(deps_ansible_version): deps
         for deps_ansible_version, deps in load_all_dependency_files(
             data_dir,
-            accept_deps_file=lambda path, deps_ansible_version: PypiVer(
-                deps_ansible_version
-            )
-            < ansible_version,
+            accept_deps_file=lambda path, deps_ansible_version: (
+                PypiVer(deps_ansible_version) < ansible_version
+            ),
         ).items()
     }
     if not dependencies:
@@ -467,9 +466,9 @@ def check_for_regressions(
         old_ver = version_constructor(old_version)
         if old_ver > new_ver:
             raise ValueError(
-                f"The old version ({old_version}) of {what}"
+                f"The previous version ({old_version}) of {what}"
                 f" included in Ansible {previous_release} is newer"
-                f" than the new version ({new_version})"
+                f" than the version ({new_version})"
                 f" that would be included in Ansible {ansible_version}!"
             )
 

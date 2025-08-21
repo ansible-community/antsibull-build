@@ -346,8 +346,17 @@ def load_all_dependency_files(
     *,
     accept_deps_file: t.Callable[[os.PathLike[str] | str, str], bool] | None = None,
 ) -> dict[str, DependencyFileData]:
+    """
+    Find and load all ``.deps`` files in ``deps_dir`` and return a mapping of Ansible
+    versions to parsed dependency file data.
+
+    ``accept_deps_file`` allows to provide a filter callback that is called for every
+    ``.deps`` file. The first argument is the filename, and the second the Ansible
+    version of the ``.deps`` file. The ``.deps`` file is added to the result if the
+    callback returns ``True``.
+    """
     dependencies: dict[str, DependencyFileData] = {}
-    for path in glob.glob(os.path.join(deps_dir, "*.deps"), recursive=False):
+    for path in glob.iglob(os.path.join(deps_dir, "*.deps"), recursive=False):
         deps_file = DepsFile(path)
         deps = deps_file.parse()
         deps.deps.pop("_python", None)
