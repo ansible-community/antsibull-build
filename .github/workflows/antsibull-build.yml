@@ -68,9 +68,9 @@ jobs:
       - name: Check out dependent project antsibull-core
         uses: actions/checkout@v5
         with:
-          repository: ansible-community/antsibull-core
+          repository: felixfontein/antsibull-core
+          ref: logging
           path: antsibull-core
-          ref: ${{ matrix.antsibull_core_ref }}
           persist-credentials: false
 
       - name: Check out dependent project antsibull-docs-parser
