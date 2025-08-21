@@ -56,9 +56,9 @@
     {{ antsibull_build_command }} prepare {{ antsibull_ansible_version }}
       --data-dir {{ antsibull_data_dir }}
       {{ _feature_freeze | default('') }}
-      {{ '--tags-file' if antsibull_tags_validate else '' }}
-      {{ '--preserve-deps' if antsibull_preserve_deps else '' }}
-      {{ '--ignore-version-regressions' if antsibull_ignore_version_regressions else '' }}
+      {{ '--tags-file' if (antsibull_tags_validate | bool) else '' }}
+      {{ '--preserve-deps' if (antsibull_preserve_deps | bool) else '' }}
+      {{ '--ignore-version-regressions' if (antsibull_ignore_version_regressions | bool) else '' }}
   # Minimal failure tolerance to galaxy collection download errors
   retries: 3
   delay: 5
@@ -105,7 +105,7 @@
       --build-file {{ antsibull_build_file }}
       --deps-file {{ _deps_file }}
       --debian
-      {{ '--tags-file' if antsibull_tags_validate else '' }}
+      {{ '--tags-file' if (antsibull_tags_validate | bool) else '' }}
   # Minimal failure tolerance to galaxy collection download errors
   retries: 3
   delay: 5
