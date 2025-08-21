@@ -336,13 +336,13 @@ def build_single_command() -> int:
 def _is_alpha(version: PypiVer) -> bool:
     """Test whether the provided version is an alpha version."""
     pre = version.pre
-    return version.is_prerelease and pre is not None and pre[0] == "a"
+    return pre is not None and pre[0] == "a"
 
 
 def _is_alpha_or_beta(version: PypiVer) -> bool:
     """Test whether the provided version is an alpha or beta version."""
     pre = version.pre
-    return version.is_prerelease and pre is not None and pre[0] in ("a", "b")
+    return pre is not None and pre[0] in ("a", "b")
 
 
 def _extract_python_requires(
