@@ -1124,3 +1124,13 @@ releases:
       - 668-ansible-bool.yml
       - 669-betas.yml
     release_date: '2025-08-06'
+  0.74.0:
+    changes:
+      minor_changes:
+        - When preparing a new Ansible beta release, also allow new release candidates
+          of ansible-core (https://github.com/ansible-community/antsibull-build/pull/671).
+      release_summary: Feature release for Ansible 12.0.0b4.
+    fragments:
+      - 0.74.0.yml
+      - 671-rc.yml
+    release_date: '2025-08-21'

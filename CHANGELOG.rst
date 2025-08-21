@@ -4,6 +4,19 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.74.0
+=======
+
+Release Summary
+---------------
+
+Feature release for Ansible 12.0.0b4.
+
+Minor Changes
+-------------
+
+- When preparing a new Ansible beta release, also allow new release candidates of ansible-core (https://github.com/ansible-community/antsibull-build/pull/671).
+
 v0.73.1
 =======
 
