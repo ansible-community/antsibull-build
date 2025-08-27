@@ -8,7 +8,9 @@
 from __future__ import annotations
 
 import asyncio
+import glob
 import os
+import os.path
 import sys
 import typing as t
 from collections.abc import Mapping, Sequence
@@ -17,7 +19,11 @@ import aiohttp
 import asyncio_pool  # type: ignore[import]
 from antsibull_core import app_context
 from antsibull_core.ansible_core import AnsibleCorePyPiClient
-from antsibull_core.dependency_files import parse_pieces_file
+from antsibull_core.dependency_files import (
+    DependencyFileData,
+    DepsFile,
+    parse_pieces_file,
+)
 from antsibull_core.galaxy import GalaxyClient, GalaxyContext
 from packaging.version import Version as PypiVer
 from semantic_version import SimpleSpec as SemVerSpec
@@ -333,3 +339,28 @@ def find_latest_compatible(
         )
 
     return reduced_versions
+
+
+def load_all_dependency_files(
+    deps_dir: os.PathLike[str] | str,
+    *,
+    accept_deps_file: t.Callable[[os.PathLike[str] | str, str], bool] | None = None,
+) -> dict[str, DependencyFileData]:
+    """
+    Find and load all ``.deps`` files in ``deps_dir`` and return a mapping of Ansible
+    versions to parsed dependency file data.
+
+    ``accept_deps_file`` allows to provide a filter callback that is called for every
+    ``.deps`` file. The first argument is the filename, and the second the Ansible
+    version of the ``.deps`` file. The ``.deps`` file is added to the result if the
+    callback returns ``True``.
+    """
+    dependencies: dict[str, DependencyFileData] = {}
+    for path in glob.iglob(os.path.join(deps_dir, "*.deps"), recursive=False):
+        deps_file = DepsFile(path)
+        deps = deps_file.parse()
+        deps.deps.pop("_python", None)
+        if accept_deps_file and not accept_deps_file(path, deps.ansible_version):
+            continue
+        dependencies[deps.ansible_version] = deps
+    return dependencies

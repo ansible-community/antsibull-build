@@ -51,6 +51,9 @@ antsibull_preserve_deps: false
 # Whether to ignore feature freeze
 antsibull_ignore_feature_freeze: false
 
+# Whether to ignore version regressions
+antsibull_ignore_version_regressions: false
+
 # Whether or not to start from scratch with a new venv if one exists
 antsibull_venv_cleanup: true
 

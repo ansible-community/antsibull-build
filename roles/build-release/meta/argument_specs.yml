@@ -161,3 +161,10 @@ argument_specs:
         type: bool
         default: false
         version_added: 0.73.0
+
+      antsibull_ignore_version_regressions:
+        description:
+          - If set to V(true), will not check for version regressions.
+        type: bool
+        default: false
+        version_added: 0.74.0

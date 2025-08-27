@@ -12,6 +12,7 @@ import os.path
 import shutil
 import sys
 import tempfile
+import typing as t
 from collections.abc import Mapping
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -46,6 +47,7 @@ from .versions import (
     find_latest_compatible,
     get_latest_ansible_core_version,
     get_version_info,
+    load_all_dependency_files,
     load_constraints_if_exists,
 )
 
@@ -435,6 +437,56 @@ def validate_deps_data(
                 )
 
 
+def check_for_regressions(
+    ansible_version: PypiVer, deps: DependencyFileData, data_dir: os.PathLike[str] | str
+) -> None:
+    dependencies = {
+        PypiVer(deps_ansible_version): deps
+        for deps_ansible_version, deps in load_all_dependency_files(
+            data_dir,
+            accept_deps_file=lambda path, deps_ansible_version: (
+                PypiVer(deps_ansible_version) < ansible_version
+            ),
+        ).items()
+    }
+    if not dependencies:
+        return
+    previous_release = max(dependencies)
+    previous_release_deps = dependencies[previous_release]
+
+    _VT = t.TypeVar("_VT", SemVer, PypiVer)
+
+    def _check_for_regression(
+        what: str,
+        new_version: str,
+        old_version: str,
+        version_constructor: t.Callable[[str], _VT],
+    ) -> None:
+        new_ver = version_constructor(new_version)
+        old_ver = version_constructor(old_version)
+        if old_ver > new_ver:
+            raise ValueError(
+                f"The previous version ({old_version}) of {what}"
+                f" included in Ansible {previous_release} is newer"
+                f" than the version ({new_version})"
+                f" that would be included in Ansible {ansible_version}!"
+            )
+
+    _check_for_regression(
+        "ansible-core",
+        deps.ansible_core_version,
+        previous_release_deps.ansible_core_version,
+        PypiVer,
+    )
+    for collection_name, collection_version in deps.deps.items():
+        previous_version = previous_release_deps.deps.get(collection_name)
+        if previous_version is None:
+            continue
+        _check_for_regression(
+            collection_name, collection_version, previous_version, SemVer
+        )
+
+
 def prepare_command() -> int:
     app_ctx = app_context.app_ctx.get()
 
@@ -444,13 +496,14 @@ def prepare_command() -> int:
     build_file = BuildFile(build_filename)
     build_ansible_version, ansible_core_version, build_deps = build_file.parse()
     ansible_core_version_obj = PypiVer(ansible_core_version)
+    ansible_version: PypiVer = app_ctx.extra["ansible_version"]
     python_requires = _extract_python_requires(ansible_core_version_obj, build_deps)
+    ignore_version_regressions: bool = app_ctx.extra["ignore_version_regressions"]
 
     if not str(app_ctx.extra["ansible_version"]).startswith(build_ansible_version):
         print(
             f"{build_filename} is for version {build_ansible_version} but we need"
-            f' {app_ctx.extra["ansible_version"].major}'
-            f'.{app_ctx.extra["ansible_version"].minor}',
+            f" {ansible_version.major}.{ansible_version.minor}",
             file=sys.stderr,
         )
         return 1
@@ -478,7 +531,7 @@ def prepare_command() -> int:
         python_requires = dependency_data.deps.pop("_python")
     else:
         dependency_data = prepare_deps(
-            app_ctx.extra["ansible_version"],
+            ansible_version,
             ansible_core_version_obj,
             build_deps,
             constraints,
@@ -494,13 +547,25 @@ def prepare_command() -> int:
         )
         return 1
 
-    # Get Ansible changelog, add new release
+    if not ignore_version_regressions:
+        try:
+            check_for_regressions(
+                ansible_version, dependency_data, app_ctx.extra["data_dir"]
+            )
+        except ValueError as exc:
+            print(
+                f"Error while checking for version regressions: {exc}",
+                file=sys.stderr,
+            )
+            return 1
+
+    # Get Ansible changelog and add new release
     ansible_changelog = ChangelogData.ansible(
         app_ctx.extra["data_dir"], app_ctx.extra["dest_data_dir"]
     )
     date = datetime.date.today()
     ansible_changelog.add_ansible_release(
-        str(app_ctx.extra["ansible_version"]),
+        str(ansible_version),
         date,
         f"Release Date: {date}"
         f"\n\n"
