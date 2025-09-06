@@ -118,20 +118,7 @@
               loop: "{{ _included_collections.stdout_lines }}"
 
 - name: Run nested tests
-  vars:
-    ansible_collections_path: "{{ antsibull_sdist_dir }}/ansible_collections"
-  environment:
-    ANSIBLE_COLLECTIONS_PATH: "{{ ansible_collections_path }}"
   block:
-    - name: Create a temporary COLLECTIONS_PATH
-      ansible.builtin.file:
-        path: "{{ ansible_collections_path }}"
-        state: directory
-
-    - name: Install community.general for tests using 'a_module' and 'collection_version'
-      ansible.builtin.command: >-
-        {{ antsibull_ansible_venv }}/bin/ansible-galaxy collection install community.general
-
     - name: Run nested Ansible tests with the Ansible we just built
       ansible.builtin.command: >-
         {{ antsibull_ansible_venv }}/bin/ansible-playbook -i 'localhost,' --connection=local
