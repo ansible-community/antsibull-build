@@ -6,12 +6,12 @@
 # These tests are meant to be run by another Ansible (i.e, the one built with build-single-release.yaml)
 - name: Run nested Ansible tests
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   vars:
     # These can be supplied as extra-vars but are expected to come from roles/build-release/tasks/tests.yaml
     antsibull_sdist_dir: "{{ playbook_dir | dirname }}/build"
     antsibull_ansible_venv: "{{ antsibull_sdist_dir }}/venv"
-    _python_version: "python3.9"
+    _python_version: "python3.13"
   tasks:
     - name: Parse installed ansible_builtin_runtime
       parse_ansible_runtime:
