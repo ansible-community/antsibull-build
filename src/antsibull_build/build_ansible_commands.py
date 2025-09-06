@@ -36,6 +36,7 @@ from antsibull_build.constants import MINIMUM_ANSIBLE_VERSIONS
 from antsibull_build.python_metadata import BuildMetaMaker, LegacyBuildMetaMaker
 
 from . import __version__ as antsibull_version
+from .ansible_core_reqs import check_collection_ansible_core_requirements
 from .build_changelog import ReleaseNotes
 from .changelog import ChangelogData, get_changelog
 from .dep_closure import check_collection_dependencies
@@ -727,6 +728,24 @@ def rebuild_single_command() -> int:
                 f"{warning_error}: found collection dependency errors!", file=sys.stderr
             )
             for error in dep_errors:
+                print(f"{warning_error}: {error}", file=sys.stderr)
+            if is_error:
+                return 3
+
+        # Check ansible-core requirements
+        acr_errors = check_collection_ansible_core_requirements(
+            os.path.join(package_dir, "ansible_collections"),
+            ansible_core_version,
+        )
+
+        if acr_errors:
+            is_error = app_ctx.extra["ansible_version"] >= PypiVer("12.0.0rc1")
+            warning_error = "ERROR" if is_error else "WARNING"
+            print(
+                f"{warning_error}: found collection ansible-core requirement errors!",
+                file=sys.stderr,
+            )
+            for error in acr_errors:
                 print(f"{warning_error}: {error}", file=sys.stderr)
             if is_error:
                 return 3
