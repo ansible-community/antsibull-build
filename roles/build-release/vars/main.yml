@@ -2,8 +2,3 @@
 # Copyright (c) Ansible Project
 # GNU General Public License v3.0+ (see LICENSES/GPL-3.0-or-later.txt or https://www.gnu.org/licenses/gpl-3.0.txt)
 # SPDX-License-Identifier: GPL-3.0-or-later
-
-antsibull_venv_pip_bin: "{{ antsibull_ansible_venv }}/bin/pip"
-antsibull_venv_pip_pkgs: "{{ _pip_pkgs['packages'][antsibull_venv_pip_bin] }}"
-antsibull_venv_pip_ansible_version: "{{ antsibull_venv_pip_pkgs['ansible'][0]['version'] }}"
-antsibull_venv_pip_ansible_core_version: "{{ antsibull_venv_pip_pkgs['ansible-core'][0]['version'] }}"
