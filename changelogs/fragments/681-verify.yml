@@ -1,0 +1,2 @@
+bugfixes:
+  - "Fix path sanitiziation when verifying package files (https://github.com/ansible-community/antsibull-build/pull/681)."
