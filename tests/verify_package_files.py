@@ -84,7 +84,7 @@ class AnsibleSdist:
             for member in file.getmembers():
                 if not member.name.startswith(collections_dir):
                     continue
-                member.path = member.name[len(self.nv) + 1 :]
+                member.name = member.name[len(self.nv) + 1 :]
                 members.append(member)
             file.extractall(extract_dir, members, filter="data")
 
