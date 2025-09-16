@@ -739,7 +739,12 @@ def rebuild_single_command() -> int:
         )
 
         if acr_errors:
-            is_error = app_ctx.extra["ansible_version"] >= PypiVer("12.0.0rc1")
+            is_error = (
+                app_ctx.extra["ansible_version"]
+                >= MINIMUM_ANSIBLE_VERSIONS[
+                    "CHECK_COLLECTION_ANSIBLE_CORE_REQUIREMENTS"
+                ]
+            )
             warning_error = "ERROR" if is_error else "WARNING"
             print(
                 f"{warning_error}: found collection ansible-core requirement errors!",

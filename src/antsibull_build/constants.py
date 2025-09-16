@@ -18,6 +18,7 @@ MINIMUM_ANSIBLE_VERSIONS = {
     "BUILD_META_MAKER": PypiVer("9.0.0.dev0"),
     "BUILD_META_NEW_URLS": PypiVer("9.0.0rc1"),
     "REMOVED_LICENSE_CLASSIFIERS": PypiVer("12.0.0.dev0"),
+    "CHECK_COLLECTION_ANSIBLE_CORE_REQUIREMENTS": PypiVer("12.0.0rc1"),
 }
 
 DOCSITE_BASE_URL = "https://docs.ansible.com/ansible"
