@@ -8,13 +8,10 @@
 from __future__ import annotations
 
 import pathlib
-from collections import namedtuple
 
 from antsibull_fileutils.yaml import load_yaml_file
 from packaging.specifiers import SpecifierSet as PypiVerSpec
 from packaging.version import Version as PypiVer
-
-CollectionRecord = namedtuple("CollectionRecord", ("version", "dependencies"))
 
 
 def check_ansible_core_requirements(
@@ -59,5 +56,7 @@ def check_collection_ansible_core_requirements(
                 )
             except FileNotFoundError:
                 pass
+            except Exception as exc:  # pylint: disable=broad-exception-caught
+                errors.append(f"Error while processing {collection_dir}: {exc}")
 
     return errors
