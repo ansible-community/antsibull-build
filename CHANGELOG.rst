@@ -4,6 +4,26 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.75.0
+=======
+
+Release Summary
+---------------
+
+Feature and bugfix release.
+
+Minor Changes
+-------------
+
+- Add a check for Ansible 12.0.0rc1 and newer to ensure that collections' ``requires_ansible`` covers the included ansible-core version (https://github.com/ansible-community/antsibull-build/issues/674, https://github.com/ansible-community/antsibull-build/pull/678).
+- Add version regression check. It can be explicitly disabled if needed (https://github.com/ansible-community/antsibull-build/pull/673).
+- build-release role, nested-ansible-tests playbook -- simplify nested tests to avoid extreme log output (https://github.com/ansible-community/antsibull-build/pull/682).
+
+Bugfixes
+--------
+
+- build-release role - fix more broken conditionals by ensuring the ``bool`` filter is always used (https://github.com/ansible-community/antsibull-build/pull/673).
+
 v0.74.0
 =======
 

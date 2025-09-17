@@ -2,216 +2,220 @@
 
 **Topics**
 
-- <a href="#v0-74-0">v0\.74\.0</a>
+- <a href="#v0-75-0">v0\.75\.0</a>
     - <a href="#release-summary">Release Summary</a>
     - <a href="#minor-changes">Minor Changes</a>
-- <a href="#v0-73-1">v0\.73\.1</a>
-    - <a href="#release-summary-1">Release Summary</a>
     - <a href="#bugfixes">Bugfixes</a>
-- <a href="#v0-73-0">v0\.73\.0</a>
-    - <a href="#release-summary-2">Release Summary</a>
+- <a href="#v0-74-0">v0\.74\.0</a>
+    - <a href="#release-summary-1">Release Summary</a>
     - <a href="#minor-changes-1">Minor Changes</a>
-- <a href="#v0-72-5">v0\.72\.5</a>
+- <a href="#v0-73-1">v0\.73\.1</a>
+    - <a href="#release-summary-2">Release Summary</a>
+    - <a href="#bugfixes-1">Bugfixes</a>
+- <a href="#v0-73-0">v0\.73\.0</a>
     - <a href="#release-summary-3">Release Summary</a>
     - <a href="#minor-changes-2">Minor Changes</a>
-    - <a href="#bugfixes-1">Bugfixes</a>
-- <a href="#v0-72-4">v0\.72\.4</a>
+- <a href="#v0-72-5">v0\.72\.5</a>
     - <a href="#release-summary-4">Release Summary</a>
+    - <a href="#minor-changes-3">Minor Changes</a>
     - <a href="#bugfixes-2">Bugfixes</a>
-- <a href="#v0-72-3">v0\.72\.3</a>
+- <a href="#v0-72-4">v0\.72\.4</a>
     - <a href="#release-summary-5">Release Summary</a>
     - <a href="#bugfixes-3">Bugfixes</a>
-- <a href="#v0-72-2">v0\.72\.2</a>
+- <a href="#v0-72-3">v0\.72\.3</a>
     - <a href="#release-summary-6">Release Summary</a>
-- <a href="#v0-72-1">v0\.72\.1</a>
+    - <a href="#bugfixes-4">Bugfixes</a>
+- <a href="#v0-72-2">v0\.72\.2</a>
     - <a href="#release-summary-7">Release Summary</a>
-    - <a href="#minor-changes-3">Minor Changes</a>
-- <a href="#v0-72-0">v0\.72\.0</a>
+- <a href="#v0-72-1">v0\.72\.1</a>
     - <a href="#release-summary-8">Release Summary</a>
     - <a href="#minor-changes-4">Minor Changes</a>
-    - <a href="#removed-features-previously-deprecated">Removed Features \(previously deprecated\)</a>
-- <a href="#v0-71-0">v0\.71\.0</a>
+- <a href="#v0-72-0">v0\.72\.0</a>
     - <a href="#release-summary-9">Release Summary</a>
     - <a href="#minor-changes-5">Minor Changes</a>
-    - <a href="#bugfixes-4">Bugfixes</a>
-- <a href="#v0-70-0">v0\.70\.0</a>
+    - <a href="#removed-features-previously-deprecated">Removed Features \(previously deprecated\)</a>
+- <a href="#v0-71-0">v0\.71\.0</a>
     - <a href="#release-summary-10">Release Summary</a>
     - <a href="#minor-changes-6">Minor Changes</a>
-- <a href="#v0-69-0">v0\.69\.0</a>
+    - <a href="#bugfixes-5">Bugfixes</a>
+- <a href="#v0-70-0">v0\.70\.0</a>
     - <a href="#release-summary-11">Release Summary</a>
     - <a href="#minor-changes-7">Minor Changes</a>
-    - <a href="#bugfixes-5">Bugfixes</a>
-- <a href="#v0-68-1">v0\.68\.1</a>
+- <a href="#v0-69-0">v0\.69\.0</a>
     - <a href="#release-summary-12">Release Summary</a>
-    - <a href="#bugfixes-6">Bugfixes</a>
-- <a href="#v0-68-0">v0\.68\.0</a>
-    - <a href="#release-summary-13">Release Summary</a>
     - <a href="#minor-changes-8">Minor Changes</a>
+    - <a href="#bugfixes-6">Bugfixes</a>
+- <a href="#v0-68-1">v0\.68\.1</a>
+    - <a href="#release-summary-13">Release Summary</a>
     - <a href="#bugfixes-7">Bugfixes</a>
-- <a href="#v0-67-0">v0\.67\.0</a>
+- <a href="#v0-68-0">v0\.68\.0</a>
     - <a href="#release-summary-14">Release Summary</a>
+    - <a href="#minor-changes-9">Minor Changes</a>
+    - <a href="#bugfixes-8">Bugfixes</a>
+- <a href="#v0-67-0">v0\.67\.0</a>
+    - <a href="#release-summary-15">Release Summary</a>
     - <a href="#breaking-changes--porting-guide">Breaking Changes / Porting Guide</a>
 - <a href="#v0-66-0">v0\.66\.0</a>
-    - <a href="#release-summary-15">Release Summary</a>
-    - <a href="#minor-changes-9">Minor Changes</a>
-- <a href="#v0-65-0">v0\.65\.0</a>
     - <a href="#release-summary-16">Release Summary</a>
     - <a href="#minor-changes-10">Minor Changes</a>
-    - <a href="#breaking-changes--porting-guide-1">Breaking Changes / Porting Guide</a>
-    - <a href="#removed-features-previously-deprecated-1">Removed Features \(previously deprecated\)</a>
-    - <a href="#bugfixes-8">Bugfixes</a>
-- <a href="#v0-64-0">v0\.64\.0</a>
+- <a href="#v0-65-0">v0\.65\.0</a>
     - <a href="#release-summary-17">Release Summary</a>
     - <a href="#minor-changes-11">Minor Changes</a>
+    - <a href="#breaking-changes--porting-guide-1">Breaking Changes / Porting Guide</a>
+    - <a href="#removed-features-previously-deprecated-1">Removed Features \(previously deprecated\)</a>
     - <a href="#bugfixes-9">Bugfixes</a>
-- <a href="#v0-63-1">v0\.63\.1</a>
+- <a href="#v0-64-0">v0\.64\.0</a>
     - <a href="#release-summary-18">Release Summary</a>
-    - <a href="#bugfixes-10">Bugfixes</a>
-- <a href="#v0-63-0">v0\.63\.0</a>
-    - <a href="#release-summary-19">Release Summary</a>
     - <a href="#minor-changes-12">Minor Changes</a>
-- <a href="#v0-62-0">v0\.62\.0</a>
+    - <a href="#bugfixes-10">Bugfixes</a>
+- <a href="#v0-63-1">v0\.63\.1</a>
+    - <a href="#release-summary-19">Release Summary</a>
+    - <a href="#bugfixes-11">Bugfixes</a>
+- <a href="#v0-63-0">v0\.63\.0</a>
     - <a href="#release-summary-20">Release Summary</a>
     - <a href="#minor-changes-13">Minor Changes</a>
+- <a href="#v0-62-0">v0\.62\.0</a>
+    - <a href="#release-summary-21">Release Summary</a>
+    - <a href="#minor-changes-14">Minor Changes</a>
     - <a href="#breaking-changes--porting-guide-2">Breaking Changes / Porting Guide</a>
 - <a href="#v0-61-1">v0\.61\.1</a>
-    - <a href="#release-summary-21">Release Summary</a>
-    - <a href="#bugfixes-11">Bugfixes</a>
-- <a href="#v0-61-0">v0\.61\.0</a>
     - <a href="#release-summary-22">Release Summary</a>
-    - <a href="#minor-changes-14">Minor Changes</a>
     - <a href="#bugfixes-12">Bugfixes</a>
-- <a href="#v0-60-0">v0\.60\.0</a>
+- <a href="#v0-61-0">v0\.61\.0</a>
     - <a href="#release-summary-23">Release Summary</a>
     - <a href="#minor-changes-15">Minor Changes</a>
     - <a href="#bugfixes-13">Bugfixes</a>
-- <a href="#v0-59-1">v0\.59\.1</a>
+- <a href="#v0-60-0">v0\.60\.0</a>
     - <a href="#release-summary-24">Release Summary</a>
-    - <a href="#bugfixes-14">Bugfixes</a>
-- <a href="#v0-59-0">v0\.59\.0</a>
-    - <a href="#release-summary-25">Release Summary</a>
     - <a href="#minor-changes-16">Minor Changes</a>
+    - <a href="#bugfixes-14">Bugfixes</a>
+- <a href="#v0-59-1">v0\.59\.1</a>
+    - <a href="#release-summary-25">Release Summary</a>
     - <a href="#bugfixes-15">Bugfixes</a>
-- <a href="#v0-58-0">v0\.58\.0</a>
+- <a href="#v0-59-0">v0\.59\.0</a>
     - <a href="#release-summary-26">Release Summary</a>
     - <a href="#minor-changes-17">Minor Changes</a>
     - <a href="#bugfixes-16">Bugfixes</a>
-- <a href="#v0-57-1">v0\.57\.1</a>
+- <a href="#v0-58-0">v0\.58\.0</a>
     - <a href="#release-summary-27">Release Summary</a>
-    - <a href="#bugfixes-17">Bugfixes</a>
-- <a href="#v0-57-0">v0\.57\.0</a>
-    - <a href="#release-summary-28">Release Summary</a>
     - <a href="#minor-changes-18">Minor Changes</a>
-    - <a href="#removed-features-previously-deprecated-2">Removed Features \(previously deprecated\)</a>
+    - <a href="#bugfixes-17">Bugfixes</a>
+- <a href="#v0-57-1">v0\.57\.1</a>
+    - <a href="#release-summary-28">Release Summary</a>
     - <a href="#bugfixes-18">Bugfixes</a>
-- <a href="#v0-56-1">v0\.56\.1</a>
+- <a href="#v0-57-0">v0\.57\.0</a>
     - <a href="#release-summary-29">Release Summary</a>
-    - <a href="#bugfixes-19">Bugfixes</a>
-- <a href="#v0-56-0">v0\.56\.0</a>
-    - <a href="#release-summary-30">Release Summary</a>
     - <a href="#minor-changes-19">Minor Changes</a>
+    - <a href="#removed-features-previously-deprecated-2">Removed Features \(previously deprecated\)</a>
+    - <a href="#bugfixes-19">Bugfixes</a>
+- <a href="#v0-56-1">v0\.56\.1</a>
+    - <a href="#release-summary-30">Release Summary</a>
+    - <a href="#bugfixes-20">Bugfixes</a>
+- <a href="#v0-56-0">v0\.56\.0</a>
+    - <a href="#release-summary-31">Release Summary</a>
+    - <a href="#minor-changes-20">Minor Changes</a>
     - <a href="#deprecated-features">Deprecated Features</a>
 - <a href="#v0-55-0">v0\.55\.0</a>
-    - <a href="#release-summary-31">Release Summary</a>
+    - <a href="#release-summary-32">Release Summary</a>
     - <a href="#major-changes">Major Changes</a>
-    - <a href="#minor-changes-20">Minor Changes</a>
+    - <a href="#minor-changes-21">Minor Changes</a>
     - <a href="#deprecated-features-1">Deprecated Features</a>
 - <a href="#v0-54-0">v0\.54\.0</a>
-    - <a href="#release-summary-32">Release Summary</a>
+    - <a href="#release-summary-33">Release Summary</a>
     - <a href="#breaking-changes--porting-guide-3">Breaking Changes / Porting Guide</a>
     - <a href="#removed-features-previously-deprecated-3">Removed Features \(previously deprecated\)</a>
-    - <a href="#bugfixes-20">Bugfixes</a>
-- <a href="#v0-53-0">v0\.53\.0</a>
-    - <a href="#release-summary-33">Release Summary</a>
-    - <a href="#minor-changes-21">Minor Changes</a>
     - <a href="#bugfixes-21">Bugfixes</a>
-- <a href="#v0-52-0">v0\.52\.0</a>
+- <a href="#v0-53-0">v0\.53\.0</a>
     - <a href="#release-summary-34">Release Summary</a>
     - <a href="#minor-changes-22">Minor Changes</a>
+    - <a href="#bugfixes-22">Bugfixes</a>
+- <a href="#v0-52-0">v0\.52\.0</a>
+    - <a href="#release-summary-35">Release Summary</a>
+    - <a href="#minor-changes-23">Minor Changes</a>
     - <a href="#breaking-changes--porting-guide-4">Breaking Changes / Porting Guide</a>
     - <a href="#removed-features-previously-deprecated-4">Removed Features \(previously deprecated\)</a>
 - <a href="#v0-51-2">v0\.51\.2</a>
-    - <a href="#release-summary-35">Release Summary</a>
-    - <a href="#bugfixes-22">Bugfixes</a>
-- <a href="#v0-51-1">v0\.51\.1</a>
     - <a href="#release-summary-36">Release Summary</a>
     - <a href="#bugfixes-23">Bugfixes</a>
-- <a href="#v0-51-0">v0\.51\.0</a>
+- <a href="#v0-51-1">v0\.51\.1</a>
     - <a href="#release-summary-37">Release Summary</a>
-    - <a href="#minor-changes-23">Minor Changes</a>
-- <a href="#v0-50-0">v0\.50\.0</a>
+    - <a href="#bugfixes-24">Bugfixes</a>
+- <a href="#v0-51-0">v0\.51\.0</a>
     - <a href="#release-summary-38">Release Summary</a>
     - <a href="#minor-changes-24">Minor Changes</a>
-    - <a href="#bugfixes-24">Bugfixes</a>
-- <a href="#v0-49-0">v0\.49\.0</a>
+- <a href="#v0-50-0">v0\.50\.0</a>
     - <a href="#release-summary-39">Release Summary</a>
     - <a href="#minor-changes-25">Minor Changes</a>
-    - <a href="#breaking-changes--porting-guide-5">Breaking Changes / Porting Guide</a>
     - <a href="#bugfixes-25">Bugfixes</a>
-- <a href="#v0-48-0">v0\.48\.0</a>
+- <a href="#v0-49-0">v0\.49\.0</a>
     - <a href="#release-summary-40">Release Summary</a>
     - <a href="#minor-changes-26">Minor Changes</a>
-    - <a href="#breaking-changes--porting-guide-6">Breaking Changes / Porting Guide</a>
+    - <a href="#breaking-changes--porting-guide-5">Breaking Changes / Porting Guide</a>
     - <a href="#bugfixes-26">Bugfixes</a>
-- <a href="#v0-47-0">v0\.47\.0</a>
+- <a href="#v0-48-0">v0\.48\.0</a>
     - <a href="#release-summary-41">Release Summary</a>
     - <a href="#minor-changes-27">Minor Changes</a>
-- <a href="#v0-46-0">v0\.46\.0</a>
+    - <a href="#breaking-changes--porting-guide-6">Breaking Changes / Porting Guide</a>
+    - <a href="#bugfixes-27">Bugfixes</a>
+- <a href="#v0-47-0">v0\.47\.0</a>
     - <a href="#release-summary-42">Release Summary</a>
     - <a href="#minor-changes-28">Minor Changes</a>
-    - <a href="#bugfixes-27">Bugfixes</a>
-- <a href="#v0-45-1">v0\.45\.1</a>
+- <a href="#v0-46-0">v0\.46\.0</a>
     - <a href="#release-summary-43">Release Summary</a>
-    - <a href="#bugfixes-28">Bugfixes</a>
-- <a href="#v0-45-0">v0\.45\.0</a>
-    - <a href="#release-summary-44">Release Summary</a>
     - <a href="#minor-changes-29">Minor Changes</a>
+    - <a href="#bugfixes-28">Bugfixes</a>
+- <a href="#v0-45-1">v0\.45\.1</a>
+    - <a href="#release-summary-44">Release Summary</a>
+    - <a href="#bugfixes-29">Bugfixes</a>
+- <a href="#v0-45-0">v0\.45\.0</a>
+    - <a href="#release-summary-45">Release Summary</a>
+    - <a href="#minor-changes-30">Minor Changes</a>
     - <a href="#breaking-changes--porting-guide-7">Breaking Changes / Porting Guide</a>
 - <a href="#v0-44-0">v0\.44\.0</a>
-    - <a href="#release-summary-45">Release Summary</a>
+    - <a href="#release-summary-46">Release Summary</a>
     - <a href="#major-changes-1">Major Changes</a>
     - <a href="#deprecated-features-2">Deprecated Features</a>
     - <a href="#known-issues">Known Issues</a>
 - <a href="#v0-43-0">v0\.43\.0</a>
-    - <a href="#release-summary-46">Release Summary</a>
-    - <a href="#minor-changes-30">Minor Changes</a>
-    - <a href="#bugfixes-29">Bugfixes</a>
-- <a href="#v0-42-1">v0\.42\.1</a>
     - <a href="#release-summary-47">Release Summary</a>
-    - <a href="#bugfixes-30">Bugfixes</a>
-- <a href="#v0-42-0">v0\.42\.0</a>
-    - <a href="#release-summary-48">Release Summary</a>
-    - <a href="#major-changes-2">Major Changes</a>
     - <a href="#minor-changes-31">Minor Changes</a>
+    - <a href="#bugfixes-30">Bugfixes</a>
+- <a href="#v0-42-1">v0\.42\.1</a>
+    - <a href="#release-summary-48">Release Summary</a>
     - <a href="#bugfixes-31">Bugfixes</a>
-- <a href="#v0-41-0">v0\.41\.0</a>
+- <a href="#v0-42-0">v0\.42\.0</a>
     - <a href="#release-summary-49">Release Summary</a>
+    - <a href="#major-changes-2">Major Changes</a>
     - <a href="#minor-changes-32">Minor Changes</a>
     - <a href="#bugfixes-32">Bugfixes</a>
-- <a href="#v0-40-2">v0\.40\.2</a>
+- <a href="#v0-41-0">v0\.41\.0</a>
     - <a href="#release-summary-50">Release Summary</a>
+    - <a href="#minor-changes-33">Minor Changes</a>
     - <a href="#bugfixes-33">Bugfixes</a>
-- <a href="#v0-40-1">v0\.40\.1</a>
+- <a href="#v0-40-2">v0\.40\.2</a>
     - <a href="#release-summary-51">Release Summary</a>
     - <a href="#bugfixes-34">Bugfixes</a>
-- <a href="#v0-40-0">v0\.40\.0</a>
+- <a href="#v0-40-1">v0\.40\.1</a>
     - <a href="#release-summary-52">Release Summary</a>
-    - <a href="#major-changes-3">Major Changes</a>
-    - <a href="#minor-changes-33">Minor Changes</a>
-    - <a href="#deprecated-features-3">Deprecated Features</a>
     - <a href="#bugfixes-35">Bugfixes</a>
-- <a href="#v0-39-2">v0\.39\.2</a>
+- <a href="#v0-40-0">v0\.40\.0</a>
     - <a href="#release-summary-53">Release Summary</a>
-- <a href="#v0-39-1">v0\.39\.1</a>
+    - <a href="#major-changes-3">Major Changes</a>
+    - <a href="#minor-changes-34">Minor Changes</a>
+    - <a href="#deprecated-features-3">Deprecated Features</a>
+    - <a href="#bugfixes-36">Bugfixes</a>
+- <a href="#v0-39-2">v0\.39\.2</a>
     - <a href="#release-summary-54">Release Summary</a>
-- <a href="#v0-39-0">v0\.39\.0</a>
+- <a href="#v0-39-1">v0\.39\.1</a>
     - <a href="#release-summary-55">Release Summary</a>
-- <a href="#v0-38-2">v0\.38\.2</a>
+- <a href="#v0-39-0">v0\.39\.0</a>
     - <a href="#release-summary-56">Release Summary</a>
-- <a href="#v0-38-1">v0\.38\.1</a>
+- <a href="#v0-38-2">v0\.38\.2</a>
     - <a href="#release-summary-57">Release Summary</a>
-- <a href="#v0-38-0">v0\.38\.0</a>
+- <a href="#v0-38-1">v0\.38\.1</a>
     - <a href="#release-summary-58">Release Summary</a>
+- <a href="#v0-38-0">v0\.38\.0</a>
+    - <a href="#release-summary-59">Release Summary</a>
 - <a href="#v0-37-0">v0\.37\.0</a>
 - <a href="#v0-36-0">v0\.36\.0</a>
 - <a href="#v0-35-0">v0\.35\.0</a>
@@ -249,17 +253,37 @@
 - <a href="#v0-3-0">v0\.3\.0</a>
 - <a href="#v0-2-0">v0\.2\.0</a>
 - <a href="#v0-1-0">v0\.1\.0</a>
-    - <a href="#release-summary-59">Release Summary</a>
+    - <a href="#release-summary-60">Release Summary</a>
 
-<a id="v0-74-0"></a>
-## v0\.74\.0
+<a id="v0-75-0"></a>
+## v0\.75\.0
 
 <a id="release-summary"></a>
 ### Release Summary
 
-Feature release for Ansible 12\.0\.0b4\.
+Feature and bugfix release\.
 
 <a id="minor-changes"></a>
+### Minor Changes
+
+* Add a check for Ansible 12\.0\.0rc1 and newer to ensure that collections\' <code>requires\_ansible</code> covers the included ansible\-core version \([https\://github\.com/ansible\-community/antsibull\-build/issues/674](https\://github\.com/ansible\-community/antsibull\-build/issues/674)\, [https\://github\.com/ansible\-community/antsibull\-build/pull/678](https\://github\.com/ansible\-community/antsibull\-build/pull/678)\)\.
+* Add version regression check\. It can be explicitly disabled if needed \([https\://github\.com/ansible\-community/antsibull\-build/pull/673](https\://github\.com/ansible\-community/antsibull\-build/pull/673)\)\.
+* build\-release role\, nested\-ansible\-tests playbook \-\- simplify nested tests to avoid extreme log output \([https\://github\.com/ansible\-community/antsibull\-build/pull/682](https\://github\.com/ansible\-community/antsibull\-build/pull/682)\)\.
+
+<a id="bugfixes"></a>
+### Bugfixes
+
+* build\-release role \- fix more broken conditionals by ensuring the <code>bool</code> filter is always used \([https\://github\.com/ansible\-community/antsibull\-build/pull/673](https\://github\.com/ansible\-community/antsibull\-build/pull/673)\)\.
+
+<a id="v0-74-0"></a>
+## v0\.74\.0
+
+<a id="release-summary-1"></a>
+### Release Summary
+
+Feature release for Ansible 12\.0\.0b4\.
+
+<a id="minor-changes-1"></a>
 ### Minor Changes
 
 * When preparing a new Ansible beta release\, also allow new release candidates of ansible\-core \([https\://github\.com/ansible\-community/antsibull\-build/pull/671](https\://github\.com/ansible\-community/antsibull\-build/pull/671)\)\.
@@ -267,12 +291,12 @@ Feature release for Ansible 12\.0\.0b4\.
 <a id="v0-73-1"></a>
 ## v0\.73\.1
 
-<a id="release-summary-1"></a>
+<a id="release-summary-2"></a>
 ### Release Summary
 
 Bugfix release for build\-release role and playbook
 
-<a id="bugfixes"></a>
+<a id="bugfixes-1"></a>
 ### Bugfixes
 
 * build\-release role \- also enable feature freeze by default for b10 and later beta releases\, and not only for b2 to b9 beta releases \([https\://github\.com/ansible\-community/antsibull\-build/pull/669](https\://github\.com/ansible\-community/antsibull\-build/pull/669)\)\.
@@ -281,12 +305,12 @@ Bugfix release for build\-release role and playbook
 <a id="v0-73-0"></a>
 ## v0\.73\.0
 
-<a id="release-summary-2"></a>
+<a id="release-summary-3"></a>
 ### Release Summary
 
 Feature release for Ansible 12 betas
 
-<a id="minor-changes-1"></a>
+<a id="minor-changes-2"></a>
 ### Minor Changes
 
 * Add <code>ignore\_feature\_freeze</code> option to <code>build\-release</code> role to allow disabling feature freeze \([https\://github\.com/ansible\-community/antsibull\-build/pull/667](https\://github\.com/ansible\-community/antsibull\-build/pull/667)\, [https\://forum\.ansible\.com/t/ansible\-12\-0\-0\-release\-schedule/44186](https\://forum\.ansible\.com/t/ansible\-12\-0\-0\-release\-schedule/44186)\)\.
@@ -294,17 +318,17 @@ Feature release for Ansible 12 betas
 <a id="v0-72-5"></a>
 ## v0\.72\.5
 
-<a id="release-summary-3"></a>
+<a id="release-summary-4"></a>
 ### Release Summary
 
 Bugfix release for Ansible 12\.
 
-<a id="minor-changes-2"></a>
+<a id="minor-changes-3"></a>
 ### Minor Changes
 
 * Antsibull\-build now depends on antsibull\-changelog \>\= 0\.34\.0 \([https\://github\.com/ansible\-community/antsibull\-build/pull/665](https\://github\.com/ansible\-community/antsibull\-build/pull/665)\)\.
 
-<a id="bugfixes-1"></a>
+<a id="bugfixes-2"></a>
 ### Bugfixes
 
 * Fix Ansible 12 porting guide by using consistent subsubsection heading underlines \([https\://github\.com/ansible\-community/antsibull\-build/pull/665](https\://github\.com/ansible\-community/antsibull\-build/pull/665)\)\.
@@ -312,12 +336,12 @@ Bugfix release for Ansible 12\.
 <a id="v0-72-4"></a>
 ## v0\.72\.4
 
-<a id="release-summary-4"></a>
+<a id="release-summary-5"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-2"></a>
+<a id="bugfixes-3"></a>
 ### Bugfixes
 
 * Ensure that there is a newline between the preamble and ansible\-core\'s porting guide content in the Ansible porting guide \([https\://github\.com/ansible\-community/antsibull\-build/issues/662](https\://github\.com/ansible\-community/antsibull\-build/issues/662)\, [https\://github\.com/ansible\-community/antsibull\-build/pull/663](https\://github\.com/ansible\-community/antsibull\-build/pull/663)\)\.
@@ -325,12 +349,12 @@ Bugfix release\.
 <a id="v0-72-3"></a>
 ## v0\.72\.3
 
-<a id="release-summary-5"></a>
+<a id="release-summary-6"></a>
 ### Release Summary
 
 Third hotfix for today\.
 
-<a id="bugfixes-3"></a>
+<a id="bugfixes-4"></a>
 ### Bugfixes
 
 * Fix URL for ansible\-core 2\.19\.0b1\'s porting guide \([https\://github\.com/ansible\-community/antsibull\-build/pull/661](https\://github\.com/ansible\-community/antsibull\-build/pull/661)\)\.
@@ -338,7 +362,7 @@ Third hotfix for today\.
 <a id="v0-72-2"></a>
 ## v0\.72\.2
 
-<a id="release-summary-6"></a>
+<a id="release-summary-7"></a>
 ### Release Summary
 
 Another hotfix for Ansible 12\.0\.0a1\.
@@ -346,12 +370,12 @@ Another hotfix for Ansible 12\.0\.0a1\.
 <a id="v0-72-1"></a>
 ## v0\.72\.1
 
-<a id="release-summary-7"></a>
+<a id="release-summary-8"></a>
 ### Release Summary
 
 Hotfix release for Ansible 12\.0\.0a1\.
 
-<a id="minor-changes-3"></a>
+<a id="minor-changes-4"></a>
 ### Minor Changes
 
 * Use devel porting guide for 2\.19\.0a1 so [https\://github\.com/ansible/ansible\-documentation/pull/2429](https\://github\.com/ansible/ansible\-documentation/pull/2429) gets included \([https\://github\.com/ansible\-community/antsibull\-build/pull/660](https\://github\.com/ansible\-community/antsibull\-build/pull/660)\)\.
@@ -359,12 +383,12 @@ Hotfix release for Ansible 12\.0\.0a1\.
 <a id="v0-72-0"></a>
 ## v0\.72\.0
 
-<a id="release-summary-8"></a>
+<a id="release-summary-9"></a>
 ### Release Summary
 
 Feature release preparing the first Ansible 12 beta\.
 
-<a id="minor-changes-4"></a>
+<a id="minor-changes-5"></a>
 ### Minor Changes
 
 * internal \- switch from <code>pkgutil</code> to <code>importlib\.resources</code> for loading package data files \([https\://github\.com/ansible\-community/antsibull\-build/pull/655](https\://github\.com/ansible\-community/antsibull\-build/pull/655)\)\.
@@ -377,25 +401,6 @@ Feature release preparing the first Ansible 12 beta\.
 <a id="v0-71-0"></a>
 ## v0\.71\.0
 
-<a id="release-summary-9"></a>
-### Release Summary
-
-Feature release\.
-
-<a id="minor-changes-5"></a>
-### Minor Changes
-
-* Fix outdated link in Ansible community package\'s README \([https\://github\.com/ansible\-community/antsibull\-build/pull/649](https\://github\.com/ansible\-community/antsibull\-build/pull/649)\)\.
-* Remove more backwards compatibility code for pydantic 1\.x \([https\://github\.com/ansible\-community/antsibull\-build/pull/648](https\://github\.com/ansible\-community/antsibull\-build/pull/648)\)\.
-
-<a id="bugfixes-4"></a>
-### Bugfixes
-
-* Fix PyPI URL info data structure \([https\://github\.com/ansible\-community/antsibull\-build/pull/648](https\://github\.com/ansible\-community/antsibull\-build/pull/648)\)\.
-
-<a id="v0-70-0"></a>
-## v0\.70\.0
-
 <a id="release-summary-10"></a>
 ### Release Summary
 
@@ -404,24 +409,43 @@ Feature release\.
 <a id="minor-changes-6"></a>
 ### Minor Changes
 
+* Fix outdated link in Ansible community package\'s README \([https\://github\.com/ansible\-community/antsibull\-build/pull/649](https\://github\.com/ansible\-community/antsibull\-build/pull/649)\)\.
+* Remove more backwards compatibility code for pydantic 1\.x \([https\://github\.com/ansible\-community/antsibull\-build/pull/648](https\://github\.com/ansible\-community/antsibull\-build/pull/648)\)\.
+
+<a id="bugfixes-5"></a>
+### Bugfixes
+
+* Fix PyPI URL info data structure \([https\://github\.com/ansible\-community/antsibull\-build/pull/648](https\://github\.com/ansible\-community/antsibull\-build/pull/648)\)\.
+
+<a id="v0-70-0"></a>
+## v0\.70\.0
+
+<a id="release-summary-11"></a>
+### Release Summary
+
+Feature release\.
+
+<a id="minor-changes-7"></a>
+### Minor Changes
+
 * Use tagged ansible\-core / ansible\-documentation releases to retrieve core porting guide \([https\://github\.com/ansible\-community/antsibull/pull/646](https\://github\.com/ansible\-community/antsibull/pull/646)\)\.
 * When announcing collection removals and upcoming removals in the changelog\, add a note that users can still manually install removed collections \([https\://github\.com/ansible\-community/antsibull\-build/pull/647](https\://github\.com/ansible\-community/antsibull\-build/pull/647)\)\.
 
 <a id="v0-69-0"></a>
 ## v0\.69\.0
 
-<a id="release-summary-11"></a>
+<a id="release-summary-12"></a>
 ### Release Summary
 
 Feature and bugfix release\.
 
-<a id="minor-changes-7"></a>
+<a id="minor-changes-8"></a>
 ### Minor Changes
 
 * Allow to update collection deprecations and removals \([https\://github\.com/ansible\-community/antsibull\-build/pull/640](https\://github\.com/ansible\-community/antsibull\-build/pull/640)\)\.
 * antsibull\-build now depends on antsibull\-core \>\= 3\.4\.0 \([https\://github\.com/ansible\-community/antsibull\-build/pull/640](https\://github\.com/ansible\-community/antsibull\-build/pull/640)\)\.
 
-<a id="bugfixes-5"></a>
+<a id="bugfixes-6"></a>
 ### Bugfixes
 
 * Fix link to changelogs for collections without <code>changelog\.yaml</code> \([https\://github\.com/ansible\-community/antsibull\-build/pull/642](https\://github\.com/ansible\-community/antsibull\-build/pull/642)\)\.
@@ -429,12 +453,12 @@ Feature and bugfix release\.
 <a id="v0-68-1"></a>
 ## v0\.68\.1
 
-<a id="release-summary-12"></a>
+<a id="release-summary-13"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-6"></a>
+<a id="bugfixes-7"></a>
 ### Bugfixes
 
 * Fix <code>new\-ansible</code> subcommand so it will not wipe the newly added extra data from <code>changelog\.yaml</code> files \([https\://github\.com/ansible\-community/antsibull\-build/pull/641](https\://github\.com/ansible\-community/antsibull\-build/pull/641)\)\.
@@ -442,12 +466,12 @@ Bugfix release\.
 <a id="v0-68-0"></a>
 ## v0\.68\.0
 
-<a id="release-summary-13"></a>
+<a id="release-summary-14"></a>
 ### Release Summary
 
 Feature release\.
 
-<a id="minor-changes-8"></a>
+<a id="minor-changes-9"></a>
 ### Minor Changes
 
 * Add a subcommand <code>reformat\-build\-data</code> which reformats the changelog\.yaml file \([https\://github\.com/ansible\-community/antsibull\-build/pull/638](https\://github\.com/ansible\-community/antsibull\-build/pull/638)\)\.
@@ -459,7 +483,7 @@ Feature release\.
 * Now depends on antsibull\-changelog \>\= 0\.31\.0 \([https\://github\.com/ansible\-community/antsibull\-build/pull/638](https\://github\.com/ansible\-community/antsibull\-build/pull/638)\)\.
 * Use Proxy configuration settings from the environment\. Check out the [aiohttp documentation on Proxy support](https\://docs\.aiohttp\.org/en/stable/client\_advanced\.html\#proxy\-support) for information on which environment variables are supported \([https\://github\.com/ansible\-community/antsibull\-build/pull/631](https\://github\.com/ansible\-community/antsibull\-build/pull/631)\)\.
 
-<a id="bugfixes-7"></a>
+<a id="bugfixes-8"></a>
 ### Bugfixes
 
 * Adjust the rebuild script included in Ansible releases to install antsibull\-build instead of antsibull \([https\://github\.com/ansible\-community/antsibull\-build/pull/636](https\://github\.com/ansible\-community/antsibull\-build/pull/636)\)\.
@@ -467,7 +491,7 @@ Feature release\.
 <a id="v0-67-0"></a>
 ## v0\.67\.0
 
-<a id="release-summary-14"></a>
+<a id="release-summary-15"></a>
 ### Release Summary
 
 Maintenance release due to rename of the repository and project from antsibull to antsibull\-build\.
@@ -480,12 +504,12 @@ Maintenance release due to rename of the repository and project from antsibull t
 <a id="v0-66-0"></a>
 ## v0\.66\.0
 
-<a id="release-summary-15"></a>
+<a id="release-summary-16"></a>
 ### Release Summary
 
 Feature release for the upcoming Ansible releases\.
 
-<a id="minor-changes-9"></a>
+<a id="minor-changes-10"></a>
 ### Minor Changes
 
 * Add <code>\-\-end\-of\-life</code> flag to the <code>announcements</code> subcommand to announce the last release of a major release train \([https\://github\.com/ansible\-community/antsibull/pull/626](https\://github\.com/ansible\-community/antsibull/pull/626)\)\.
@@ -496,12 +520,12 @@ Feature release for the upcoming Ansible releases\.
 <a id="v0-65-0"></a>
 ## v0\.65\.0
 
-<a id="release-summary-16"></a>
+<a id="release-summary-17"></a>
 ### Release Summary
 
 Bugfix and feature release with breaking changes
 
-<a id="minor-changes-10"></a>
+<a id="minor-changes-11"></a>
 ### Minor Changes
 
 * Add dependency on antsibull\-fileutils\. Some functionality from antsibull\-core is moving there\, so we can use it from there directly \([https\://github\.com/ansible\-community/antsibull/pull/619](https\://github\.com/ansible\-community/antsibull/pull/619)\)\.
@@ -518,7 +542,7 @@ Bugfix and feature release with breaking changes
 
 * The <code>announcements \-\-send</code> command no longer attempts to send mails to the mailing lists\, which have been sunset \([https\://github\.com/ansible\-community/antsibull/pull/613](https\://github\.com/ansible\-community/antsibull/pull/613)\)\.
 
-<a id="bugfixes-8"></a>
+<a id="bugfixes-9"></a>
 ### Bugfixes
 
 * Add explicit dependency on PyYAML\, since we directly use it \([https\://github\.com/ansible\-community/antsibull/pull/619](https\://github\.com/ansible\-community/antsibull/pull/619)\)\.
@@ -527,17 +551,17 @@ Bugfix and feature release with breaking changes
 <a id="v0-64-0"></a>
 ## v0\.64\.0
 
-<a id="release-summary-17"></a>
+<a id="release-summary-18"></a>
 ### Release Summary
 
 Bugfix and feature release\.
 
-<a id="minor-changes-11"></a>
+<a id="minor-changes-12"></a>
 ### Minor Changes
 
 * If you are using [argcomplete](https\://pypi\.org/project/argcomplete/)\, you can now tab\-complete <code>antsibull\-build</code> command lines\. See [Activating global completion](https\://pypi\.org/project/argcomplete/\#activating\-global\-completion) in the argcomplete README for how to enable tab completion globally\. This will also tab\-complete Ansible commands such as <code>ansible\-playbook</code> and <code>ansible\-test</code> \([https\://github\.com/ansible\-community/antsibull/pull/611](https\://github\.com/ansible\-community/antsibull/pull/611)\)\.
 
-<a id="bugfixes-9"></a>
+<a id="bugfixes-10"></a>
 ### Bugfixes
 
 * Fix bug when handling <code>antsibull\_build\_reset</code> was passed in as a string from CLI \([https\://github\.com/ansible\-community/antsibull/pull/602](https\://github\.com/ansible\-community/antsibull/pull/602)\)\.
@@ -545,12 +569,12 @@ Bugfix and feature release\.
 <a id="v0-63-1"></a>
 ## v0\.63\.1
 
-<a id="release-summary-18"></a>
+<a id="release-summary-19"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-10"></a>
+<a id="bugfixes-11"></a>
 ### Bugfixes
 
 * Fix bug in <code>\-\-preserve\-deps</code> option handling \([https\://github\.com/ansible\-community/antsibull/pull/602](https\://github\.com/ansible\-community/antsibull/pull/602)\)\.
@@ -558,12 +582,12 @@ Bugfix release\.
 <a id="v0-63-0"></a>
 ## v0\.63\.0
 
-<a id="release-summary-19"></a>
+<a id="release-summary-20"></a>
 ### Release Summary
 
 Feature release for improving the automatic release workflow\.
 
-<a id="minor-changes-12"></a>
+<a id="minor-changes-13"></a>
 ### Minor Changes
 
 * The release role now has a <code>antsibull\_build\_reset</code> option\, which defaults to the value of <code>antsibull\_data\_reset</code>\, that allows to control whether <code>\.build</code> files are reset during alpha and beta\-1 releases \([https\://github\.com/ansible\-community/antsibull/pull/601](https\://github\.com/ansible\-community/antsibull/pull/601)\)\.
@@ -571,12 +595,12 @@ Feature release for improving the automatic release workflow\.
 <a id="v0-62-0"></a>
 ## v0\.62\.0
 
-<a id="release-summary-20"></a>
+<a id="release-summary-21"></a>
 ### Release Summary
 
 Feature release for improving the automatic release workflow\.
 
-<a id="minor-changes-13"></a>
+<a id="minor-changes-14"></a>
 ### Minor Changes
 
 * Add option <code>\-\-preserve\-deps</code> to the <code>prepare</code> subcommand that allows to preserve the dependencies if a <code>\.deps</code> file for that version already exists\. The versions from that <code>\.deps</code> file are validated against the build requirements and constraints\, and the remainder of the release preparation process remains unchanged\. The release role allows to pass this flag when <code>antsibull\_preserve\_deps\=true</code> \([https\://github\.com/ansible\-community/antsibull/pull/599](https\://github\.com/ansible\-community/antsibull/pull/599)\)\.
@@ -592,12 +616,12 @@ Feature release for improving the automatic release workflow\.
 <a id="v0-61-1"></a>
 ## v0\.61\.1
 
-<a id="release-summary-21"></a>
+<a id="release-summary-22"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-11"></a>
+<a id="bugfixes-12"></a>
 ### Bugfixes
 
 * The PyPI API model used during the release announcement generation has been updated to accept <code>null</code> for <code>keywords</code>\, <code>maintainer</code>\, and <code>maintainer\_email</code> \([https\://github\.com/ansible\-community/antsibull/pull/594](https\://github\.com/ansible\-community/antsibull/pull/594)\)\.
@@ -605,17 +629,17 @@ Bugfix release\.
 <a id="v0-61-0"></a>
 ## v0\.61\.0
 
-<a id="release-summary-22"></a>
+<a id="release-summary-23"></a>
 ### Release Summary
 
 Maintenance and bugfix release\.
 
-<a id="minor-changes-14"></a>
+<a id="minor-changes-15"></a>
 ### Minor Changes
 
 * Add support for the antsibull\-core v3 \([https\://github\.com/ansible\-community/antsibull/pull/593](https\://github\.com/ansible\-community/antsibull/pull/593)\)\.
 
-<a id="bugfixes-12"></a>
+<a id="bugfixes-13"></a>
 ### Bugfixes
 
 * announcements \- add missing newline before heading in email template \([https\://github\.com/ansible\-community/antsibull/pull/589](https\://github\.com/ansible\-community/antsibull/pull/589)\)\.
@@ -623,12 +647,12 @@ Maintenance and bugfix release\.
 <a id="v0-60-0"></a>
 ## v0\.60\.0
 
-<a id="release-summary-23"></a>
+<a id="release-summary-24"></a>
 ### Release Summary
 
 Bugfix and feature release
 
-<a id="minor-changes-15"></a>
+<a id="minor-changes-16"></a>
 ### Minor Changes
 
 * Add a <code>sanity\-tests</code> subcommand to run sanity tests accross the collection tree created by <code>verify\-upstreams</code> and display the results \([https\://github\.com/ansible\-community/antsibull/pull/556](https\://github\.com/ansible\-community/antsibull/pull/556)\)\.
@@ -643,7 +667,7 @@ Bugfix and feature release
 * The dependency on antsibull\-changelog has been bumped to 0\.24\.0 or later \([https\://github\.com/ansible\-community/antsibull/pull/576](https\://github\.com/ansible\-community/antsibull/pull/576)\)\.
 * <code>ansible</code> package README \- add a link to the <code>ansible\-build\-data</code> issue tracker \([https\://github\.com/ansible\-community/antsibull/pull/554](https\://github\.com/ansible\-community/antsibull/pull/554)\)\.
 
-<a id="bugfixes-13"></a>
+<a id="bugfixes-14"></a>
 ### Bugfixes
 
 * Use certain fields from library context instead of app context that are deprecated in the app context and are removed from antsibull\-core 3\.0\.0 \([https\://github\.com/ansible\-community/antsibull/pull/569](https\://github\.com/ansible\-community/antsibull/pull/569)\)\.
@@ -651,12 +675,12 @@ Bugfix and feature release
 <a id="v0-59-1"></a>
 ## v0\.59\.1
 
-<a id="release-summary-24"></a>
+<a id="release-summary-25"></a>
 ### Release Summary
 
 Hottfix for the ansible 9\.0\.1 release to fix setup\.cfg metadata
 
-<a id="bugfixes-14"></a>
+<a id="bugfixes-15"></a>
 ### Bugfixes
 
 * Use the correct directive in <code>setup\.cfg</code> for Ansible 9\+ for requiring a Python version\, i\.e\. use <code>python\_requires</code> instead of <code>requires\_python</code> \([https\://github\.com/ansible\-community/antsibull/pull/559](https\://github\.com/ansible\-community/antsibull/pull/559)\)\.
@@ -664,12 +688,12 @@ Hottfix for the ansible 9\.0\.1 release to fix setup\.cfg metadata
 <a id="v0-59-0"></a>
 ## v0\.59\.0
 
-<a id="release-summary-25"></a>
+<a id="release-summary-26"></a>
 ### Release Summary
 
 Feature release for the upcoming Ansible 9\.0\.0rc1 release\.
 
-<a id="minor-changes-16"></a>
+<a id="minor-changes-17"></a>
 ### Minor Changes
 
 * <code>ansible</code> python metadata \- remove links specific to <code>ansible\-core</code> and add links to the Ansible forum and the <code>ansible\-build\-data</code> repository \([https\://github\.com/ansible\-community/antsibull/pull/558](https\://github\.com/ansible\-community/antsibull/pull/558)\)\.
@@ -677,7 +701,7 @@ Feature release for the upcoming Ansible 9\.0\.0rc1 release\.
 * build\-release role \- add a test to ensure that Python files in the ansible package successfully compile \([https\://github\.com/ansible\-community/antsibull/pull/552](https\://github\.com/ansible\-community/antsibull/pull/552)\)\.
 * build\-release role \- directly install the wheel when running tests \([https\://github\.com/ansible\-community/antsibull/pull/553](https\://github\.com/ansible\-community/antsibull/pull/553)\)\.
 
-<a id="bugfixes-15"></a>
+<a id="bugfixes-16"></a>
 ### Bugfixes
 
 * Fix regression in <code>validate\-tags</code> subcommand argument validation that caused a traceback \([https\://github\.com/ansible\-community/antsibull/pull/51](https\://github\.com/ansible\-community/antsibull/pull/51)\)\.
@@ -685,17 +709,17 @@ Feature release for the upcoming Ansible 9\.0\.0rc1 release\.
 <a id="v0-58-0"></a>
 ## v0\.58\.0
 
-<a id="release-summary-26"></a>
+<a id="release-summary-27"></a>
 ### Release Summary
 
 Feature release for the upcoming Ansible 9\.0\.0a1 release\.
 
-<a id="minor-changes-17"></a>
+<a id="minor-changes-18"></a>
 ### Minor Changes
 
 * Support a constraints file that allows to fix dependencies for the <code>new\-ansible</code> and <code>prepare</code> subcommands \([https\://github\.com/ansible\-community/antsibull/pull/546](https\://github\.com/ansible\-community/antsibull/pull/546)\)\.
 
-<a id="bugfixes-16"></a>
+<a id="bugfixes-17"></a>
 ### Bugfixes
 
 * Fix URL to <code>ansible\-core</code> on PyPI in the <code>ansible</code> README \([https\://github\.com/ansible\-collections/overview/issues/228](https\://github\.com/ansible\-collections/overview/issues/228)\, [https\://github\.com/ansible\-community/antsibull/pull/541](https\://github\.com/ansible\-community/antsibull/pull/541)\)\.
@@ -703,12 +727,12 @@ Feature release for the upcoming Ansible 9\.0\.0a1 release\.
 <a id="v0-57-1"></a>
 ## v0\.57\.1
 
-<a id="release-summary-27"></a>
+<a id="release-summary-28"></a>
 ### Release Summary
 
 This bugfix release fixes the retrieval of ansible\-core Porting Guides\.
 
-<a id="bugfixes-17"></a>
+<a id="bugfixes-18"></a>
 ### Bugfixes
 
 * Retrieve the ansible\-core Porting Guide from the ansible\-documentation repo\. These files are being removed from the ansible\-core repo \([https\://github\.com/ansible\-community/antsibull/pull/540](https\://github\.com/ansible\-community/antsibull/pull/540)\)\.
@@ -716,12 +740,12 @@ This bugfix release fixes the retrieval of ansible\-core Porting Guides\.
 <a id="v0-57-0"></a>
 ## v0\.57\.0
 
-<a id="release-summary-28"></a>
+<a id="release-summary-29"></a>
 ### Release Summary
 
 This release adds a couple new features and drops support for older ansible versions\.
 
-<a id="minor-changes-18"></a>
+<a id="minor-changes-19"></a>
 ### Minor Changes
 
 * Antsibull now no longer depends directly on <code>sh</code> \([https\://github\.com/ansible\-community/antsibull/pull/514](https\://github\.com/ansible\-community/antsibull/pull/514)\)\.
@@ -737,7 +761,7 @@ This release adds a couple new features and drops support for older ansible vers
 * Remove code to build ansible versions \< 6\.0\.0 from the <code>setup\.py</code> template and elsewhere in the codebase\. <code>antsibull\-build</code> will error out if a user attempts to build an unsupported version \([https\://github\.com/ansible\-community/antsibull/pull/477](https\://github\.com/ansible\-community/antsibull/pull/477)\, [https\://github\.com/ansible\-community/antsibull/pull/524](https\://github\.com/ansible\-community/antsibull/pull/524)\)\.
 * Removed the deprecated <code>multiple</code> and <code>collection</code> subcommands \([https\://github\.com/ansible\-community/antsibull/issues/522](https\://github\.com/ansible\-community/antsibull/issues/522)\, [https\://github\.com/ansible\-community/antsibull/pull/525](https\://github\.com/ansible\-community/antsibull/pull/525)\)\.
 
-<a id="bugfixes-18"></a>
+<a id="bugfixes-19"></a>
 ### Bugfixes
 
 * Properly handle non\-standard version ranges or version pins for feature freeze \([https\://github\.com/ansible\-community/antsibull/issues/532](https\://github\.com/ansible\-community/antsibull/issues/532)\, [https\://github\.com/ansible\-community/antsibull/pull/533](https\://github\.com/ansible\-community/antsibull/pull/533)\)\.
@@ -745,12 +769,12 @@ This release adds a couple new features and drops support for older ansible vers
 <a id="v0-56-1"></a>
 ## v0\.56\.1
 
-<a id="release-summary-29"></a>
+<a id="release-summary-30"></a>
 ### Release Summary
 
 Hotfix release to fix compatibility with older setuptools versions
 
-<a id="bugfixes-19"></a>
+<a id="bugfixes-20"></a>
 ### Bugfixes
 
 * For <code>setup\.py</code> generated for Ansible 8\+\, do not use recursive globs \(<code>\*\*</code>\) as these are only supported since setuptools 62\.3\.0 \([https\://github\.com/ansible\-community/antsibull/pull/520](https\://github\.com/ansible\-community/antsibull/pull/520)\)\.
@@ -758,12 +782,12 @@ Hotfix release to fix compatibility with older setuptools versions
 <a id="v0-56-0"></a>
 ## v0\.56\.0
 
-<a id="release-summary-30"></a>
+<a id="release-summary-31"></a>
 ### Release Summary
 
 Maintenance release\.
 
-<a id="minor-changes-19"></a>
+<a id="minor-changes-20"></a>
 ### Minor Changes
 
 * Remove now broken self\-test from release role \([https\://github\.com/ansible\-community/antsibull/pull/512](https\://github\.com/ansible\-community/antsibull/pull/512)\)\.
@@ -777,7 +801,7 @@ Maintenance release\.
 <a id="v0-55-0"></a>
 ## v0\.55\.0
 
-<a id="release-summary-31"></a>
+<a id="release-summary-32"></a>
 ### Release Summary
 
 Release with new features\, other improvements\, a new build system\, and a deprecation
@@ -787,7 +811,7 @@ Release with new features\, other improvements\, a new build system\, and a depr
 
 * Change pyproject build backend from <code>poetry\-core</code> to <code>hatchling</code>\. <code>pip install antsibull</code> works exactly the same as before\, but some users may be affected depending on how they build/install the project \([https\://github\.com/ansible\-community/antsibull/pull/490](https\://github\.com/ansible\-community/antsibull/pull/490)\)\.
 
-<a id="minor-changes-20"></a>
+<a id="minor-changes-21"></a>
 ### Minor Changes
 
 * Add a <code>\-I</code> / <code>\-\-ignore</code> and a <code>\-\-ignores\-file</code> flag to the <code>antsibull\-build validate\-tags</code> and <code>antsibull\-build validate\-tags\-file</code> subcommands to ignore errors for certain collections \([https\://github\.com/ansible\-community/antsibull/pull/491](https\://github\.com/ansible\-community/antsibull/pull/491)\)\.
@@ -802,7 +826,7 @@ Release with new features\, other improvements\, a new build system\, and a depr
 <a id="v0-54-0"></a>
 ## v0\.54\.0
 
-<a id="release-summary-32"></a>
+<a id="release-summary-33"></a>
 ### Release Summary
 
 New release with features\, bugfixes\, and breaking changes\.
@@ -817,7 +841,7 @@ New release with features\, bugfixes\, and breaking changes\.
 
 * Removed the <code>antsibull\-lint</code> command line utility\. It had no functionality anymore for some time now \([https\://github\.com/ansible\-community/antsibull/pull/466](https\://github\.com/ansible\-community/antsibull/pull/466)\)\.
 
-<a id="bugfixes-20"></a>
+<a id="bugfixes-21"></a>
 ### Bugfixes
 
 * Explicitly declare the <code>sh</code> dependency and limit it to before 2\.0\.0\. Also explicitly declare the dependencies on <code>packaging</code>\, <code>semantic\_version</code>\, <code>aiofiles</code>\, <code>aiohttp</code>\, and <code>twiggy</code> \([https\://github\.com/ansible\-community/antsibull/pull/487](https\://github\.com/ansible\-community/antsibull/pull/487)\)\.
@@ -826,12 +850,12 @@ New release with features\, bugfixes\, and breaking changes\.
 <a id="v0-53-0"></a>
 ## v0\.53\.0
 
-<a id="release-summary-33"></a>
+<a id="release-summary-34"></a>
 ### Release Summary
 
 Feature and bugfix release\.
 
-<a id="minor-changes-21"></a>
+<a id="minor-changes-22"></a>
 ### Minor Changes
 
 * Add <code>\-\-tags\-file</code> option to the <code>single</code>\, <code>rebuild\-single</code>\, and <code>prepare</code> subcommands\. This allows including a collection git tags data file in ansible\-build\-data and the ansible sdist \([https\://github\.com/ansible\-community/antsibull/pull/476/](https\://github\.com/ansible\-community/antsibull/pull/476/)\)\.
@@ -839,7 +863,7 @@ Feature and bugfix release\.
 * Bump minimum <code>antsibull\-core</code> requirement to 1\.5\.0\. It contains changes that are needed for the new <code>\-\-tags\-file</code> option \([https\://github\.com/ansible\-community/antsibull/pull/476/](https\://github\.com/ansible\-community/antsibull/pull/476/)\)\.
 * There have been internal refactorings to simplify typing \([https\://github\.com/ansible\-community/antsibull/pull/469](https\://github\.com/ansible\-community/antsibull/pull/469)\)\.
 
-<a id="bugfixes-21"></a>
+<a id="bugfixes-22"></a>
 ### Bugfixes
 
 * Correct Python version classifiers in the ansible <code>setup\.py</code> template\. Limit the Python 3\.8 classifer to ansible 5 and 6 and add the Python 3\.11 classifier to ansible \>\= 7 \([https\://github\.com/ansible\-community/antsibull/pull/479](https\://github\.com/ansible\-community/antsibull/pull/479)\)\.
@@ -848,12 +872,12 @@ Feature and bugfix release\.
 <a id="v0-52-0"></a>
 ## v0\.52\.0
 
-<a id="release-summary-34"></a>
+<a id="release-summary-35"></a>
 ### Release Summary
 
 Major feature and bugfix release with breaking changes\.
 
-<a id="minor-changes-22"></a>
+<a id="minor-changes-23"></a>
 ### Minor Changes
 
 * Add a <code>validate\-tags</code> subcommand to ensure that collection versions in an Ansible release are tagged in collections\' respective git repositories \([https\://github\.com/ansible\-community/antsibull/pull/456](https\://github\.com/ansible\-community/antsibull/pull/456)\)\.
@@ -877,12 +901,12 @@ Major feature and bugfix release with breaking changes\.
 <a id="v0-51-2"></a>
 ## v0\.51\.2
 
-<a id="release-summary-35"></a>
+<a id="release-summary-36"></a>
 ### Release Summary
 
 Bugfix release\. The next minor release will no longer support Python 3\.6 and 3\.7\.
 
-<a id="bugfixes-22"></a>
+<a id="bugfixes-23"></a>
 ### Bugfixes
 
 * Add <code>\-\-collection\-dir</code> to the <code>antsibull\-build</code> <code>collection</code> and <code>build\-collection</code> subcommands\. Previously\, the <code>\-\-collection\-dir</code> option was added to the wrong CLI argument parser and not exposed to users\. \([https\://github\.com/ansible\-community/antsibull/pull/461](https\://github\.com/ansible\-community/antsibull/pull/461)\)\.
@@ -891,12 +915,12 @@ Bugfix release\. The next minor release will no longer support Python 3\.6 and 3
 <a id="v0-51-1"></a>
 ## v0\.51\.1
 
-<a id="release-summary-36"></a>
+<a id="release-summary-37"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-23"></a>
+<a id="bugfixes-24"></a>
 ### Bugfixes
 
 * Fix handling of Python dependency data when building changelogs and collections \([https\://github\.com/ansible\-community/antsibull/pull/452](https\://github\.com/ansible\-community/antsibull/pull/452)\)\.
@@ -904,12 +928,12 @@ Bugfix release\.
 <a id="v0-51-0"></a>
 ## v0\.51\.0
 
-<a id="release-summary-37"></a>
+<a id="release-summary-38"></a>
 ### Release Summary
 
 Feature release for Ansible 7\.
 
-<a id="minor-changes-23"></a>
+<a id="minor-changes-24"></a>
 ### Minor Changes
 
 * Now requires antsibull\-core \>\= 1\.3\.0 \([https\://github\.com/ansible\-community/antsibull/pull/449](https\://github\.com/ansible\-community/antsibull/pull/449)\)\.
@@ -918,12 +942,12 @@ Feature release for Ansible 7\.
 <a id="v0-50-0"></a>
 ## v0\.50\.0
 
-<a id="release-summary-38"></a>
+<a id="release-summary-39"></a>
 ### Release Summary
 
 Feature and bugfix release\.
 
-<a id="minor-changes-24"></a>
+<a id="minor-changes-25"></a>
 ### Minor Changes
 
 * Added galaxy <code>requirements\.yml</code> file as <code>build\-release</code> role depends on <code>community\.general</code> collection \([https\://github\.com/ansible\-community/antsibull/pull/432](https\://github\.com/ansible\-community/antsibull/pull/432)\)
@@ -931,7 +955,7 @@ Feature and bugfix release\.
 * The <code>build\-release</code> role fails to execute when <code>\./build/antsibull\-build\-data</code> doesn\'t exist and when the <code>antsibull\_data\_reset</code> variable is set to <code>false</code> \([https\://github\.com/ansible\-community/antsibull/pull/442](https\://github\.com/ansible\-community/antsibull/pull/442)\)\.
 * When building Ansible 6\.3\.0 or newer\, fail on collection dependency validations \([https\://github\.com/ansible\-community/community\-topics/issues/94](https\://github\.com/ansible\-community/community\-topics/issues/94)\, [https\://github\.com/ansible\-community/antsibull/pull/440](https\://github\.com/ansible\-community/antsibull/pull/440)\)\.
 
-<a id="bugfixes-24"></a>
+<a id="bugfixes-25"></a>
 ### Bugfixes
 
 * Adjust release role to work around a bug in the current beta version of ansible\-core 2\.14 \([https\://github\.com/ansible\-community/antsibull/pull/447](https\://github\.com/ansible\-community/antsibull/pull/447)\)\.
@@ -940,12 +964,12 @@ Feature and bugfix release\.
 <a id="v0-49-0"></a>
 ## v0\.49\.0
 
-<a id="release-summary-39"></a>
+<a id="release-summary-40"></a>
 ### Release Summary
 
 Bugfix and feature release containing breaking changes in the release role\.
 
-<a id="minor-changes-25"></a>
+<a id="minor-changes-26"></a>
 ### Minor Changes
 
 * Allow to copy the files used to create the source distribution and wheels to a new directory during <code>antsibull\-build rebuild\-single</code> \([https\://github\.com/ansible\-community/antsibull/pull/435](https\://github\.com/ansible\-community/antsibull/pull/435)\)\.
@@ -958,7 +982,7 @@ Bugfix and feature release containing breaking changes in the release role\.
 
 * The <code>build\-release</code> role now depends on the <code>community\.general</code> collection \([https\://github\.com/ansible\-community/antsibull/pull/432](https\://github\.com/ansible\-community/antsibull/pull/432)\)\.
 
-<a id="bugfixes-25"></a>
+<a id="bugfixes-26"></a>
 ### Bugfixes
 
 * Fix typo in generated MANIFEST\.in to list the existing file <code>README\.rst</code> instead of the non\-existing file <code>README</code> \([https\://github\.com/ansible\-community/antsibull/pull/435](https\://github\.com/ansible\-community/antsibull/pull/435)\)\.
@@ -967,12 +991,12 @@ Bugfix and feature release containing breaking changes in the release role\.
 <a id="v0-48-0"></a>
 ## v0\.48\.0
 
-<a id="release-summary-40"></a>
+<a id="release-summary-41"></a>
 ### Release Summary
 
 Bugfix and feature release containing some breaking changes in the release role\.
 
-<a id="minor-changes-26"></a>
+<a id="minor-changes-27"></a>
 ### Minor Changes
 
 * In the release role\, automatically set <code>antsibull\_build\_file</code> and <code>antsibull\_data\_dir</code> based on <code>antsibull\_ansible\_version</code> \([https\://github\.com/ansible\-community/antsibull/pull/430](https\://github\.com/ansible\-community/antsibull/pull/430)\)\.
@@ -983,7 +1007,7 @@ Bugfix and feature release containing some breaking changes in the release role\
 
 * In the release role\, <code>antsibull\_ansible\_version</code> and <code>antsibull\_ansible\_git\_version</code> must now always be specified \([https\://github\.com/ansible\-community/antsibull/pull/430](https\://github\.com/ansible\-community/antsibull/pull/430)\)\.
 
-<a id="bugfixes-26"></a>
+<a id="bugfixes-27"></a>
 ### Bugfixes
 
 * When preparing a new Ansible release\, bump the ansible\-core version to the latest bugfix version \([https\://github\.com/ansible\-community/antsibull/pull/430](https\://github\.com/ansible\-community/antsibull/pull/430)\)\.
@@ -991,12 +1015,12 @@ Bugfix and feature release containing some breaking changes in the release role\
 <a id="v0-47-0"></a>
 ## v0\.47\.0
 
-<a id="release-summary-41"></a>
+<a id="release-summary-42"></a>
 ### Release Summary
 
 Feature release for Ansible 6\.0\.0rc1\.
 
-<a id="minor-changes-27"></a>
+<a id="minor-changes-28"></a>
 ### Minor Changes
 
 * Include <code>ansible\-community</code> CLI program with <code>\-\-version</code> parameter from Ansible 6\.0\.0rc1 on \([https\://github\.com/ansible\-community/antsibull/pull/429](https\://github\.com/ansible\-community/antsibull/pull/429)\)\.
@@ -1004,18 +1028,18 @@ Feature release for Ansible 6\.0\.0rc1\.
 <a id="v0-46-0"></a>
 ## v0\.46\.0
 
-<a id="release-summary-42"></a>
+<a id="release-summary-43"></a>
 ### Release Summary
 
 Feature and bugfix release with improvements for the release role\, release building\, and changelog generation\.
 
-<a id="minor-changes-28"></a>
+<a id="minor-changes-29"></a>
 ### Minor Changes
 
 * Avoid including the complete condensed changelog of collections added to Ansible to that Ansible release\'s changelog and porting guide entries \([https\://github\.com/ansible\-community/antsibull/pull/428](https\://github\.com/ansible\-community/antsibull/pull/428)\)\.
 * The <code>build\-release</code> role now also uses <code>antsibull\_data\_reset</code> to prevent regeneration of <code>build\-X\.ansible</code> for alpha and beta\-1 releases \([https\://github\.com/ansible\-community/antsibull/pull/422](https\://github\.com/ansible\-community/antsibull/pull/422)\)\.
 
-<a id="bugfixes-27"></a>
+<a id="bugfixes-28"></a>
 ### Bugfixes
 
 * In the build\-release role\, when <code>antsibull\_force\_rebuild</code> is true\, delete the existing python wheel in addition to the release tarball \([https\://github\.com/ansible\-community/antsibull/pull/427](https\://github\.com/ansible\-community/antsibull/pull/427)\)\.
@@ -1025,12 +1049,12 @@ Feature and bugfix release with improvements for the release role\, release buil
 <a id="v0-45-1"></a>
 ## v0\.45\.1
 
-<a id="release-summary-43"></a>
+<a id="release-summary-44"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-28"></a>
+<a id="bugfixes-29"></a>
 ### Bugfixes
 
 * The <code>build\-release</code> role now no longer ignores collection prereleases of collections for the alpha releases \([https\://github\.com/ansible\-community/antsibull/pull/420](https\://github\.com/ansible\-community/antsibull/pull/420)\)\.
@@ -1038,12 +1062,12 @@ Bugfix release\.
 <a id="v0-45-0"></a>
 ## v0\.45\.0
 
-<a id="release-summary-44"></a>
+<a id="release-summary-45"></a>
 ### Release Summary
 
 New feature release with one breaking change to the <code>build\-release</code> role\.
 
-<a id="minor-changes-29"></a>
+<a id="minor-changes-30"></a>
 ### Minor Changes
 
 * Add <code>antsibull\-build</code> subcommand <code>validate\-deps</code> which validates dependencies for an <code>ansible\_collections</code> tree \([https\://github\.com/ansible\-community/antsibull/pull/416](https\://github\.com/ansible\-community/antsibull/pull/416)\)\.
@@ -1060,7 +1084,7 @@ New feature release with one breaking change to the <code>build\-release</code> 
 <a id="v0-44-0"></a>
 ## v0\.44\.0
 
-<a id="release-summary-45"></a>
+<a id="release-summary-46"></a>
 ### Release Summary
 
 Split up antsibull into multiple PyPi packages \(<code>antsibull\-core</code>\, <code>antsibull\-docs</code>\, and <code>antsibull</code>\)\. <strong>Note</strong> that upgrading is a bit more complicated due to the way <code>pip</code> works\! See below for details\.
@@ -1083,18 +1107,18 @@ Split up antsibull into multiple PyPi packages \(<code>antsibull\-core</code>\, 
 <a id="v0-43-0"></a>
 ## v0\.43\.0
 
-<a id="release-summary-46"></a>
+<a id="release-summary-47"></a>
 ### Release Summary
 
 Feature release\.
 
-<a id="minor-changes-30"></a>
+<a id="minor-changes-31"></a>
 ### Minor Changes
 
 * Add <code>lint\-collection\-docs</code> subcommand to <code>antsibull\-docs</code>\. It behaves identical to <code>antsibull\-lint collection\-docs</code> \([https\://github\.com/ansible\-community/antsibull/pull/411](https\://github\.com/ansible\-community/antsibull/pull/411)\, [https\://github\.com/ansible\-community/antsibull/issues/410](https\://github\.com/ansible\-community/antsibull/issues/410)\)\.
 * Support <code>MANIFEST\.json</code> and not only <code>galaxy\.yml</code> for <code>antsibull\-docs lint\-collection\-docs</code> and <code>antsibull\-lint collection\-docs</code> \([https\://github\.com/ansible\-community/antsibull/pull/411](https\://github\.com/ansible\-community/antsibull/pull/411)\)\.
 
-<a id="bugfixes-29"></a>
+<a id="bugfixes-30"></a>
 ### Bugfixes
 
 * Prevent crashing when non\-strings are found for certain pathnames for <code>antsibull\-docs lint\-collection\-docs</code> and <code>antsibull\-lint collection\-docs</code> \([https\://github\.com/ansible\-community/antsibull/pull/411](https\://github\.com/ansible\-community/antsibull/pull/411)\)\.
@@ -1102,12 +1126,12 @@ Feature release\.
 <a id="v0-42-1"></a>
 ## v0\.42\.1
 
-<a id="release-summary-47"></a>
+<a id="release-summary-48"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-30"></a>
+<a id="bugfixes-31"></a>
 ### Bugfixes
 
 * antsibull\-docs sphinx\-init \- the <code>\-\-fail\-on\-error</code> option resulted in an invalid <code>build\.sh</code> \([https\://github\.com/ansible\-community/antsibull/pull/409](https\://github\.com/ansible\-community/antsibull/pull/409)\)\.
@@ -1115,7 +1139,7 @@ Bugfix release\.
 <a id="v0-42-0"></a>
 ## v0\.42\.0
 
-<a id="release-summary-48"></a>
+<a id="release-summary-49"></a>
 ### Release Summary
 
 Major feature release preparing for Ansible 6\. Also adds support for the new collection links file\, and improves the attributes tables\.
@@ -1128,7 +1152,7 @@ Major feature release preparing for Ansible 6\. Also adds support for the new co
 * From Ansible 6 on\, improve <code>setup\.py</code> to exclude unnecessary files in the Python distribution \([https\://github\.com/ansible\-community/antsibull/pull/342](https\://github\.com/ansible\-community/antsibull/pull/342)\)\.
 * Remove Ansible 2\.9 / ansible\-base 2\.10 checks from <code>setup\.py</code> for Ansible 6 so that we can finally ship wheels\. This change is only active for Ansible 6 \([https\://github\.com/ansible\-community/antsibull/pull/394](https\://github\.com/ansible\-community/antsibull/pull/394)\)\.
 
-<a id="minor-changes-31"></a>
+<a id="minor-changes-32"></a>
 ### Minor Changes
 
 * Add a new docs parsing backend <code>ansible\-core\-2\.13</code>\, which supports ansible\-core 2\.13\+ \([https\://github\.com/ansible\-community/antsibull/pull/401](https\://github\.com/ansible\-community/antsibull/pull/401)\)\.
@@ -1139,7 +1163,7 @@ Major feature release preparing for Ansible 6\. Also adds support for the new co
 * Mention the <code>ansible\-core</code> major version in the Ansible porting guide \([https\://github\.com/ansible\-community/antsibull/pull/397](https\://github\.com/ansible\-community/antsibull/pull/397)\)\.
 * Redo attributes table using the same structure as the options and return value table\. This improves its look and adds a linking mechanism \([https\://github\.com/ansible\-community/antsibull/pull/401](https\://github\.com/ansible\-community/antsibull/pull/401)\)\.
 
-<a id="bugfixes-31"></a>
+<a id="bugfixes-32"></a>
 ### Bugfixes
 
 * Fix ansible\-core version parsing for <code>ansible\-doc</code> docs parsing backend \([https\://github\.com/ansible\-community/antsibull/pull/401](https\://github\.com/ansible\-community/antsibull/pull/401)\)\.
@@ -1149,12 +1173,12 @@ Major feature release preparing for Ansible 6\. Also adds support for the new co
 <a id="v0-41-0"></a>
 ## v0\.41\.0
 
-<a id="release-summary-49"></a>
+<a id="release-summary-50"></a>
 ### Release Summary
 
 Feature and bugfix release\.
 
-<a id="minor-changes-32"></a>
+<a id="minor-changes-33"></a>
 ### Minor Changes
 
 * Add <code>\-\-fail\-on\-error</code> to all antsibull\-docs subcommands for usage in CI \([https\://github\.com/ansible\-community/antsibull/pull/393](https\://github\.com/ansible\-community/antsibull/pull/393)\)\.
@@ -1165,7 +1189,7 @@ Feature and bugfix release\.
 * Support new <code>keyword</code> field in plugin documentations \([https\://github\.com/ansible\-community/antsibull/pull/329](https\://github\.com/ansible\-community/antsibull/pull/329)\)\.
 * The <code>conf\.py</code> generated by <code>antsibull\-docs sphinx\-init</code> will be set to try resolving intersphinx references to Ansible\'s <code>devel</code> docs instead of a concrete Ansible version \([https\://github\.com/ansible\-community/antsibull/pull/391](https\://github\.com/ansible\-community/antsibull/pull/391)\)\.
 
-<a id="bugfixes-32"></a>
+<a id="bugfixes-33"></a>
 ### Bugfixes
 
 * If plugin parsing fails for <code>antsibull\-docs plugin</code>\, handle this more gracefully \([https\://github\.com/ansible\-community/antsibull/pull/393](https\://github\.com/ansible\-community/antsibull/pull/393)\)\.
@@ -1175,12 +1199,12 @@ Feature and bugfix release\.
 <a id="v0-40-2"></a>
 ## v0\.40\.2
 
-<a id="release-summary-50"></a>
+<a id="release-summary-51"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-33"></a>
+<a id="bugfixes-34"></a>
 ### Bugfixes
 
 * Fix <code>rsync</code> call when <code>antsibull\-docs sphinx\-init</code> is used with <code>\-\-squash\-hieararchy</code> \([https\://github\.com/ansible\-community/antsibull/pull/382](https\://github\.com/ansible\-community/antsibull/pull/382)\)\.
@@ -1190,12 +1214,12 @@ Bugfix release\.
 <a id="v0-40-1"></a>
 ## v0\.40\.1
 
-<a id="release-summary-51"></a>
+<a id="release-summary-52"></a>
 ### Release Summary
 
 Bugfix release\.
 
-<a id="bugfixes-34"></a>
+<a id="bugfixes-35"></a>
 ### Bugfixes
 
 * Fix bug in collection enum for docs generation\, which caused role FQCNs to be mangled \([https\://github\.com/ansible\-community/antsibull/pull/379](https\://github\.com/ansible\-community/antsibull/pull/379)\)\.
@@ -1203,7 +1227,7 @@ Bugfix release\.
 <a id="v0-40-0"></a>
 ## v0\.40\.0
 
-<a id="release-summary-52"></a>
+<a id="release-summary-53"></a>
 ### Release Summary
 
 Feature and bugfix release\.
@@ -1213,7 +1237,7 @@ Feature and bugfix release\.
 
 * Responsive parameter and return value tables\. Also use RST tables instead of HTML blobs \([https\://github\.com/ansible\-community/antsibull/pull/335](https\://github\.com/ansible\-community/antsibull/pull/335)\)\.
 
-<a id="minor-changes-33"></a>
+<a id="minor-changes-34"></a>
 ### Minor Changes
 
 * Add a changelog \([https\://github\.com/ansible\-community/antsibull/pull/378](https\://github\.com/ansible\-community/antsibull/pull/378)\)\.
@@ -1238,7 +1262,7 @@ Feature and bugfix release\.
 
 * The <code>antsibull\-build single</code> subcommand is deprecated\. Use the <code>prepare</code> and <code>rebuild\-single</code> subcommands instead \([https\://github\.com/ansible\-community/antsibull/pull/341](https\://github\.com/ansible\-community/antsibull/pull/341)\)\.
 
-<a id="bugfixes-35"></a>
+<a id="bugfixes-36"></a>
 ### Bugfixes
 
 * Fix <code>rsync</code> flags in build scripts generated by <code>antsibull\-docs sphinx\-init</code> to allow Sphinx to not rebuild unchanged files \([https\://github\.com/ansible\-community/antsibull/pull/357](https\://github\.com/ansible\-community/antsibull/pull/357)\)\.
@@ -1249,7 +1273,7 @@ Feature and bugfix release\.
 <a id="v0-39-2"></a>
 ## v0\.39\.2
 
-<a id="release-summary-53"></a>
+<a id="release-summary-54"></a>
 ### Release Summary
 
 - Fixes an incompatibility with antsibull\-lint with Python 3\.9\.8\.
@@ -1258,7 +1282,7 @@ Feature and bugfix release\.
 <a id="v0-39-1"></a>
 ## v0\.39\.1
 
-<a id="release-summary-54"></a>
+<a id="release-summary-55"></a>
 ### Release Summary
 
 - Fixes <code>M\(\.\.\.\)</code> when used in HTML blobs\.
@@ -1267,7 +1291,7 @@ Feature and bugfix release\.
 <a id="v0-39-0"></a>
 ## v0\.39\.0
 
-<a id="release-summary-55"></a>
+<a id="release-summary-56"></a>
 ### Release Summary
 
 Docs generation\:
@@ -1281,7 +1305,7 @@ Also improves the Ansible release playbook/role\.
 <a id="v0-38-2"></a>
 ## v0\.38\.2
 
-<a id="release-summary-56"></a>
+<a id="release-summary-57"></a>
 ### Release Summary
 
 Avoid creating role documentation for roles without argument spec\. Avoid naming collision with Ansible Sphinx config\'s <code>rst\_epilog</code> contents\.
@@ -1289,7 +1313,7 @@ Avoid creating role documentation for roles without argument spec\. Avoid naming
 <a id="v0-38-1"></a>
 ## v0\.38\.1
 
-<a id="release-summary-57"></a>
+<a id="release-summary-58"></a>
 ### Release Summary
 
 Fix for attributes support\: also allow new support value <code>N/A</code>\.
@@ -1297,7 +1321,7 @@ Fix for attributes support\: also allow new support value <code>N/A</code>\.
 <a id="v0-38-0"></a>
 ## v0\.38\.0
 
-<a id="release-summary-58"></a>
+<a id="release-summary-59"></a>
 ### Release Summary
 
 Support CLI options for the ansible\.builtin\.ssh connection plugin\, and support ansible\-core 2\.12 module/plugin attributes\.
@@ -1413,7 +1437,7 @@ Support CLI options for the ansible\.builtin\.ssh connection plugin\, and suppor
 <a id="v0-1-0"></a>
 ## v0\.1\.0
 
-<a id="release-summary-59"></a>
+<a id="release-summary-60"></a>
 ### Release Summary
 
 Initial release\.

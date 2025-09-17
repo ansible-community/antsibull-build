@@ -1,2 +1,0 @@
-minor_changes:
-  - "build-release role, nested-ansible-tests playbook -- simplify nested tests to avoid extreme log output (https://github.com/ansible-community/antsibull-build/pull/682)."

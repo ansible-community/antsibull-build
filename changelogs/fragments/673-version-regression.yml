@@ -1,4 +1,0 @@
-minor_changes:
-  - "Add version regression check. It can be explicitly disabled if needed (https://github.com/ansible-community/antsibull-build/pull/673)."
-bugfixes:
-  - "build-release role - fix more broken conditionals by ensuring the ``bool`` filter is always used (https://github.com/ansible-community/antsibull-build/pull/673)."

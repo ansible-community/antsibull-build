@@ -1134,3 +1134,22 @@ releases:
       - 0.74.0.yml
       - 671-rc.yml
     release_date: '2025-08-21'
+  0.75.0:
+    changes:
+      bugfixes:
+        - build-release role - fix more broken conditionals by ensuring the ``bool``
+          filter is always used (https://github.com/ansible-community/antsibull-build/pull/673).
+      minor_changes:
+        - Add a check for Ansible 12.0.0rc1 and newer to ensure that collections'
+          ``requires_ansible`` covers the included ansible-core version (https://github.com/ansible-community/antsibull-build/issues/674,
+          https://github.com/ansible-community/antsibull-build/pull/678).
+        - Add version regression check. It can be explicitly disabled if needed (https://github.com/ansible-community/antsibull-build/pull/673).
+        - build-release role, nested-ansible-tests playbook -- simplify nested tests
+          to avoid extreme log output (https://github.com/ansible-community/antsibull-build/pull/682).
+      release_summary: Feature and bugfix release.
+    fragments:
+      - 0.75.0.yml
+      - 673-version-regression.yml
+      - 678-ansible-core-version.yml
+      - 682-nested-tests.yml
+    release_date: '2025-09-17'
