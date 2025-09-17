@@ -118,14 +118,21 @@
               loop: "{{ _included_collections.stdout_lines }}"
 
 - name: Run nested tests
+  vars:
+    antsibull_venv_pip_bin: "{{ antsibull_ansible_venv }}/bin/pip"
+    antsibull_venv_pip_pkgs: "{{ _pip_pkgs['packages'][antsibull_venv_pip_bin] }}"
+    antsibull_venv_pip_ansible_version: "{{ antsibull_venv_pip_pkgs['ansible'][0]['version'] }}"
   block:
     - name: Run nested Ansible tests with the Ansible we just built
       ansible.builtin.command: >-
         {{ antsibull_ansible_venv }}/bin/ansible-playbook -i 'localhost,' --connection=local
-          -e antsibull_sdist_dir="{{ antsibull_sdist_dir }}"
-          -e antsibull_ansible_venv="{{ antsibull_ansible_venv }}"
-          -e _python_version="{{ _python_version }}"
+          -e antsibull_ansible_version={{ antsibull_venv_pip_ansible_version }}
           {{ playbook_dir }}/nested-ansible-tests.yaml
+      environment:
+        # In case we happen to be testing with devel, don't print a warning about it
+        ANSIBLE_DEVEL_WARNING: false
+        # Avoid using any collections except the ones installed
+        ANSIBLE_COLLECTIONS_PATH: ""
 
 - name: Byte-compile python modules
   when: antsibull_test_bytecompile

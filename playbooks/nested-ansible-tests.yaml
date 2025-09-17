@@ -9,44 +9,26 @@
   gather_facts: false
   vars:
     # These can be supplied as extra-vars but are expected to come from roles/build-release/tasks/tests.yaml
-    antsibull_sdist_dir: "{{ playbook_dir | dirname }}/build"
-    antsibull_ansible_venv: "{{ antsibull_sdist_dir }}/venv"
-    _python_version: "python3.13"
+    antsibull_ansible_version: "8.0.0"
   tasks:
-    - name: Parse installed ansible_builtin_runtime
-      parse_ansible_runtime:
-        runtime_file: "{{ antsibull_ansible_venv }}/lib/{{ _python_version }}/site-packages/ansible/config/ansible_builtin_runtime.yml"
-      register: _parsed_runtime
-
-    - name: Validate collection availability
+    - name: Use community.general.binary_file lookup
       ansible.builtin.assert:
         that:
-          - query("community.general.collection_version", item) != [none]
-        success_msg: "{{ item }}: available"
-        fail_msg: "{{ item }}: not available"
-      loop: "{{ _parsed_runtime.collections }}"
-      ignore_errors: true
-      register: _collection_availability
+          - query("community.general.binary_file", playbook_dir ~ "/nested-ansible-tests.yaml")[0]
+            ==
+            query("ansible.builtin.file", playbook_dir ~ "/nested-ansible-tests.yaml", rstrip=false)[0] | b64encode
+      when:
+        - antsibull_ansible_version is version("12.0.0", ">=")
 
-    - name: Validate module availability
+    - name: Use community.docker.current_container_facts
+      community.docker.current_container_facts:
+
+    - name: Use community.dns.reverse_pointer filter
       ansible.builtin.assert:
         that:
-          - item is community.general.a_module
-        success_msg: "{{ item }}: found"
-        fail_msg: "{{ item }}: not found"
-      loop: "{{ _parsed_runtime.modules }}"
-      ignore_errors: true
-      register: _module_availability
-
-    - name: Retrieve unavailable collections and modules
-      ansible.builtin.set_fact:
-        _unavailable_collections: "{{ _collection_availability.results | selectattr('failed', 'eq', true) | selectattr('item', 'ne', 'testns.testcoll') }}"
-        _unavailable_modules: "{{ _module_availability.results | selectattr('failed', 'eq', true) | selectattr('item', 'ne', 'testns.testcoll.ping') }}"
-
-    - name: Print unavailable collections
-      ansible.builtin.debug:
-        msg: "The following collections are not available: {{ _unavailable_collections | map(attribute='item') | join(', ') }}"
-
-    - name: Print unavailable modules
-      ansible.builtin.debug:
-        msg: "The following modules are not available: {{ _unavailable_modules | map(attribute='item') | join(', ') }}"
+          - >-
+            "192.168.1.1" | community.dns.reverse_pointer == "1.1.168.192.in-addr.arpa."
+      when:
+        - >-
+          (antsibull_ansible_version is version("10.7.0", ">=") and antsibull_ansible_version is version("11.0.0", "<"))
+          or antsibull_ansible_version is version("11.1.0", ">=")
