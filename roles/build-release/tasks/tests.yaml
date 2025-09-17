@@ -118,10 +118,15 @@
               loop: "{{ _included_collections.stdout_lines }}"
 
 - name: Run nested tests
+  vars:
+    antsibull_venv_pip_bin: "{{ antsibull_ansible_venv }}/bin/pip"
+    antsibull_venv_pip_pkgs: "{{ _pip_pkgs['packages'][antsibull_venv_pip_bin] }}"
+    antsibull_venv_pip_ansible_version: "{{ antsibull_venv_pip_pkgs['ansible'][0]['version'] }}"
   block:
     - name: Run nested Ansible tests with the Ansible we just built
       ansible.builtin.command: >-
         {{ antsibull_ansible_venv }}/bin/ansible-playbook -i 'localhost,' --connection=local
+          -e antsibull_ansible_version={{ antsibull_venv_pip_ansible_version }}
           {{ playbook_dir }}/nested-ansible-tests.yaml
 
 - name: Byte-compile python modules

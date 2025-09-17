@@ -7,6 +7,9 @@
 - name: Run nested Ansible tests
   hosts: localhost
   gather_facts: false
+  vars:
+    # These can be supplied as extra-vars but are expected to come from roles/build-release/tasks/tests.yaml
+    antsibull_ansible_version: "8.0.0"
   tasks:
     - name: Use community.general.binary_file lookup
       ansible.builtin.assert:
@@ -14,6 +17,8 @@
           - query("community.general.binary_file", playbook_dir ~ "/nested-ansible-tests.yaml")[0]
             ==
             query("ansible.builtin.file", playbook_dir ~ "/nested-ansible-tests.yaml", rstrip=false)[0] | b64encode
+      when:
+        - antsibull_ansible_version is version("12.0.0", ">=")
 
     - name: Use community.docker.current_container_facts
       community.docker.current_container_facts:
@@ -23,3 +28,7 @@
         that:
           - >-
             "192.168.1.1" | community.dns.reverse_pointer == "1.1.168.192.in-addr.arpa."
+      when:
+        - >-
+          (antsibull_ansible_version is version("10.7.0", ">=") and antsibull_ansible_version is version("11.0.0", "<"))
+          or antsibull_ansible_version is version("11.1.0", ">=")
