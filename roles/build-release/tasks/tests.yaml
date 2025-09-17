@@ -93,8 +93,8 @@
               environment:
                 # In case we happen to be testing with devel, don't print a warning about it
                 ANSIBLE_DEVEL_WARNING: false
-                # Until https://github.com/ansible/ansible/pull/70173 is backported and released
-                ANSIBLE_COLLECTIONS_PATH: "{{ antsibull_collections_path }}"
+                # Avoid using any collections except the ones installed in the venv
+                ANSIBLE_COLLECTIONS_PATH: ""
               # List collections, remove empty lines, headers, file paths and format the results in the same way as the deps file
               ansible.builtin.command:
                 cmd: "{{ antsibull_ansible_venv }}/bin/ansible-galaxy collection list --format json"
@@ -131,7 +131,7 @@
       environment:
         # In case we happen to be testing with devel, don't print a warning about it
         ANSIBLE_DEVEL_WARNING: false
-        # Avoid using any collections except the ones installed
+        # Avoid using any collections except the ones installed in the venv
         ANSIBLE_COLLECTIONS_PATH: ""
 
 - name: Byte-compile python modules
