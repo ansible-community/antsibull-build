@@ -128,6 +128,11 @@
         {{ antsibull_ansible_venv }}/bin/ansible-playbook -i 'localhost,' --connection=local
           -e antsibull_ansible_version={{ antsibull_venv_pip_ansible_version }}
           {{ playbook_dir }}/nested-ansible-tests.yaml
+      environment:
+        # In case we happen to be testing with devel, don't print a warning about it
+        ANSIBLE_DEVEL_WARNING: false
+        # Avoid using any collections except the ones installed
+        ANSIBLE_COLLECTIONS_PATH: ""
 
 - name: Byte-compile python modules
   when: antsibull_test_bytecompile
