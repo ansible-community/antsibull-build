@@ -122,9 +122,6 @@
     - name: Run nested Ansible tests with the Ansible we just built
       ansible.builtin.command: >-
         {{ antsibull_ansible_venv }}/bin/ansible-playbook -i 'localhost,' --connection=local
-          -e antsibull_sdist_dir="{{ antsibull_sdist_dir }}"
-          -e antsibull_ansible_venv="{{ antsibull_ansible_venv }}"
-          -e _python_version="{{ _python_version }}"
           {{ playbook_dir }}/nested-ansible-tests.yaml
 
 - name: Byte-compile python modules
