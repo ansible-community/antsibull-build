@@ -607,7 +607,7 @@ def parse_args(program_name: str, args: list[str]) -> argparse.Namespace:
     validate_tags_shared.add_argument(
         "--ignores-file",
         help="Path to a file with newline separated list of collections to ignore",
-        type=argparse.FileType("r"),
+        type=Path,
     )
     validate_tags_shared.add_argument(
         "-E",
