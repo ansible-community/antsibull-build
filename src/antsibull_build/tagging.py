@@ -14,7 +14,8 @@ import os
 import re
 import sys
 from collections.abc import AsyncGenerator, Collection
-from typing import TYPE_CHECKING, TextIO, TypedDict
+from pathlib import Path
+from typing import TYPE_CHECKING, TypedDict
 
 import asyncio_pool  # type: ignore[import]
 from antsibull_core import app_context
@@ -88,14 +89,13 @@ def _print_validation_errors(
     return 1
 
 
-def _get_ignores(ignores: Collection[str], ignore_fp: TextIO | None) -> set[str]:
+def _get_ignores(ignores: Collection[str], ignore: Path | None) -> set[str]:
     ignores = set(ignores)
-    if ignore_fp:
-        ignores.update(
-            line.strip()
-            for line in ignore_fp
-            if line.strip() and not line.startswith("#")
-        )
+    if ignore:
+        with open(ignore, "r", encoding="utf-8") as f:
+            ignores.update(
+                line.strip() for line in f if line.strip() and not line.startswith("#")
+            )
     return ignores
 
 
