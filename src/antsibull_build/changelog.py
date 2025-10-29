@@ -37,7 +37,7 @@ from antsibull_core import app_context
 from antsibull_core.ansible_core import get_ansible_core
 from antsibull_core.dependency_files import DependencyFileData
 from antsibull_core.galaxy import CollectionDownloader, GalaxyContext
-from antsibull_core.logging import log
+from antsibull_core.logging import get_module_logger
 from antsibull_core.schemas.collection_meta import (
     CollectionsMetadata,
     RemovalInformation,
@@ -59,7 +59,7 @@ from .constants import (
 )
 from .versions import load_all_dependency_files
 
-mlog = log.fields(mod=__name__)
+mlog = get_module_logger(__name__)
 
 
 class RemoveCollectionVersionSchema(p.BaseModel):

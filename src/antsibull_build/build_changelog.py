@@ -29,14 +29,14 @@ from antsibull_changelog.rendering.document import (
 )
 from antsibull_changelog.rendering.rst_document import RSTDocumentRenderer
 from antsibull_core import app_context
-from antsibull_core.logging import log
+from antsibull_core.logging import get_module_logger
 from antsibull_core.schemas.collection_meta import CollectionsMetadata
 from packaging.version import Version as PypiVer
 
 from .changelog import Changelog, ChangelogData, ChangelogEntry, get_changelog
 from .utils.galaxy import create_galaxy_context
 
-mlog = log.fields(mod=__name__)
+mlog = get_module_logger(__name__)
 
 
 class SectionAdder:

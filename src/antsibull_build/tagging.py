@@ -19,7 +19,7 @@ from typing import TYPE_CHECKING, TextIO, TypedDict
 import asyncio_pool  # type: ignore[import]
 from antsibull_core import app_context
 from antsibull_core.dependency_files import DepsFile
-from antsibull_core.logging import log
+from antsibull_core.logging import get_module_logger
 from antsibull_core.schemas.collection_meta import (
     CollectionMetadata,
     CollectionsMetadata,
@@ -31,7 +31,7 @@ if TYPE_CHECKING:
 
 TAG_MATCHER: re.Pattern[str] = re.compile(r"^.*refs/tags/(.*)$")
 TAG_VERSION_REGEX: re.Pattern[str] = re.compile(r"^v?(.*)$")
-mlog = log.fields(mod=__name__)
+mlog = get_module_logger(__name__)
 
 
 def validate_tags_file_command() -> int:
