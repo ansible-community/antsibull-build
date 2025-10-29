@@ -27,7 +27,7 @@ jobs:
       matrix:
         include:
           - session: test
-            python-versions: "3.9, 3.10, 3.11, 3.12, 3.13"
+            python-versions: "3.9, 3.10, 3.11, 3.12, 3.13, 3.14"
             force-python: ""
             codecov: true
             packages: ""
@@ -51,8 +51,8 @@ jobs:
             packages: ""
 
           - session: lint
-            python-versions: "3.13"
-            force-python: "3.13"
+            python-versions: "3.14"
+            force-python: "3.14"
             codecov: false
             packages: ""
     name: "Run nox ${{ matrix.session }} session"
