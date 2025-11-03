@@ -1,4 +1,0 @@
-minor_changes:
-  - "Declare support for Python 3.14 (https://github.com/ansible-community/antsibull-build/pull/684)."
-breaking_changes:
-  - "The ``--ignores-file`` option of the ``validate-tags`` subcommand no longer accepts ``-`` to read from stdin (https://github.com/ansible-community/antsibull-build/pull/684)."

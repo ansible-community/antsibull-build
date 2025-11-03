@@ -1153,3 +1153,22 @@ releases:
       - 678-ansible-core-version.yml
       - 682-nested-tests.yml
     release_date: '2025-09-17'
+  0.76.0:
+    changes:
+      breaking_changes:
+        - The ``--ignores-file`` option of the ``validate-tags`` subcommand no longer
+          accepts ``-`` to read from stdin (https://github.com/ansible-community/antsibull-build/pull/684).
+      minor_changes:
+        - Declare support for Python 3.14 (https://github.com/ansible-community/antsibull-build/pull/684).
+        - Improve the forum announcement for new Ansible releases (https://github.com/ansible-community/antsibull-build/pull/686).
+        - Uses new logging framework provided by antsibull-core. This currently has
+          no user-observable impact, but that will change with later versions of antsibull-core
+          (https://github.com/ansible-community/antsibull-build/pull/666).
+        - antsibull-build now depends on antsibull-core 3.5.0+ (https://github.com/ansible-community/antsibull-build/pull/666).
+      release_summary: Feature release.
+    fragments:
+      - 0.76.0.yml
+      - 666-logging.yml
+      - 684-python.yml
+      - 686-announcement.yml
+    release_date: '2025-11-03'

@@ -4,6 +4,27 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.76.0
+=======
+
+Release Summary
+---------------
+
+Feature release.
+
+Minor Changes
+-------------
+
+- Declare support for Python 3.14 (https://github.com/ansible-community/antsibull-build/pull/684).
+- Improve the forum announcement for new Ansible releases (https://github.com/ansible-community/antsibull-build/pull/686).
+- Uses new logging framework provided by antsibull-core. This currently has no user-observable impact, but that will change with later versions of antsibull-core (https://github.com/ansible-community/antsibull-build/pull/666).
+- antsibull-build now depends on antsibull-core 3.5.0+ (https://github.com/ansible-community/antsibull-build/pull/666).
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+- The ``--ignores-file`` option of the ``validate-tags`` subcommand no longer accepts ``-`` to read from stdin (https://github.com/ansible-community/antsibull-build/pull/684).
+
 v0.75.0
 =======
 

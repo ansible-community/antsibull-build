@@ -1,4 +1,0 @@
-minor_changes:
-  - "Uses new logging framework provided by antsibull-core. This currently has no user-observable impact, but that will change with later versions of antsibull-core
-     (https://github.com/ansible-community/antsibull-build/pull/666)."
-  - "antsibull-build now depends on antsibull-core 3.5.0+ (https://github.com/ansible-community/antsibull-build/pull/666)."
