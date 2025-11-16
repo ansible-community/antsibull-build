@@ -11,7 +11,7 @@ name = "antsibull-build"
 dynamic = [
     "version",
 ]
-description = "Tools for building the Ansible Distribution"
+description = "Tools for building the Ansible Community Distribution"
 license = "GPL-3.0-or-later AND Python-2.0.1"
 license-files = {globs=["LICENSES/*.txt"]}
 readme = "README.md"
@@ -63,7 +63,7 @@ email = "maxwell@gtmx.me"
 
 [project.urls]
 "Source code" = "https://github.com/ansible-community/antsibull-build"
-"Code of Conduct" = "https://docs.ansible.com/ansible/latest/community/code_of_conduct.html"
+"Code of Conduct" = "https://docs.ansible.com/projects/ansible/latest/community/code_of_conduct.html"
 "Bug tracker" = "https://github.com/ansible-community/antsibull-build/issues"
 "Changelog" = "https://github.com/ansible-community/antsibull-build/tree/main/CHANGELOG.md"
 

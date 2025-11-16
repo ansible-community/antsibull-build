@@ -21,7 +21,7 @@ Related projects are [antsibull-changelog](https://pypi.org/project/antsibull-ch
 
 You can find a list of changes in [the Antsibull Build changelog](https://github.com/ansible-community/antsibull-build/blob/main/CHANGELOG.md).
 
-antsibull-build is covered by the [Ansible Code of Conduct](https://docs.ansible.com/ansible/latest/community/code_of_conduct.html).
+antsibull-build is covered by the [Ansible Code of Conduct](https://docs.ansible.com/projects/ansible/latest/community/code_of_conduct.html).
 
 ## Licensing
 

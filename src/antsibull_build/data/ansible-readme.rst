@@ -47,7 +47,7 @@ Use Ansible
 ===========
 
 You can install a released version of Ansible with ``pip`` or a package manager. See our
-`Installation guide <https://docs.ansible.com/ansible/latest/installation_guide/index.html>`_ for details on installing Ansible
+`Installation guide <https://docs.ansible.com/projects/ansible/latest/installation_guide/index.html>`_ for details on installing Ansible
 on a variety of platforms.
 
 Reporting Issues
@@ -62,7 +62,7 @@ in the collection's issue tracker should be reported on
 `ansible-build-data's issue tracker <https://github.com/ansible-community/ansible-build-data#issue-tracker>`_.
 
 Refer to the `Communication page
-<https://docs.ansible.com/ansible/latest/community/communication.html>`_ for a
+<https://docs.ansible.com/projects/ansible/latest/community/communication.html>`_ for a
 list of support channels if you need assistance from the community or are
 unsure where to report your issue.
 
@@ -70,7 +70,7 @@ unsure where to report your issue.
 Get Involved
 ============
 
-*  Read `Community Information <https://docs.ansible.com/ansible/latest/community>`_ for ways to contribute to 
+*  Read `Community Information <https://docs.ansible.com/projects/ansible/latest/community>`_ for ways to contribute to 
    and interact with the project, including forum information and how
    to submit bug reports and code to Ansible or Ansible collections.
 *  Join `Forum Groups <https://forum.ansible.com/g>`_ you are interested in,
@@ -81,22 +81,22 @@ Get Involved
    know what is going on, but it also helps save time and effort if we decide
    some changes are needed.
 *  For a reference to the Forum, a list of Matrix and IRC channels, and Working Groups, see the
-   `Communication page <https://docs.ansible.com/ansible/latest/community/communication.html>`_
+   `Communication page <https://docs.ansible.com/projects/ansible/latest/community/communication.html>`_
 
 Coding Guidelines
 =================
 
-We document our Coding Guidelines in the `Developer Guide <https://docs.ansible.com/ansible/devel/dev_guide/>`_. We also suggest you review:
+We document our Coding Guidelines in the `Developer Guide <https://docs.ansible.com/projects/ansible/devel/dev_guide/>`_. We also suggest you review:
 
-* `Developing modules checklist <https://docs.ansible.com/ansible/devel/dev_guide/developing_modules_checklist.html>`_
-* `Collection contributor guide <https://docs.ansible.com/ansible/devel/community/contributions_collections.html>`_
+* `Developing modules checklist <https://docs.ansible.com/projects/ansible/devel/dev_guide/developing_modules_checklist.html>`_
+* `Collection contributor guide <https://docs.ansible.com/projects/ansible/devel/community/contributions_collections.html>`_
 
 Branch Info
 ===========
 
 *  The Ansible package is a 'batteries included' package that brings in ``ansible-core`` and a curated set of collections. Ansible uses `semantic versioning <https://semver.org/>`_ (for example, Ansible 5.6.0). 
 *  The Ansible package has only one stable branch, called 'latest' in the documentation.
-*  See `Ansible release and maintenance <https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html>`_  for information about active branches and their corresponding ``ansible-core`` versions.
+*  See `Ansible release and maintenance <https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html>`_  for information about active branches and their corresponding ``ansible-core`` versions.
 *  Refer to the
    `ansible-build-data <https://github.com/ansible-community/ansible-build-data/>`_
    repository for the exact versions of ``ansible-core`` and collections that
@@ -107,7 +107,7 @@ Roadmap
 
 Based on team and community feedback, an initial roadmap will be published for a major 
 version (example: 5, 6).  The `Ansible Roadmap 
-<https://docs.ansible.com/ansible/devel/roadmap/ansible_roadmap_index.html>`_ details what is planned and how to influence the
+<https://docs.ansible.com/projects/ansible/devel/roadmap/ansible_roadmap_index.html>`_ details what is planned and how to influence the
 roadmap.
 
 Authors
@@ -130,11 +130,11 @@ for the full license text.
 .. |PyPI version| image:: https://img.shields.io/pypi/v/ansible.svg
    :target: https://pypi.org/project/ansible
 .. |Docs badge| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg
-   :target: https://docs.ansible.com/ansible/latest/
+   :target: https://docs.ansible.com/projects/ansible/latest/
 .. |Chat badge| image:: https://img.shields.io/badge/chat-IRC-brightgreen.svg
-   :target: https://docs.ansible.com/ansible/latest/community/communication.html
+   :target: https://docs.ansible.com/projects/ansible/latest/community/communication.html
 .. |Code Of Conduct| image:: https://img.shields.io/badge/code%20of%20conduct-Ansible-silver.svg
-   :target: https://docs.ansible.com/ansible/latest/community/code_of_conduct.html
+   :target: https://docs.ansible.com/projects/ansible/latest/community/code_of_conduct.html
    :alt: Ansible Code of Conduct
 .. |Forum| image:: https://img.shields.io/badge/forum-Ansible-orange.svg
    :target: https://forum.ansible.com/
