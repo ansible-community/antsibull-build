@@ -7,7 +7,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 # antsibull-build -- Ansible Build Scripts
 [![Discuss on Matrix at #antsibull:ansible.com](https://img.shields.io/matrix/antsibull:ansible.com.svg?server_fqdn=ansible-accounts.ems.host&label=Discuss%20on%20Matrix%20at%20%23antsibull:ansible.com&logo=matrix)](https://matrix.to/#/#antsibull:ansible.com)
 [![Nox badge](https://github.com/ansible-community/antsibull-build/actions/workflows/nox.yml/badge.svg)](https://github.com/ansible-community/antsibull-build/actions/workflows/nox.yml)
-[![dumb PyPI on GH pages badge](https://github.com/ansible-community/antsibull-build/workflows/👷%20dumb%20PyPI%20on%20GH%20pages/badge.svg?event=push&branch=main)](https://github.com/ansible-community/antsibull-build/actions?query=workflow%3A%22👷+dumb+PyPI+on+GH+pages%22+branch%3Amain)
+[![antsibull-build tests](https://github.com/ansible-community/antsibull-build/actions/workflows/antsibull-build.yml/badge.svg)](https://github.com/ansible-community/antsibull-build/actions/workflows/antsibull-build.yml)
 [![Codecov badge](https://img.shields.io/codecov/c/github/ansible-community/antsibull-build)](https://codecov.io/gh/ansible-community/antsibull-build)
 [![REUSE status](https://api.reuse.software/badge/github.com/ansible-community/antsibull-build)](https://api.reuse.software/info/github.com/ansible-community/antsibull-build)
 
@@ -21,7 +21,7 @@ Related projects are [antsibull-changelog](https://pypi.org/project/antsibull-ch
 
 You can find a list of changes in [the Antsibull Build changelog](https://github.com/ansible-community/antsibull-build/blob/main/CHANGELOG.md).
 
-antsibull-build is covered by the [Ansible Code of Conduct](https://docs.ansible.com/ansible/latest/community/code_of_conduct.html).
+antsibull-build is covered by the [Ansible Code of Conduct](https://docs.ansible.com/projects/ansible/latest/community/code_of_conduct.html).
 
 ## Licensing
 

@@ -21,8 +21,8 @@ MINIMUM_ANSIBLE_VERSIONS = {
     "CHECK_COLLECTION_ANSIBLE_CORE_REQUIREMENTS": PypiVer("12.0.0rc1"),
 }
 
-DOCSITE_BASE_URL = "https://docs.ansible.com/ansible"
-DOCSITE_COMMUNITY_URL = "https://docs.ansible.com/ansible/latest/community"
+DOCSITE_BASE_URL = "https://docs.ansible.com/projects/ansible"
+DOCSITE_COMMUNITY_URL = "https://docs.ansible.com/projects/ansible/latest/community"
 BUILD_DATA_URL = "https://github.com/ansible-community/ansible-build-data"
 ANSIBLE_FORUM_URL = "https://forum.ansible.com"
 
