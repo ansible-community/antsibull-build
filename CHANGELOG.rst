@@ -4,6 +4,19 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.77.0
+=======
+
+Release Summary
+---------------
+
+Maintenance release.
+
+Minor Changes
+-------------
+
+- Adjust docs.ansible.com URLs to use the new ``projects/`` structure (https://github.com/ansible-community/antsibull-build/issues/687, https://github.com/ansible-community/antsibull-build/pull/688).
+
 v0.76.0
 =======
 

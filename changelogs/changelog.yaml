@@ -1172,3 +1172,13 @@ releases:
       - 684-python.yml
       - 686-announcement.yml
     release_date: '2025-11-03'
+  0.77.0:
+    changes:
+      minor_changes:
+        - Adjust docs.ansible.com URLs to use the new ``projects/`` structure (https://github.com/ansible-community/antsibull-build/issues/687,
+          https://github.com/ansible-community/antsibull-build/pull/688).
+      release_summary: Maintenance release.
+    fragments:
+      - 0.77.0.yml
+      - 688-urls.yml
+    release_date: '2025-11-17'

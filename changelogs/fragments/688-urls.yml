@@ -1,2 +1,0 @@
-minor_changes:
-  - "Adjust docs.ansible.com URLs to use the new ``projects/`` structure (https://github.com/ansible-community/antsibull-build/issues/687, https://github.com/ansible-community/antsibull-build/pull/688)."
