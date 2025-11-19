@@ -284,7 +284,13 @@ class CollectionChangelogCollector:
         self, version: SemVer, collection_downloader: CollectionDownloader
     ) -> ChangelogData | None:
         flog = mlog.fields(func="_get_changelog")
-        path = await collection_downloader.download(self.collection, version)
+        try:
+            path = await collection_downloader.download(self.collection, version)
+        except Exception:  # pylint: disable=broad-except
+            flog.error(
+                "Failed to download collection {} version {}", self.collection, version
+            )
+            return None
         changelog_bytes = read_changelog_file(path)
         if changelog_bytes is None:
             return None
@@ -1044,8 +1050,7 @@ def get_changelog(
             if version <= ansible_version:
                 return True
             flog.info(
-                f"Ignoring {path}, since {deps.ansible_version}"
-                f" is newer than {ansible_version}"
+                f"Ignoring {path}, since {version} is newer than {ansible_version}"
             )
             return False
 
