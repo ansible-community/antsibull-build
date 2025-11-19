@@ -1050,8 +1050,7 @@ def get_changelog(
             if version <= ansible_version:
                 return True
             flog.info(
-                f"Ignoring {path}, since {deps.ansible_version}"
-                f" is newer than {ansible_version}"
+                f"Ignoring {path}, since {version} is newer than {ansible_version}"
             )
             return False
 
