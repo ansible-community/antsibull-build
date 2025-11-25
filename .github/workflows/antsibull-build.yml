@@ -68,13 +68,13 @@ jobs:
 
     steps:
       - name: Check out antsibull-build
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: antsibull-build
           persist-credentials: false
 
       - name: Check out dependent project antsibull-changelog
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ansible-community/antsibull-changelog
           path: antsibull-changelog
@@ -82,7 +82,7 @@ jobs:
           persist-credentials: false
 
       - name: Check out dependent project antsibull-core
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ansible-community/antsibull-core
           path: antsibull-core
@@ -90,7 +90,7 @@ jobs:
           persist-credentials: false
 
       - name: Check out dependent project antsibull-docs-parser
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ansible-community/antsibull-docs-parser
           path: antsibull-docs-parser
@@ -98,7 +98,7 @@ jobs:
           persist-credentials: false
 
       - name: Check out dependent project antsibull-docutils
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ansible-community/antsibull-docutils
           path: antsibull-docutils
@@ -106,7 +106,7 @@ jobs:
           persist-credentials: false
 
       - name: Check out dependent project antsibull-fileutils
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ansible-community/antsibull-fileutils
           path: antsibull-fileutils
