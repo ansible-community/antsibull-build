@@ -57,6 +57,10 @@ antsibull_ignore_version_regressions: false
 # Whether or not to start from scratch with a new venv if one exists
 antsibull_venv_cleanup: true
 
+# Extra Python dependencies to install in the virtual environment
+# used to test the built package
+antsibull_extra_venv_deps: []
+
 
 #####
 # These variables relate to verifying that collections properly tag their

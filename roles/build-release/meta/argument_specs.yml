@@ -168,3 +168,12 @@ argument_specs:
         type: bool
         default: false
         version_added: 0.74.0
+
+      antsibull_extra_venv_deps:
+        description:
+          - Extra Python dependencies to install in the virtual environment used to test
+            the built package.
+        type: list
+        elements: str
+        default: false
+        version_added: 0.78.0

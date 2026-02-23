@@ -19,10 +19,13 @@
 
 - name: Install the release wheel in a virtualenv so we can test it
   ansible.builtin.pip:
-    name: "file://{{ _release_wheel }}"
+    name: "{{ package_list + (antsibull_extra_venv_deps | _antsibull_to_list('str')) }}"
     state: present
     virtualenv: "{{ antsibull_ansible_venv }}"
     virtualenv_command: "{{ ansible_facts.python.executable }} -m venv"
+  vars:
+    package_list:
+      - "file://{{ _release_wheel }}"
 
 - vars:
     antsibull_venv_pip_bin: "{{ antsibull_ansible_venv }}/bin/pip"
