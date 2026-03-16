@@ -15,9 +15,9 @@ import pytest
 from antsibull_build.cli.antsibull_build import run
 
 ANNOUNCEMENT_TESTS = [
-    ("7.0.0b1", "announce-7.0.0b1"),
-    ("7.0.0", "announce-7.0.0"),
-    ("7.4.0", "announce-7.4.0"),
+    ("12.0.0b1", "announce-12.0.0b1"),
+    ("12.0.0", "announce-12.0.0"),
+    ("12.3.0", "announce-12.3.0"),
 ]
 
 COLOR_BOLD = "\x1b[0;97m\x1b[1m"

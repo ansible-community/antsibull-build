@@ -11,13 +11,8 @@ from __future__ import annotations
 
 from packaging.version import Version as PypiVer
 
-MINIMUM_ANSIBLE_VERSION = PypiVer("6.0.0")
+MINIMUM_ANSIBLE_VERSION = PypiVer("12.0.0.dev0")
 MINIMUM_ANSIBLE_VERSIONS = {
-    "PACKAGE_DATA_NEW_METHOD": PypiVer("8.0.0a1"),
-    # Whether to store setuptools config in setup.cfg
-    "BUILD_META_MAKER": PypiVer("9.0.0.dev0"),
-    "BUILD_META_NEW_URLS": PypiVer("9.0.0rc1"),
-    "REMOVED_LICENSE_CLASSIFIERS": PypiVer("12.0.0.dev0"),
     "CHECK_COLLECTION_ANSIBLE_CORE_REQUIREMENTS": PypiVer("12.0.0rc1"),
 }
 
