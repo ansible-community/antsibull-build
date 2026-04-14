@@ -1,0 +1,2 @@
+release_summary: Maintenance release that drops support for building Ansible versions
+  before 12.0.0.dev0.
