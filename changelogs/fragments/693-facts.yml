@@ -1,2 +1,0 @@
-bugfixes:
-  - "build-release role - avoid deprecated ``ansible_facts`` access (https://github.com/ansible-community/antsibull-build/pull/693)."

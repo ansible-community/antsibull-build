@@ -1182,3 +1182,16 @@ releases:
       - 0.77.0.yml
       - 688-urls.yml
     release_date: '2025-11-17'
+  0.78.0:
+    changes:
+      bugfixes:
+        - build-release role - avoid deprecated ``ansible_facts`` access (https://github.com/ansible-community/antsibull-build/pull/693).
+      release_summary: Maintenance release that drops support for building Ansible
+        versions before 12.0.0.dev0.
+      removed_features:
+        - Removed support for building Ansible before 12.0.0.dev0 (https://github.com/ansible-community/antsibull-build/pull/698).
+    fragments:
+      - 0.78.0.yml
+      - 693-facts.yml
+      - 698-ansible-12.yml
+    release_date: '2026-04-14'

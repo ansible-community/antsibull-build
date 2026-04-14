@@ -4,6 +4,24 @@ antsibull -- Ansible Build Scripts Release Notes
 
 .. contents:: Topics
 
+v0.78.0
+=======
+
+Release Summary
+---------------
+
+Maintenance release that drops support for building Ansible versions before 12.0.0.dev0.
+
+Removed Features (previously deprecated)
+----------------------------------------
+
+- Removed support for building Ansible before 12.0.0.dev0 (https://github.com/ansible-community/antsibull-build/pull/698).
+
+Bugfixes
+--------
+
+- build-release role - avoid deprecated ``ansible_facts`` access (https://github.com/ansible-community/antsibull-build/pull/693).
+
 v0.77.0
 =======
 
