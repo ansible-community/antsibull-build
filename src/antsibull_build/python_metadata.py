@@ -20,7 +20,6 @@ from pathlib import Path
 from typing import Any, Union
 
 from antsibull_core.dependency_files import DependencyFileData
-from jinja2 import Template
 from packaging.version import Version as PypiVer
 
 from .constants import (
@@ -29,9 +28,7 @@ from .constants import (
     COLLECTION_EXCLUDE_DIRS,
     DOCSITE_BASE_URL,
     DOCSITE_COMMUNITY_URL,
-    MINIMUM_ANSIBLE_VERSIONS,
 )
-from .utils.get_pkg_data import get_antsibull_data
 
 
 class IniType:
@@ -66,28 +63,13 @@ class IniList(IniType, list):
 
 INI_TYPES = Union[IniType, str, bool]
 
-OLD_URLS = IniDict(
-    {
-        "Bug Tracker": "https://github.com/ansible/ansible/issues",
-        "Code of Conduct": DOCSITE_COMMUNITY_URL + "/code_of_conduct.html",
-        "Documentation": DOCSITE_BASE_URL,
-        "Mailing lists": DOCSITE_COMMUNITY_URL
-        + "/communication.html#mailing-list-information",
-        "Source Code": "https://github.com/ansible/ansible",
-    }
-)
-
-NEW_URLS = IniDict(
+URLS = IniDict(
     {
         "Build Data": BUILD_DATA_URL,
         "Code of Conduct": DOCSITE_COMMUNITY_URL + "/code_of_conduct.html",
         "Documentation": DOCSITE_BASE_URL,
         "Forum": ANSIBLE_FORUM_URL,
     }
-)
-
-LICENSE_CLASSIFIER = (
-    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"
 )
 
 DEFAULT_METADATA: dict[str, INI_TYPES] = {
@@ -170,7 +152,6 @@ class BuildMetaMaker:
 
     config: defaultdict[str, dict[str, INI_TYPES]]
     ansible_core_metadata: Message
-    _collection_directories: dict[str, list[str]]
 
     def __init__(
         self,
@@ -201,8 +182,6 @@ class BuildMetaMaker:
             self.ansible_core_metadata = message_from_file(fp)
 
         self._generated = False
-        # TODO: Remove once we drop LegacyBuildMetaMaker
-        self._collection_directories: dict[str, str] = {}
 
     def __getitem__(self, key: str) -> Any:
         return self.config[key]
@@ -229,16 +208,8 @@ class BuildMetaMaker:
         ]
 
     def add_collection_ignores(self) -> None:
-        if self.ansible_version >= MINIMUM_ANSIBLE_VERSIONS["PACKAGE_DATA_NEW_METHOD"]:
-            self._package_data_new_method()
-        else:
-            self._package_data_old_method()
-
-    def _package_data_new_method(self) -> None:
         collection_namespaces: dict[str, list[str]] = defaultdict(list)
-        # We only need this as an attribute for the LegacyBuildMetaMaker compat
-        # TODO: Remove once we drop LegacyBuildMetaMaker
-        collection_directories = self._collection_directories
+        collection_directories: dict[str, list[str]] = {}
         for collection in self.dependency_data.deps:
             namespace, name = collection.split(".", 1)
             collection_namespaces[namespace].append(name)
@@ -271,32 +242,12 @@ class BuildMetaMaker:
             for directory in collection_directories[collection]:
                 data.extend([f"{directory}/*", f"{directory}/.*"])
 
-    def _package_data_old_method(self) -> None:
-        self["options"]["packages"] = IniList(["ansible_collections"])
-        self["options"]["include_package_data"] = True
-        self["options.exclude_package_data"]["ansible_collections"] = IniList(
-            _get_exclude_package_data(self.dependency_data.deps, self.collections_dir)
-        )
-
     def generate(self) -> None:
         self["metadata"]["version"] = self.ansible_version
         self["metadata"].setdefault("classifiers", IniList()).extend(
             self.core_python_classifiers
         )
-        if (
-            self.ansible_version
-            < MINIMUM_ANSIBLE_VERSIONS["REMOVED_LICENSE_CLASSIFIERS"]
-        ):
-            self["metadata"]["classifiers"].append(LICENSE_CLASSIFIER)
-        self["metadata"].setdefault(
-            "project_urls",
-            (
-                NEW_URLS
-                if self.ansible_version
-                >= MINIMUM_ANSIBLE_VERSIONS["BUILD_META_NEW_URLS"]
-                else OLD_URLS
-            ),
-        )
+        self["metadata"].setdefault("project_urls", URLS)
         self["options"].setdefault("install_requires", IniList()).append(
             f"ansible-core ~= {self.ansible_core_version}"
         )
@@ -317,59 +268,3 @@ class BuildMetaMaker:
         file = file or self.package_dir.joinpath("setup.cfg")
         with file.open("w", encoding="utf-8") as fp:
             parser.write(fp)
-
-
-class LegacyBuildMetaMaker:
-    """
-    Generate a setup.py and other Python metadata for ansible.
-    This is a wrapper around `BuildMetaMaker`.
-    """
-
-    def __init__(
-        self,
-        *,
-        package_dir: str | os.PathLike[str],
-        collections_dir: str | os.PathLike[str] | None = None,
-        ansible_version: PypiVer,
-        dependency_data: DependencyFileData,
-        ansible_core_version: PypiVer,
-        ansible_core_checkout: str | os.PathLike[str],
-        python_requires: str | None,
-    ) -> None:
-        self.maker: BuildMetaMaker = BuildMetaMaker(
-            package_dir=package_dir,
-            collections_dir=collections_dir,
-            ansible_version=ansible_version,
-            dependency_data=dependency_data,
-            ansible_core_version=ansible_core_version,
-            ansible_core_checkout=ansible_core_checkout,
-            initial_config=DEFAULT_CONFIG,
-            python_requires=python_requires,
-        )
-
-    def write(self, file: Path | None = None) -> None:
-        file = file or self.maker.package_dir / "setup.py"
-
-        self.maker.generate()
-
-        collection_exclude_paths = self.maker["options.exclude_package_data"].get(
-            "ansible_collections", []
-        )
-
-        setup_tmpl = Template(get_antsibull_data("ansible-setup_py.j2").decode("utf-8"))
-        setup_contents = setup_tmpl.render(
-            version=self.maker.ansible_version,
-            ansible_core_package_name="ansible-core",
-            ansible_core_version=self.maker.ansible_core_version,
-            collection_deps="",
-            # not PACKAGE_DATA_NEW_METHOD
-            collection_exclude_paths=sorted(collection_exclude_paths),
-            # PACKAGE_DATA_NEW_METHOD
-            collection_names=sorted(self.maker.dependency_data.deps),
-            # pylint: disable-next=protected-access
-            collection_directories=self.maker._collection_directories,
-            #
-            python_requires=self.maker["options"]["python_requires"],
-            PypiVer=PypiVer,
-        )
-        file.write_text(setup_contents, encoding="utf-8")

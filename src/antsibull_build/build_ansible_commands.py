@@ -33,7 +33,7 @@ from semantic_version import SimpleSpec as SemVerSpec
 from semantic_version import Version as SemVer
 
 from antsibull_build.constants import MINIMUM_ANSIBLE_VERSIONS
-from antsibull_build.python_metadata import BuildMetaMaker, LegacyBuildMetaMaker
+from antsibull_build.python_metadata import BuildMetaMaker
 
 from . import __version__ as antsibull_version
 from .ansible_core_reqs import check_collection_ansible_core_requirements
@@ -188,15 +188,13 @@ def write_python_build_files(
     release_notes: ReleaseNotes | None = None,
     debian: bool = False,
     tags_file: StrPath | None = None,
-    stub_setup_py: bool = False,
 ) -> None:
     copy_boilerplate_files(package_dir)
     copy_tags_file(tags_file, package_dir)
     write_manifest(package_dir, release_notes, debian, tags_file)
-    if stub_setup_py:
-        Path(package_dir, "setup.py").write_bytes(
-            get_antsibull_data("ansible-stub-setup.py")
-        )
+    Path(package_dir, "setup.py").write_bytes(
+        get_antsibull_data("ansible-stub-setup.py")
+    )
 
 
 def write_debian_directory(
@@ -293,13 +291,7 @@ def write_all_build_files(
     ansible_core_checkout: StrPath,
     release_notes: ReleaseNotes | None = None,
 ) -> None:
-    use_build_meta_maker = (
-        ansible_version >= MINIMUM_ANSIBLE_VERSIONS["BUILD_META_MAKER"]
-    )
-    meta_maker_class: type[BuildMetaMaker | LegacyBuildMetaMaker] = (
-        BuildMetaMaker if use_build_meta_maker else LegacyBuildMetaMaker
-    )
-    build_meta_maker = meta_maker_class(
+    build_meta_maker = BuildMetaMaker(
         package_dir=package_dir,
         collections_dir=collections_dir,
         ansible_version=ansible_version,
@@ -311,9 +303,7 @@ def write_all_build_files(
     build_meta_maker.write()
 
     write_build_script(ansible_version, ansible_core_version, package_dir)
-    write_python_build_files(
-        package_dir, release_notes, debian, tags_path, use_build_meta_maker
-    )
+    write_python_build_files(package_dir, release_notes, debian, tags_path)
     if debian:
         write_debian_directory(ansible_version, ansible_core_version, package_dir)
 

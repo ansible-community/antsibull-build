@@ -157,22 +157,9 @@ def generate_package_files(
     cached_dist: AnsibleSdist,
     extract_dir: Path,
     data_dir: Path,
-    force_generate_setup_cfg: bool,
 ) -> None:
     cached_dist.extract_collections(extract_dir)
-    cm = (
-        patch_dict(MINIMUM_ANSIBLE_VERSIONS, "BUILD_META_MAKER", PypiVer(version))
-        if force_generate_setup_cfg
-        else contextlib.nullcontext()
-    )
-    cm2 = (
-        patch_dict(MINIMUM_ANSIBLE_VERSIONS, "BUILD_META_NEW_URLS", PypiVer(version))
-        if force_generate_setup_cfg
-        else contextlib.nullcontext()
-    )
     with (
-        cm,
-        cm2,
         patch_object(
             build_ansible_commands,
             "antsibull_version",
@@ -247,15 +234,12 @@ def check_command(
     data_dir: Path,
     build_check: bool,
     build_dir: Path | None,
-    force_generate_setup_cfg: bool,
 ) -> None:
     package_dir = package_dir / version
     cached_dist = AnsibleSdist(version, cache_dir)
 
     with temp_or_dir() as extract_dir:
-        generate_package_files(
-            version, cached_dist, extract_dir, data_dir, force_generate_setup_cfg
-        )
+        generate_package_files(version, cached_dist, extract_dir, data_dir)
         diff_args = ["-ur", "-x", "ansible_collections", "-x", "*egg-info"]
         if build_check:
             write_file_list(version, extract_dir, build_dir)
@@ -271,9 +255,7 @@ def check_command(
             sys.exit(rc)
 
         # Make sure files can be regenerated
-        generate_package_files(
-            version, cached_dist, extract_dir, data_dir, force_generate_setup_cfg
-        )
+        generate_package_files(version, cached_dist, extract_dir, data_dir)
         run(["diff", *diff_args, package_dir, extract_dir], check=False)
         if rc := proc.returncode:
             colorlog(
@@ -295,7 +277,6 @@ def regen_command(
     build_check: bool,
     clean: bool,
     build_dir: Path | None,
-    force_generate_setup_cfg: bool,
 ) -> None:
     package_dir = package_dir / version
     cached_dist = AnsibleSdist(version, cache_dir)
@@ -304,9 +285,7 @@ def regen_command(
         shutil.rmtree(package_dir, True)
     package_dir.mkdir(exist_ok=True)
 
-    generate_package_files(
-        version, cached_dist, package_dir, data_dir, force_generate_setup_cfg
-    )
+    generate_package_files(version, cached_dist, package_dir, data_dir)
     if build_check:
         write_file_list(version, package_dir, build_dir)
     shutil.rmtree(package_dir / "ansible_collections", True)
@@ -346,13 +325,6 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         help="Directory to use for storing temporary build artifacts"
         " when --build-check is used",
         type=Path,
-    )
-    _package_data_parser.add_argument(
-        "--force-generate-setup-cfg",
-        action=argparse.BooleanOptionalAction,
-        default=False,
-        help="Generate setup.cfg even if that's not the default for VERSION."
-        " Default: False",
     )
 
     check_parser = subparsers.add_parser("check", parents=[_package_data_parser])

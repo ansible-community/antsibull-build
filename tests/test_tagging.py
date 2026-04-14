@@ -18,30 +18,30 @@ from antsibull_build.cli.antsibull_build import run
         pytest.param(
             [],
             [
-                "cisco.nso 1.0.3 is not tagged in https://github.com/CiscoDevNet/ansible-nso",
-                "hpe.nimble 1.1.4 is not tagged in https://github.com/hpe-storage/nimble-ansible-modules",
-                "inspur.sm 2.3.0 is not tagged in https://github.com/ISIB-Group/inspur.sm",
-                "mellanox.onyx 1.0.0 is not tagged in https://github.com/ansible-collections/mellanox.onyx",
+                "ansible.windows 3.3.0 is not tagged in https://github.com/ansible-collections/ansible.windows",
+                "check_point.mgmt 6.7.0 is not tagged in https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection",
+                "cisco.ios 11.1.1 is not tagged in https://github.com/ansible-collections/cisco.ios",
+                "community.postgresql 4.2.0 is not tagged in https://github.com/ansible-collections/community.postgresql",
             ],
             1,
             id="simple",
         ),
         pytest.param(
-            ["-I", "cisco.nso"],
+            ["-I", "ansible.windows"],
             [
-                "hpe.nimble 1.1.4 is not tagged in https://github.com/hpe-storage/nimble-ansible-modules",
-                "inspur.sm 2.3.0 is not tagged in https://github.com/ISIB-Group/inspur.sm",
-                "mellanox.onyx 1.0.0 is not tagged in https://github.com/ansible-collections/mellanox.onyx",
+                "check_point.mgmt 6.7.0 is not tagged in https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection",
+                "cisco.ios 11.1.1 is not tagged in https://github.com/ansible-collections/cisco.ios",
+                "community.postgresql 4.2.0 is not tagged in https://github.com/ansible-collections/community.postgresql",
             ],
             1,
             id="one-ignore",
         ),
         pytest.param(
-            ["-I", "cisco.nso", "-I", "xyz"],
+            ["-I", "ansible.windows", "-I", "xyz"],
             [
-                "hpe.nimble 1.1.4 is not tagged in https://github.com/hpe-storage/nimble-ansible-modules",
-                "inspur.sm 2.3.0 is not tagged in https://github.com/ISIB-Group/inspur.sm",
-                "mellanox.onyx 1.0.0 is not tagged in https://github.com/ansible-collections/mellanox.onyx",
+                "check_point.mgmt 6.7.0 is not tagged in https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection",
+                "cisco.ios 11.1.1 is not tagged in https://github.com/ansible-collections/cisco.ios",
+                "community.postgresql 4.2.0 is not tagged in https://github.com/ansible-collections/community.postgresql",
                 "invalid ignore 'xyz': xyz does not match any collection",
             ],
             1,
@@ -50,13 +50,13 @@ from antsibull_build.cli.antsibull_build import run
         pytest.param(
             [
                 "-I",
-                "cisco.nso",
+                "ansible.windows",
                 "-I",
-                "hpe.nimble",
+                "check_point.mgmt",
                 "-I",
-                "inspur.sm",
+                "cisco.ios",
                 "-I",
-                "mellanox.onyx",
+                "community.postgresql",
             ],
             [],
             0,
@@ -65,13 +65,13 @@ from antsibull_build.cli.antsibull_build import run
         pytest.param(
             [
                 "-I",
-                "cisco.nso",
+                "ansible.windows",
                 "-I",
-                "hpe.nimble",
+                "check_point.mgmt",
                 "-I",
-                "inspur.sm",
+                "cisco.ios",
                 "-I",
-                "mellanox.onyx",
+                "community.postgresql",
                 "-I",
                 "asdf",
                 "-I",
@@ -80,7 +80,7 @@ from antsibull_build.cli.antsibull_build import run
             [
                 "invalid ignore 'asdf': asdf does not match any collection",
                 "useless ignore 'community.general':"
-                " community.general 6.5.0 is properly tagged",
+                " community.general 11.4.2 is properly tagged",
             ],
             1,
             id="ignore-all-with-invalid",
@@ -94,7 +94,7 @@ def test_validate_tags_file(
     expected: list[str],
     ret: int,
 ):
-    path = test_data_path / "ansible-7.4.0-tags.yaml"
+    path = test_data_path / "ansible-12.3.0-tags.yaml"
     assert run(["antsibull-build", "validate-tags-file", str(path), *args]) == ret
     out, err = capsys.readouterr()
     assert sorted(err.splitlines()) == sorted(expected)
@@ -107,32 +107,32 @@ def test_validate_tags_file(
             [],
             [],
             [
-                "cisco.nso 1.0.3 is not tagged in https://github.com/CiscoDevNet/ansible-nso",
-                "hpe.nimble 1.1.4 is not tagged in https://github.com/hpe-storage/nimble-ansible-modules",
-                "inspur.sm 2.3.0 is not tagged in https://github.com/ISIB-Group/inspur.sm",
-                "mellanox.onyx 1.0.0 is not tagged in https://github.com/ansible-collections/mellanox.onyx",
+                "ansible.windows 3.3.0 is not tagged in https://github.com/ansible-collections/ansible.windows",
+                "check_point.mgmt 6.7.0 is not tagged in https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection",
+                "cisco.ios 11.1.1 is not tagged in https://github.com/ansible-collections/cisco.ios",
+                "community.postgresql 4.2.0 is not tagged in https://github.com/ansible-collections/community.postgresql",
             ],
             1,
             id="simple",
         ),
         pytest.param(
             [],
-            ["cisco.nso"],
+            ["ansible.windows"],
             [
-                "hpe.nimble 1.1.4 is not tagged in https://github.com/hpe-storage/nimble-ansible-modules",
-                "inspur.sm 2.3.0 is not tagged in https://github.com/ISIB-Group/inspur.sm",
-                "mellanox.onyx 1.0.0 is not tagged in https://github.com/ansible-collections/mellanox.onyx",
+                "check_point.mgmt 6.7.0 is not tagged in https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection",
+                "cisco.ios 11.1.1 is not tagged in https://github.com/ansible-collections/cisco.ios",
+                "community.postgresql 4.2.0 is not tagged in https://github.com/ansible-collections/community.postgresql",
             ],
             1,
             id="one-ignore",
         ),
         pytest.param(
             [],
-            ["cisco.nso", "xyz"],
+            ["ansible.windows", "xyz"],
             [
-                "hpe.nimble 1.1.4 is not tagged in https://github.com/hpe-storage/nimble-ansible-modules",
-                "inspur.sm 2.3.0 is not tagged in https://github.com/ISIB-Group/inspur.sm",
-                "mellanox.onyx 1.0.0 is not tagged in https://github.com/ansible-collections/mellanox.onyx",
+                "check_point.mgmt 6.7.0 is not tagged in https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection",
+                "cisco.ios 11.1.1 is not tagged in https://github.com/ansible-collections/cisco.ios",
+                "community.postgresql 4.2.0 is not tagged in https://github.com/ansible-collections/community.postgresql",
                 "invalid ignore 'xyz': xyz does not match any collection",
             ],
             1,
@@ -141,10 +141,10 @@ def test_validate_tags_file(
         pytest.param(
             [],
             [
-                "cisco.nso",
-                "hpe.nimble",
-                "inspur.sm",
-                "mellanox.onyx",
+                "ansible.windows",
+                "check_point.mgmt",
+                "cisco.ios",
+                "community.postgresql",
             ],
             [],
             0,
@@ -153,10 +153,10 @@ def test_validate_tags_file(
         pytest.param(
             [],
             [
-                "cisco.nso",
-                "hpe.nimble",
-                "inspur.sm",
-                "mellanox.onyx",
+                "ansible.windows",
+                "check_point.mgmt",
+                "cisco.ios",
+                "community.postgresql",
                 "asdf",
             ],
             ["invalid ignore 'asdf': asdf does not match any collection"],
@@ -164,11 +164,11 @@ def test_validate_tags_file(
             id="ignore-all-with-invalid",
         ),
         pytest.param(
-            ["-I", "mellanox.onyx", "-I", "xyz"],
+            ["-I", "ansible.windows", "-I", "xyz"],
             [
-                "cisco.nso",
-                "hpe.nimble",
-                "inspur.sm",
+                "check_point.mgmt",
+                "cisco.ios",
+                "community.postgresql",
                 "asdf",
             ],
             [
@@ -189,7 +189,7 @@ def test_validate_tags_file_ignore_file(
     expected: list[str],
     ret: int,
 ):
-    path = test_data_path / "ansible-7.4.0-tags.yaml"
+    path = test_data_path / "ansible-12.3.0-tags.yaml"
     ignores_file = tmp_path / "ignores_file"
     ignores_file.write_text("\n".join(ignore_file_contents))
     ran = run(
@@ -209,7 +209,7 @@ def test_validate_tags_file_ignore_file(
 
 def test_validate_tags(test_data_path: Path, tmp_path: Path):
     ignores_file = test_data_path / "validate-tags-ignores"
-    name = "ansible-7.4.0-tags.yaml"
+    name = "ansible-12.3.0-tags.yaml"
     expected_data_path = test_data_path / name
     expected_data = load_yaml_file(expected_data_path)
     output_data_path = tmp_path / name
@@ -224,7 +224,7 @@ def test_validate_tags(test_data_path: Path, tmp_path: Path):
                 f"--ignores-file={ignores_file}",
                 f"--output={output_data_path}",
                 "--error-on-useless-ignores",
-                "7.4.0",
+                "12.3.0",
             ]
         )
     assert ran == 0

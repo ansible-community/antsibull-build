@@ -1,0 +1,50 @@
+{
+  "template_vars": {
+    "version": "12.3.0",
+    "major_version": 12,
+    "core_version": "2.19.5",
+    "core_major_version": "2.19",
+    "build_data_path": "https://github.com/ansible-community/ansible-build-data/blob/12.3.0/12",
+    "release_tarball": {
+      "digests": {
+        "blake2b_256": "d4df60253bfc1f87e3d5b52a06723cc15270428dab113a878cd162ab3923db4e",
+        "md5": "ff1eb7604a060225be10ae73eda5da83",
+        "sha256": "02721f6fb432ddd47f1044ac49b04b5e9ae08890bd427def8df3db1607aeec51"
+      },
+      "filename": "ansible-12.3.0.tar.gz",
+      "md5_digest": "ff1eb7604a060225be10ae73eda5da83",
+      "packagetype": "sdist",
+      "python_version": "source",
+      "requires_python": ">=3.11",
+      "size": 52065271,
+      "upload_time": "2025-12-09T21:04:42",
+      "url": "https://files.pythonhosted.org/packages/d4/df/60253bfc1f87e3d5b52a06723cc15270428dab113a878cd162ab3923db4e/ansible-12.3.0.tar.gz",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    "release_wheel": {
+      "digests": {
+        "blake2b_256": "dc91ed9ff629465050d4bdbc9da33d348156736b8778733f97a3627daae4f9ce",
+        "md5": "1df6b5a27da2cad39279f20d53ba4b3b",
+        "sha256": "cd156f82fa87f7a899212b0efa9f7ca3a24d609212de9f78428a572eb01e5414"
+      },
+      "filename": "ansible-12.3.0-py3-none-any.whl",
+      "md5_digest": "1df6b5a27da2cad39279f20d53ba4b3b",
+      "packagetype": "bdist_wheel",
+      "python_version": "py3",
+      "requires_python": ">=3.11",
+      "size": 54354494,
+      "upload_time": "2025-12-09T21:04:36",
+      "url": "https://files.pythonhosted.org/packages/dc/91/ed9ff629465050d4bdbc9da33d348156736b8778733f97a3627daae4f9ce/ansible-12.3.0-py3-none-any.whl",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    "is_major_release": false,
+    "is_prerelease": false,
+    "end_of_life": false
+  },
+  "outputs": [
+    "ansible-forum-announcement.md",
+    "ansible-matrix-announcement.md"
+  ]
+}

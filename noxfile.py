@@ -212,18 +212,9 @@ def typing(session: nox.Session):
 @nox.parametrize(
     ["major", "version", "extra_args"],
     [
-        ["8", "8.1.0", []],
-        ["7", "7.5.0", []],
-        [
-            "8",
-            "8.1.0",
-            [
-                "--package-dir=tests/test_data/package-files/force_setup_cfg",
-                "--force-generate-setup-cfg",
-            ],
-        ],
+        ["12", "12.1.0", []],
     ],
-    ["8.1.0", "7.5.0", "8.1.0_setup_cfg"],
+    ["12.1.0"],
 )
 def check_package_files(
     session: nox.Session, major: str, version: str, extra_args: Sequence[str]
