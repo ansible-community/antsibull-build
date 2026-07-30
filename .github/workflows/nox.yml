@@ -46,36 +46,36 @@ jobs:
     name: "Run nox ${{ matrix.session }} session"
     steps:
       - name: Check out antsibull-build
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           path: antsibull-build
           persist-credentials: false
       - name: Check out dependent project antsibull-core
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           repository: ansible-community/antsibull-core
           path: antsibull-core
           persist-credentials: false
       - name: Check out dependent project antsibull-changelog
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           repository: ansible-community/antsibull-changelog
           path: antsibull-changelog
           persist-credentials: false
       - name: Check out dependent project antsibull-docs-parser
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           repository: ansible-community/antsibull-docs-parser
           path: antsibull-docs-parser
           persist-credentials: false
       - name: Check out dependent project antsibull-docutils
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           repository: ansible-community/antsibull-docutils
           path: antsibull-docutils
           persist-credentials: false
       - name: Check out dependent project antsibull-fileutils
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           repository: ansible-community/antsibull-fileutils
           path: antsibull-fileutils
@@ -85,7 +85,7 @@ jobs:
         run: |
           sudo apt-get install -y ${{ matrix.packages }}
       - name: Setup nox
-        uses: wntrblm/nox@2026.07.11
+        uses: wntrblm/nox@3284968a16fa5bd7fc0cc64a69a531404ccb4756  # 2026.07.11
         with:
           python-versions: "${{ matrix.python-versions }}"
       - name: Run nox
