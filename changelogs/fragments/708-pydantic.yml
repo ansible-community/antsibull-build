@@ -1,0 +1,2 @@
+minor_changes:
+  - "antsibull-build now requires pydantic 2.12+ (https://github.com/ansible-community/antsibull-build/pull/708)."

@@ -40,7 +40,7 @@ dependencies = [
     "aiofiles",
     "aiohttp >= 3.0.0",
     "pyyaml",
-    "pydantic >= 2, < 3",
+    "pydantic >= 2.12, < 3",
     # pydantic already pulls it in, but we use it for TypedDict
     "typing_extensions",
 ]

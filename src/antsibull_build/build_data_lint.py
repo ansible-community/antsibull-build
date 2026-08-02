@@ -17,16 +17,15 @@ from antsibull_changelog.lint import lint_changelog_yaml as _lint_changelog_yaml
 from antsibull_core import app_context
 from antsibull_core.collection_meta import lint_collection_meta as _lint_collection_meta
 from antsibull_core.dependency_files import parse_pieces_file
-from antsibull_core.pydantic import forbid_extras, get_formatted_error_messages
+from antsibull_core.pydantic import get_formatted_error_messages
 from semantic_version import Version as SemVer
 
 from .changelog import RemoveCollectionChangelogEntries
 
 
 def _lint_rcce(rcce: dict, errors: list[str]) -> None:
-    forbid_extras(RemoveCollectionChangelogEntries)
     try:
-        rcce_obj = RemoveCollectionChangelogEntries.model_validate(rcce)
+        rcce_obj = RemoveCollectionChangelogEntries.model_validate(rcce, extra="forbid")
         for collection_name, versions in rcce_obj.root.items():
             for version in versions.root:
                 try:
