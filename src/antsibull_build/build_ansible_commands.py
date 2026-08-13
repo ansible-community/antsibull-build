@@ -40,6 +40,7 @@ from .ansible_core_reqs import check_collection_ansible_core_requirements
 from .build_changelog import ReleaseNotes
 from .changelog import ChangelogData, get_changelog
 from .dep_closure import check_collection_dependencies
+from .schemas.release_edits import PathInfo, ReleaseEdits, load_edit_file
 from .tagging import get_collections_tags
 from .utils.galaxy import create_galaxy_context
 from .utils.get_pkg_data import get_antsibull_data
@@ -596,6 +597,35 @@ def prepare_command() -> int:
     return 0
 
 
+def apply_edit(path: str, info: PathInfo) -> None:
+    if info.delete:
+        if info.delete.recursive:
+            print(f"Deleting {path} recursively...")
+            if not os.path.isdir(path) or os.path.islink(path):
+                raise ValueError(f"Error: {path} is not a directory")
+            shutil.rmtree(path)
+        else:
+            print(f"Deleting {path}...")
+            os.unlink(path)
+
+
+def apply_edit_data(edit_data: ReleaseEdits, package_dir: str) -> None:
+    package_dir = os.path.abspath(package_dir)
+    for path, info in sorted(edit_data.paths.items()):
+        full_path = os.path.join(package_dir, path)
+
+        # Sanity checks so that path doesn't point outside of package_dir
+        directory, basename = os.path.split(full_path)
+        if basename in (".", ".."):
+            raise ValueError(f"Invalid edit path {path!r}")
+        absdir = os.path.abspath(directory)
+        if absdir != package_dir and not absdir.startswith(f"{package_dir}{os.sep}"):
+            raise ValueError(f"Invalid edit path {path!r}")
+
+        # Apply edits
+        apply_edit(full_path, info)
+
+
 def rebuild_single_command() -> int:
     app_ctx = app_context.app_ctx.get()
     lib_ctx = app_context.lib_ctx.get()
@@ -610,6 +640,10 @@ def rebuild_single_command() -> int:
         )
     except ValueError:
         python_requires = None
+
+    # Load edits
+    edit_filename = deps_filename.replace(".deps", "-edit.yaml")
+    edit_data = load_edit_file(edit_filename)
 
     # Determine included collection versions
     ansible_core_version = PypiVer(dependency_data.ansible_core_version)
@@ -673,6 +707,9 @@ def rebuild_single_command() -> int:
         ]
 
         asyncio.run(install_together(collections_to_install, ansible_collections_dir))
+
+        # Apply edits
+        apply_edit_data(edit_data, package_dir)
 
         # Compose and write release notes to destination directory
         release_notes = ReleaseNotes.build(changelog)
