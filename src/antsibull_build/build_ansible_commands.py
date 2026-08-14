@@ -610,7 +610,7 @@ def apply_edit(path: str, info: PathInfo) -> None:
 
 
 def apply_edit_data(edit_data: ReleaseEdits, package_dir: str) -> None:
-    package_dir = os.path.abspath(package_dir)
+    package_dir = os.path.realpath(package_dir)
     for path, info in sorted(edit_data.paths.items()):
         full_path = os.path.join(package_dir, path)
 
@@ -618,7 +618,7 @@ def apply_edit_data(edit_data: ReleaseEdits, package_dir: str) -> None:
         directory, basename = os.path.split(full_path)
         if basename in (".", ".."):
             raise ValueError(f"Invalid edit path {path!r}")
-        absdir = os.path.abspath(directory)
+        absdir = os.path.realpath(directory)
         if absdir != package_dir and not absdir.startswith(f"{package_dir}{os.sep}"):
             raise ValueError(f"Invalid edit path {path!r}")
 
