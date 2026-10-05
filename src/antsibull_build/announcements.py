@@ -49,7 +49,6 @@ ANNOUNCEMENTS = {
 }
 SUBJECT = "Release announcement: Ansible community package {version}"
 SUBJECT_PRE_RELEASE = SUBJECT + " (Pre-Release)"
-# pylint: disable-next=line-too-long
 # https://meta.discourse.org/t/create-a-link-to-start-a-new-topic-with-pre-filled-information/28074 # noqa
 FORUM_TAGS = ("release", "distro-packaging", "release-management")
 FORUM_PARAMS: dict[str, str] = {
