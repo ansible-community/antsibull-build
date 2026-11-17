@@ -41,6 +41,14 @@ jobs:
             antsibull_docs_parser_ref: main
             antsibull_docutils_ref: main
             antsibull_fileutils_ref: main
+          - name: Ansible 16
+            options: '-e antsibull_ansible_version=16.99.0'
+            python: '3.15'
+            antsibull_changelog_ref: main
+            antsibull_core_ref: main
+            antsibull_docs_parser_ref: main
+            antsibull_docutils_ref: main
+            antsibull_fileutils_ref: main
 
     steps:
       - name: Check out antsibull-build
