@@ -10,6 +10,7 @@ Code to lint build data.
 
 from __future__ import annotations
 
+import glob
 import os
 
 import pydantic as p
@@ -21,6 +22,7 @@ from antsibull_core.pydantic import get_formatted_error_messages
 from semantic_version import Version as SemVer
 
 from .changelog import RemoveCollectionChangelogEntries
+from .schemas.release_edits import lint_edit_file
 
 
 def _lint_rcce(rcce: dict, errors: list[str]) -> None:
@@ -76,6 +78,14 @@ def lint_build_data() -> int:
         preprocess_data=lambda data: _lint_changelog_extra_data(data, errors),
     ):
         errors.append(f"{path}: {message}")
+
+    # Lint release edits
+    for edit in glob.glob(os.path.join(data_dir, "*-edit.yaml")):
+        deps_file = edit.replace("-edit.yaml", ".deps")
+        if not os.path.isfile(deps_file):
+            errors.append(f"{edit}: no associated deps file {deps_file} found")
+        for message in lint_edit_file(edit):
+            errors.append(f"{edit}: {message}")
 
     # Show results
     for message in sorted(errors):
