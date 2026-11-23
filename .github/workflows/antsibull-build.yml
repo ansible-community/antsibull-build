@@ -18,6 +18,9 @@ env:
   FORCE_COLOR: "1"
   OTHER_ANTSIBULL_MODE: local
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: 'Build Ansible community distribution (${{ matrix.name }})'
