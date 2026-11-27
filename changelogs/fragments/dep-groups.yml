@@ -1,0 +1,2 @@
+bugfixes:
+  - "Replace internal extras with PEP735 dependency groups. This has no effect on users, unless you for some reason used one of these internal, undocumented extras (https://github.com/ansible-community/antsibull-build/pull/721)."
