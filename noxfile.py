@@ -82,7 +82,11 @@ def other_antsibull(
 def test(session: nox.Session):
     install(
         session,
-        ".[test, coverage]",
+        ".",
+        "--group",
+        "test",
+        "--group",
+        "coverage",
         *other_antsibull(),
         editable=True,
     )
@@ -121,7 +125,9 @@ def coverage_release(session: nox.Session):
     """
     install(
         session,
-        ".[coverage]",
+        ".",
+        "--group",
+        "coverage",
         *other_antsibull(),
         "ansible-core",
         editable=True,
@@ -167,7 +173,7 @@ def coverage_release(session: nox.Session):
 
 @nox.session
 def coverage(session: nox.Session):
-    install(session, ".[coverage]", *other_antsibull(), editable=True)
+    install(session, ".", "--group", "coverage", *other_antsibull(), editable=True)
     combined = map(str, Path().glob(".nox/*/tmp/.coverage"))
     # Combine the results into a single .coverage file in the root
     session.run("coverage", "combine", "--keep", *combined)
@@ -184,7 +190,7 @@ def lint(session: nox.Session):
 
 @nox.session(allow_parallel=IN_CI)
 def formatters(session: nox.Session):
-    install(session, ".[formatters]", *other_antsibull())
+    install(session, ".", "--group", "formatters", *other_antsibull())
     posargs = list(session.posargs)
     if IN_CI:
         posargs.append("--check")
@@ -194,7 +200,7 @@ def formatters(session: nox.Session):
 
 @nox.session(allow_parallel=True)
 def codeqa(session: nox.Session):
-    install(session, ".[codeqa]", *other_antsibull(), editable=True)
+    install(session, ".", "--group", "codeqa", *other_antsibull(), editable=True)
     session.run("flake8", "src/antsibull_build", *session.posargs)
     session.run("pylint", "--rcfile", ".pylintrc.automated", "src/antsibull_build")
     session.run("reuse", "lint")
@@ -204,7 +210,7 @@ def codeqa(session: nox.Session):
 @nox.session(allow_parallel=True)
 def typing(session: nox.Session):
     others = other_antsibull()
-    install(session, ".[typing]", *others)
+    install(session, ".", "--group", "typing", *others)
     session.run("mypy", "src/antsibull_build", "tests")
 
 
@@ -224,7 +230,7 @@ def check_package_files(
     a source distribution and wheel.
     Run `nox -e check_package_files -- regen` to regenerate package data.
     """
-    install(session, ".[coverage]", *other_antsibull(), editable=True)
+    install(session, ".", "--group", "coverage", *other_antsibull(), editable=True)
     tmp = session.create_tmp()
     build_data = Path(tmp, "ansible-build-data")
     session.run_always(
